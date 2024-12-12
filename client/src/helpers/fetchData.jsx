@@ -8,10 +8,13 @@ export const fetchData = async (query) => {
           "Content-Type": "application/json",
         },
       }
-    )
-      .then((res) => res.json())
-      .catch((err) => console.error(err));
-    return response.items;
+    );
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data.items;
   } catch (error) {
     throw new Error(`Error: ${error}`);
   }
