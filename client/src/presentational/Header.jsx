@@ -7,7 +7,7 @@ export default function Header() {
   const selectedClass = {
     selected:
       "mb-8 font-semibold text-3xl m:text-8xl font-lcd md:animate-resizeTitle",
-    notSelected: "mb-8 font-semibold text-3xl m:text-8xl font-lcd ",
+    notSelected: "mb-8 font-semibold text-3xl md:text-8xl font-lcd ",
   };
 
   return (
