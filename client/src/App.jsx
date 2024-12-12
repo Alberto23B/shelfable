@@ -12,6 +12,7 @@ import { SelectInputContextProvider } from "./context/SelectInputContext";
 import { DisplayContextProvider } from "./context/DisplayContext";
 import { PageContextProvider } from "./context/PagesContext";
 import { NavbarContextProvider } from "./context/NavbarContext";
+import "./App.css";
 
 function App() {
   const [data, setData] = useState([]);
