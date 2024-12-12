@@ -4,7 +4,7 @@ import db from "../db/connection.js";
 
 const api = express.Router();
 
-api.get("/favorites", async (req, res) => {
+api.get("/", async (req, res) => {
   let collection = await db.collection("favorites");
   if (!collection) {
     res.sendStatus(404);
