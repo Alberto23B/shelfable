@@ -8,6 +8,7 @@ import Contacts from "./components/Contancts";
 import About from "./components/About";
 import ToggleTheme from "./components/ToggleTheme";
 import SearchSection from "./presentational/SearchSection";
+
 import { SelectInputContextProvider } from "./context/SelectInputContext";
 import { DisplayContextProvider } from "./context/DisplayContext";
 import { PageContextProvider } from "./context/PagesContext";
