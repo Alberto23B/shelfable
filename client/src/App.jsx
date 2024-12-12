@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./App.css";
 import Header from "./presentational/Header";
 import Quote from "./components/Quote";
 import Results from "./presentational/Results";
@@ -31,7 +30,9 @@ function App() {
         <DisplayContextProvider>
           <PageContextProvider>
             <div
-              className={`bg-[#E2EEF0] dark:bg-cool dark:text-stone-300 h-screen overflow-auto gutter`}
+              className={
+                "bg-[#E2EEF0] dark:bg-cool dark:text-stone-300 h-screen overflow-auto gutter"
+              }
             >
               <Contacts />
               <About />

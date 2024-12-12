@@ -11,6 +11,13 @@ export default function Results({ data, isLoading, favorites, setFavorites }) {
   const isInputSelected = useContext(SelectInputContext);
   const [hasAnimationRun, setHasAnimationRun] = useState(false);
 
+  const selectedClass = {
+    selected:
+      "md:min-h-72 flex border border-slate-200 flex-row py-4 flex-wrap items-center justify-center lg:w-[80vw] rounded-b-md overflow-auto min-h-56 max-h-96 md:max-h-full display-results dark:bg-cadet",
+    notSelected:
+      "md:min-h-56 flex border border-slate-200 flex-row py-4 flex-wrap items-center justify-center lg:w-[80vw] rounded-b-md overflow-auto min-h-56 max-h-96 md:max-h-full display-results dark:bg-cadet",
+  };
+
   useEffect(() => {
     if (isInputSelected === true) {
       setHasAnimationRun(true);
@@ -24,15 +31,16 @@ export default function Results({ data, isLoading, favorites, setFavorites }) {
   return (
     <>
       <div
-        className={`${
-          isInputSelected ? "md:min-h-72" : "md:min-h-56"
-        } flex border border-slate-200 flex-row py-4 flex-wrap items-center justify-center lg:w-[80vw] rounded-b-md overflow-auto min-h-56 max-h-96 md:max-h-full display-results dark:bg-cadet`}
+        className={
+          isInputSelected ? selectedClass.selected : selectedClass.notSelected
+        }
       >
         <ChangePageButton data={data} />
         {data.length !== 0 ? (
           elementsInPage.map((element, i) => {
             return (
               <Card
+                key={i}
                 data={element}
                 i={i}
                 favorites={favorites}

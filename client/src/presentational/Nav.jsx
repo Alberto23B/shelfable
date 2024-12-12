@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { NavbarDispatchContext } from "../context/NavbarContext";
-import { useOutsideClick } from "../helpers/useOutsideClick";
+import { useOutsideClick } from "../helpers/useOutsideClick.jsx";
 
 export default function Nav({ children }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +19,7 @@ export default function Nav({ children }) {
 
   return (
     <nav ref={ref} className="relative w-full overflow-hidden dark:bg-black">
-      <div className={`${isOpen ? "inline-block" : "hidden"} `}>
+      <div className={isOpen ? "inline-block" : "hidden"}>
         <button
           onClick={() => dispatch({ type: "contacts/toggle" })}
           className="px-4 "

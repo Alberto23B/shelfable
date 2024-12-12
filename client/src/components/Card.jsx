@@ -9,6 +9,17 @@ export default function Card({ data, i, favorites, setFavorites }) {
     localStorage.getItem("favorites") || "[]"
   );
 
+  const cardAspectClass = {
+    icons:
+      "flex sm:flex-row mx-1 my-2 bg-cream-100 rounded-lg dark:bg-black shadow-md shadow-slate-600 dark:shadow-slate-900 sm:w-80 flex-col",
+    list: "flex sm:flex-row mx-1 my-2 bg-cream-100 rounded-lg dark:bg-black shadow-md shadow-slate-600 dark:shadow-slate-900 w-11/12 sm:flex-row",
+  };
+
+  const buttonAspectClass = {
+    icons: "flex-col justify-between w-full overflow-hidden sm:flex hidden",
+    list: "flex",
+  };
+
   const handleClickFavorites = (data) => {
     const nextStorage = [...favoritesStorage, data];
     localStorage.setItem("favorites", JSON.stringify(nextStorage));
@@ -29,10 +40,9 @@ export default function Card({ data, i, favorites, setFavorites }) {
   return (
     <div
       key={i}
-      className={`flex sm:flex-row mx-1 my-2 bg-cream-100 rounded-lg dark:bg-black
-        shadow-md shadow-slate-600 dark:shadow-slate-900
-        ${display === "icons" ? "sm:w-80" : "w-11/12"} 
-        ${display === "icons" ? "flex-col" : "sm: flex-row"}`}
+      className={
+        display === "icons" ? cardAspectClass.icons : cardAspectClass.list
+      }
     >
       <a href={data.info}>
         <img
@@ -55,9 +65,9 @@ export default function Card({ data, i, favorites, setFavorites }) {
         </button>
       )}
       <div
-        className={`flex-col justify-between w-full overflow-hidden ${
-          display === "icons" ? "sm:flex hidden" : "flex"
-        }`}
+        className={
+          display === "icons" ? buttonAspectClass.icons : buttonAspectClass.list
+        }
       >
         <div>
           <a href={data.info}>

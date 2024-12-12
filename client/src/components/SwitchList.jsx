@@ -10,6 +10,13 @@ export default function SwitchList() {
   const display = useContext(DisplayContext);
   const dispatch = useContext(DisplayDispatchContext);
 
+  const displayStyleClass = {
+    active:
+      "w-12 hover:bg-cadet dark:hover:bg-iron px-2 press text-white rounded-l-md h-fit bg-zinc-600 top-[2px] shadow-none bg-zinc-800",
+    inactive:
+      "w-12 hover:bg-cadet dark:hover:bg-iron px-2 press text-white rounded-l-md h-fit bg-zinc-600",
+  };
+
   const handleClick = () => {
     display === "icons"
       ? dispatch({ type: "toList" })
@@ -19,9 +26,11 @@ export default function SwitchList() {
   return (
     <div className="relative top-[3px]">
       <button
-        className={`w-12 hover:bg-cadet dark:hover:bg-iron px-2 press text-white rounded-l-md h-fit bg-zinc-600 ${
-          display === "icons" ? " top-[2px] shadow-none bg-zinc-800" : ""
-        }`}
+        className={
+          display === "icons"
+            ? displayStyleClass.active
+            : displayStyleClass.inactive
+        }
         onClick={handleClick}
         disabled={display === "icons"}
       >
@@ -32,9 +41,11 @@ export default function SwitchList() {
         />
       </button>
       <button
-        className={`w-12 hover:bg-cadet dark:hover:bg-iron px-2 press text-white rounded-r-md ${
-          display === "list" ? " top-[2px] shadow-none bg-zinc-800" : ""
-        } h-fit bg-zinc-600`}
+        className={
+          display === "list"
+            ? displayStyleClass.active
+            : displayStyleClass.inactive
+        }
         disabled={display === "list"}
         onClick={handleClick}
       >

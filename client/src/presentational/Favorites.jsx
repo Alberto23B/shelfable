@@ -10,6 +10,13 @@ export default function Favorites({ favorites, setFavorites, isLoading }) {
   const { elementsInPage } = useContext(PageContext);
   const isInputSelected = useContext(SelectInputContext);
 
+  const selectInputClass = {
+    selected:
+      "md:min-h-72 flex border border-slate-200 flex-row flex-wrap items-center justify-center lg:w-[80vw] min-h-56 display-results dark:bg-cadet",
+    notSelected:
+      "md:min-h-56 flex border border-slate-200 flex-row flex-wrap items-center justify-center lg:w-[80vw] min-h-56 display-results dark:bg-cadet",
+  };
+
   if (isLoading) {
     return <Loading />;
   }
@@ -17,9 +24,11 @@ export default function Favorites({ favorites, setFavorites, isLoading }) {
   return (
     <>
       <div
-        className={`${
-          isInputSelected ? "md:min-h-72" : "md:min-h-56"
-        } flex border border-slate-200 flex-row flex-wrap items-center justify-center lg:w-[80vw] min-h-56 display-results dark:bg-cadet`}
+        className={
+          isInputSelected
+            ? selectInputClass.selected
+            : selectInputClass.notSelected
+        }
       >
         <h3 className="w-full my-2 text-2xl font-light text-center ">
           Favorites
@@ -29,6 +38,7 @@ export default function Favorites({ favorites, setFavorites, isLoading }) {
           elementsInPage.map((data, i) => {
             return (
               <Card
+                key={i}
                 data={data}
                 i={i}
                 favorites={favorites}
@@ -38,7 +48,9 @@ export default function Favorites({ favorites, setFavorites, isLoading }) {
           })
         ) : (
           <div>
-            <p className="italic font-thin">You don't have favorites yet!</p>
+            <p className="italic font-thin">
+              You don&apos;t have favorites yet!
+            </p>
           </div>
         )}
         <ChangePageButton data={favorites} />

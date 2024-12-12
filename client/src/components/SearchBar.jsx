@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { SelectInputDispatchContext } from "../context/SelectInputContext";
-import { extractVolumeInfo } from "../helpers/extractVolumeInfo";
-import { fetchData } from "../helpers/fetchData";
+import { extractVolumeInfo } from "../helpers/extractVolumeInfo.jsx";
+import { fetchData } from "../helpers/fetchData.jsx";
 
 export default function SearchBar({ setData, setIsLoading, setShowFavorites }) {
   const [query, setQuery] = useState("");
