@@ -1,6 +1,11 @@
 export default function ClearAll({ setFavorites }) {
-  const handleClearAll = () => {
-    localStorage.setItem("favorites", JSON.stringify([]));
+  const handleClearAll = async () => {
+    const response = await fetch("/api/all", {
+      method: "DELETE",
+    });
+
+    console.log(response);
+
     setFavorites([]);
   };
 

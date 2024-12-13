@@ -4,6 +4,14 @@ import db from "../db/connection.js";
 
 const api = express.Router();
 
+api.use("/", async (req, res, next) => {
+  let collection = await db.collection("favorites");
+  if (!collection) {
+    res.sendStatus(404);
+  } else {
+  }
+});
+
 api.get("/", async (req, res) => {
   let collection = await db.collection("favorites");
   if (!collection) {
@@ -54,6 +62,23 @@ api.delete("/", async (req, res) => {
     return res.sendStatus(404);
   } else {
     await collection.deleteOne({ _id: toDelete._id });
+    res.sendStatus(204);
+  }
+});
+
+api.delete("/all", async (req, res) => {
+  let collection = await db.collection("favorites");
+
+  if (!collection) {
+    return res.sendStatus(400);
+  }
+
+  const toDelete = await collection.find({}).toArray();
+
+  if (!toDelete) {
+    return res.sendStatus(404);
+  } else {
+    await collection.deleteMany({});
     res.sendStatus(204);
   }
 });
