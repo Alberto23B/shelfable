@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./presentational/Header";
 import Quote from "./components/Quote";
 import Results from "./presentational/Results";
@@ -8,6 +8,7 @@ import Contacts from "./components/Contancts";
 import About from "./components/About";
 import ToggleTheme from "./components/ToggleTheme";
 import SearchSection from "./presentational/SearchSection";
+import { fetchFavorites } from "./helpers/fetchFavorites";
 import { SelectInputContextProvider } from "./context/SelectInputContext";
 import { DisplayContextProvider } from "./context/DisplayContext";
 import { PageContextProvider } from "./context/PagesContext";
@@ -18,11 +19,20 @@ function App() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const favoritesStorage = JSON.parse(
-    localStorage.getItem("favorites") || "[]"
-  );
+  useEffect(() => {
+    const loadFavorites = async () => {
+      try {
+        const data = await fetchFavorites();
+        setFavorites(data);
+      } catch (error) {
+        console.error("Failed to fetch favorites:", error);
+      }
+    };
 
-  const [favorites, setFavorites] = useState(favoritesStorage);
+    loadFavorites();
+  }, []);
+
+  const [favorites, setFavorites] = useState([]);
   const [showFavorites, setShowFavorites] = useState(false);
 
   return (
