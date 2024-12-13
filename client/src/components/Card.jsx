@@ -20,12 +20,29 @@ export default function Card({ data, i, favorites, setFavorites }) {
     list: "flex",
   };
 
-  const handleClickFavorites = (data) => {
-    const nextStorage = [...favoritesStorage, data];
-    localStorage.setItem("favorites", JSON.stringify(nextStorage));
-    setFavorites((prev) => {
-      return [...prev, data];
+  // const handleClickFavorites = (data) => {
+  //   const nextStorage = [...favoritesStorage, data];
+  //   localStorage.setItem("favorites", JSON.stringify(nextStorage));
+  //   setFavorites((prev) => {
+  //     return [...prev, data];
+  //   });
+  // };
+
+  const handleAddFavorites = async (data) => {
+    const response = await fetch("/api", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-type": "application/json",
+      },
     });
+
+    if (!response.ok) {
+      console.log("Request Failed");
+    }
+
+    setFavorites((prev) => [...prev, data]);
+    console.log(response);
   };
 
   const handleRemoveFavorites = (data, i) => {
@@ -58,7 +75,7 @@ export default function Card({ data, i, favorites, setFavorites }) {
           onClick={
             isFavorite
               ? () => handleRemoveFavorites(data, i)
-              : () => handleClickFavorites(data)
+              : () => handleAddFavorites(data)
           }
         >
           {isFavorite ? "X" : "♡"}
@@ -94,7 +111,7 @@ export default function Card({ data, i, favorites, setFavorites }) {
             onClick={
               isFavorite
                 ? () => handleRemoveFavorites(data, i)
-                : () => handleClickFavorites(data)
+                : () => handleAddFavorites(data)
             }
           >
             {isFavorite ? "X" : "♡"}

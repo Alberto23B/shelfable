@@ -12,7 +12,7 @@ export const fetchFavorites = async () => {
     }
 
     const data = await response.json();
-    return data[0].books;
+    return data;
   } catch (error) {
     throw new Error(`Error: ${error}`);
   }
