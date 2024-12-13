@@ -19,8 +19,12 @@ api.use("/", async (req, res, next) => {
 
 api.get("/", async (req, res) => {
   let collection = req.collection;
-  let results = await collection.find().toArray();
-  res.send(results).status(200);
+  try {
+    let results = await collection.find().toArray();
+    res.send(results).status(200);
+  } catch (err) {
+    throw new Error("An error has occured. Error:" + err);
+  }
 });
 
 api.post("/", async (req, res) => {
@@ -40,35 +44,47 @@ api.post("/", async (req, res) => {
 
   let collection = req.collection;
 
-  await collection.insertOne(toInsert);
-  const result = await collection.findOne({ info: toInsert.info });
-  res.status(200).send(result);
+  try {
+    await collection.insertOne(toInsert);
+    const result = await collection.findOne({ info: toInsert.info });
+    res.status(200).send(result);
+  } catch (err) {
+    throw new Error("An error has occured. Error:" + err);
+  }
 });
 
 api.delete("/", async (req, res) => {
   let identifyer = req.body.info;
   let collection = req.collection;
 
-  const toDelete = await collection.findOne({ info: identifyer });
+  try {
+    const toDelete = await collection.findOne({ info: identifyer });
 
-  if (!toDelete) {
-    return res.sendStatus(404);
-  } else {
-    await collection.deleteOne({ _id: toDelete._id });
-    res.sendStatus(204);
+    if (!toDelete) {
+      return res.sendStatus(404);
+    } else {
+      await collection.deleteOne({ _id: toDelete._id });
+      res.sendStatus(204);
+    }
+  } catch (err) {
+    throw new Error("An error has occured. Error:" + err);
   }
 });
 
 api.delete("/all", async (req, res) => {
   let collection = req.collection;
 
-  const toDelete = await collection.find({}).toArray();
+  try {
+    const toDelete = await collection.find({}).toArray();
 
-  if (!toDelete) {
-    return res.sendStatus(404);
-  } else {
-    await collection.deleteMany({});
-    res.sendStatus(204);
+    if (!toDelete) {
+      return res.sendStatus(404);
+    } else {
+      await collection.deleteMany({});
+      res.sendStatus(204);
+    }
+  } catch (err) {
+    throw new Error("An error has occured. Error:" + err);
   }
 });
 
