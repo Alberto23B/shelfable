@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import missingImg from "../img/img_missing.jpg";
 import { DisplayContext } from "../context/DisplayContext";
+import AddOrDeleteFavorite from "./AddOrDeleteFavorite";
 
 export default function Card({ data, i, favorites, setFavorites }) {
   const isFavorite = favorites.some((fav) => fav.info === data.info);
@@ -17,40 +18,6 @@ export default function Card({ data, i, favorites, setFavorites }) {
     list: "flex",
   };
 
-  const handleAddFavorites = async (data) => {
-    const response = await fetch("/api", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-type": "application/json",
-      },
-    });
-
-    if (!response.ok) {
-      console.log("Add Request Failed");
-      return;
-    }
-
-    setFavorites((prev) => [...prev, data]);
-  };
-
-  const handleDeleteFavorites = async (data) => {
-    const response = await fetch("/api", {
-      method: "DELETE",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-type": "application/json",
-      },
-    });
-
-    if (!response.ok) {
-      console.log("Delete Request Failed");
-      return;
-    }
-
-    setFavorites((prev) => prev.filter((fav) => fav.info !== data.info));
-  };
-
   return (
     <div
       key={i}
@@ -65,19 +32,6 @@ export default function Card({ data, i, favorites, setFavorites }) {
           alt="book cover"
         ></img>
       </a>
-      {display === "icons" && (
-        <button
-          className="w-full px-2 text-black rounded-md dark:text-white card-button sm:hidden"
-          type="button"
-          onClick={
-            isFavorite
-              ? () => handleDeleteFavorites(data, i)
-              : () => handleAddFavorites(data)
-          }
-        >
-          {isFavorite ? "X" : "♡"}
-        </button>
-      )}
       <div
         className={
           display === "icons" ? buttonAspectClass.icons : buttonAspectClass.list
@@ -98,21 +52,15 @@ export default function Card({ data, i, favorites, setFavorites }) {
         </div>
         <div className="flex justify-center">
           <a href={data.info} rel="noopener noreferrer" target="_blank">
-            <button className="px-2 text-black rounded-md dark:shadow-none bg-cream-200 dark:bg-slate-900 dark:text-white w-fit ">
+            <button className="px-2 mr-2 text-black rounded-md dark:shadow-none bg-cream-200 dark:bg-slate-900 dark:text-white w-fit ">
               More
             </button>
           </a>
-          <button
-            className="px-2 mx-2 text-black rounded-md dark:shadow-none bg-cream-200 dark:bg-slate-900 dark:text-white w-fit"
-            type="button"
-            onClick={
-              isFavorite
-                ? () => handleDeleteFavorites(data)
-                : () => handleAddFavorites(data)
-            }
-          >
-            {isFavorite ? "X" : "♡"}
-          </button>
+          <AddOrDeleteFavorite
+            data={data}
+            setFavorites={setFavorites}
+            isFavorite={isFavorite}
+          />
         </div>
       </div>
     </div>
