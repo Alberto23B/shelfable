@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import missingImg from "../img/img_missing.jpg";
+import no_picture_available from "../img/no_picture_available.png";
 import { DisplayContext } from "../context/DisplayContext";
 import AddOrDeleteFavorite from "./AddOrDeleteFavorite";
 
@@ -27,8 +27,8 @@ export default function Card({ data, i, favorites, setFavorites }) {
     >
       <a href={data.info}>
         <img
-          className={`h-32 my-auto mr-2 rounded-l-lg max-w-24 aspect-square`}
-          src={data.img ? data.img : missingImg}
+          className="object-cover h-32 my-auto mr-2 rounded-l-lg max-w-24 aspect-square"
+          src={data.img ? data.img : no_picture_available}
           alt="book cover"
         ></img>
       </a>
