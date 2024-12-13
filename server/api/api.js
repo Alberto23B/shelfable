@@ -10,7 +10,6 @@ api.get("/", async (req, res) => {
     res.sendStatus(404);
   } else {
     let results = await collection.find().toArray();
-    console.log(results);
     res.send(results).status(200);
   }
 });
@@ -38,6 +37,24 @@ api.post("/", async (req, res) => {
     await collection.insertOne(toInsert);
     const result = await collection.findOne({ info: toInsert.info });
     res.status(200).send(result);
+  }
+});
+
+api.delete("/", async (req, res) => {
+  let identifyer = req.body.info;
+  let collection = await db.collection("favorites");
+
+  if (!collection) {
+    return res.sendStatus(400);
+  }
+
+  const toDelete = await collection.findOne({ info: identifyer });
+
+  if (!toDelete) {
+    return res.sendStatus(404);
+  } else {
+    await collection.deleteOne({ _id: toDelete._id });
+    res.sendStatus(204);
   }
 });
 

@@ -5,9 +5,9 @@ import { DisplayContext } from "../context/DisplayContext";
 export default function Card({ data, i, favorites, setFavorites }) {
   const isFavorite = favorites.some((fav) => fav.info === data.info);
   const display = useContext(DisplayContext);
-  const favoritesStorage = JSON.parse(
-    localStorage.getItem("favorites") || "[]"
-  );
+  // const favoritesStorage = JSON.parse(
+  //   localStorage.getItem("favorites") || "[]"
+  // );
 
   const cardAspectClass = {
     icons:
@@ -20,14 +20,6 @@ export default function Card({ data, i, favorites, setFavorites }) {
     list: "flex",
   };
 
-  // const handleClickFavorites = (data) => {
-  //   const nextStorage = [...favoritesStorage, data];
-  //   localStorage.setItem("favorites", JSON.stringify(nextStorage));
-  //   setFavorites((prev) => {
-  //     return [...prev, data];
-  //   });
-  // };
-
   const handleAddFavorites = async (data) => {
     const response = await fetch("/api", {
       method: "POST",
@@ -38,19 +30,33 @@ export default function Card({ data, i, favorites, setFavorites }) {
     });
 
     if (!response.ok) {
-      console.log("Request Failed");
+      console.log("Add Request Failed");
     }
 
     setFavorites((prev) => [...prev, data]);
-    console.log(response);
   };
 
-  const handleRemoveFavorites = (data, i) => {
-    const nextStorage = favoritesStorage
-      .slice(0, i)
-      .concat(favoritesStorage.slice(i + 1));
-    console.log(nextStorage);
-    localStorage.setItem("favorites", JSON.stringify(nextStorage));
+  // const handleRemoveFavorites = (data, i) => {
+  //   const nextStorage = favoritesStorage
+  //     .slice(0, i)
+  //     .concat(favoritesStorage.slice(i + 1));
+  //   localStorage.setItem("favorites", JSON.stringify(nextStorage));
+  //   setFavorites((prev) => prev.filter((fav) => fav.info !== data.info));
+  // };
+
+  const handleDeleteFavorites = async (data) => {
+    const response = await fetch("/api", {
+      method: "DELETE",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      console.log("Delete Request Failed");
+    }
+
     setFavorites((prev) => prev.filter((fav) => fav.info !== data.info));
   };
 
@@ -74,7 +80,7 @@ export default function Card({ data, i, favorites, setFavorites }) {
           type="button"
           onClick={
             isFavorite
-              ? () => handleRemoveFavorites(data, i)
+              ? () => handleDeleteFavorites(data, i)
               : () => handleAddFavorites(data)
           }
         >
@@ -110,7 +116,7 @@ export default function Card({ data, i, favorites, setFavorites }) {
             type="button"
             onClick={
               isFavorite
-                ? () => handleRemoveFavorites(data, i)
+                ? () => handleDeleteFavorites(data)
                 : () => handleAddFavorites(data)
             }
           >
