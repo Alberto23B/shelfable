@@ -5,21 +5,22 @@ import db from "../db/connection.js";
 const api = express.Router();
 
 api.use("/", async (req, res, next) => {
-  let collection = await db.collection("favorites");
-  if (!collection) {
-    res.sendStatus(404);
-  } else {
+  try {
+    let collection = await db.collection("favorites");
+    if (!collection) {
+      res.sendStatus(404);
+    }
+    req.collection = collection;
+    next();
+  } catch (err) {
+    next(err);
   }
 });
 
 api.get("/", async (req, res) => {
-  let collection = await db.collection("favorites");
-  if (!collection) {
-    res.sendStatus(404);
-  } else {
-    let results = await collection.find().toArray();
-    res.send(results).status(200);
-  }
+  let collection = req.collection;
+  let results = await collection.find().toArray();
+  res.send(results).status(200);
 });
 
 api.post("/", async (req, res) => {
@@ -37,24 +38,16 @@ api.post("/", async (req, res) => {
     description: description,
   };
 
-  let collection = await db.collection("favorites");
+  let collection = req.collection;
 
-  if (!collection) {
-    res.sendStatus(404);
-  } else {
-    await collection.insertOne(toInsert);
-    const result = await collection.findOne({ info: toInsert.info });
-    res.status(200).send(result);
-  }
+  await collection.insertOne(toInsert);
+  const result = await collection.findOne({ info: toInsert.info });
+  res.status(200).send(result);
 });
 
 api.delete("/", async (req, res) => {
   let identifyer = req.body.info;
-  let collection = await db.collection("favorites");
-
-  if (!collection) {
-    return res.sendStatus(400);
-  }
+  let collection = req.collection;
 
   const toDelete = await collection.findOne({ info: identifyer });
 
@@ -67,11 +60,7 @@ api.delete("/", async (req, res) => {
 });
 
 api.delete("/all", async (req, res) => {
-  let collection = await db.collection("favorites");
-
-  if (!collection) {
-    return res.sendStatus(400);
-  }
+  let collection = req.collection;
 
   const toDelete = await collection.find({}).toArray();
 

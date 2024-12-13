@@ -36,14 +36,6 @@ export default function Card({ data, i, favorites, setFavorites }) {
     setFavorites((prev) => [...prev, data]);
   };
 
-  // const handleRemoveFavorites = (data, i) => {
-  //   const nextStorage = favoritesStorage
-  //     .slice(0, i)
-  //     .concat(favoritesStorage.slice(i + 1));
-  //   localStorage.setItem("favorites", JSON.stringify(nextStorage));
-  //   setFavorites((prev) => prev.filter((fav) => fav.info !== data.info));
-  // };
-
   const handleDeleteFavorites = async (data) => {
     const response = await fetch("/api", {
       method: "DELETE",
