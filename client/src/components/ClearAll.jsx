@@ -1,10 +1,8 @@
 export default function ClearAll({ setFavorites }) {
   const handleClearAll = async () => {
-    const response = await fetch("/api/all", {
+    await fetch("/api/all", {
       method: "DELETE",
     });
-
-    console.log(response);
 
     setFavorites([]);
   };

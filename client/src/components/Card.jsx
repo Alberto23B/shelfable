@@ -5,9 +5,6 @@ import { DisplayContext } from "../context/DisplayContext";
 export default function Card({ data, i, favorites, setFavorites }) {
   const isFavorite = favorites.some((fav) => fav.info === data.info);
   const display = useContext(DisplayContext);
-  // const favoritesStorage = JSON.parse(
-  //   localStorage.getItem("favorites") || "[]"
-  // );
 
   const cardAspectClass = {
     icons:
@@ -31,6 +28,7 @@ export default function Card({ data, i, favorites, setFavorites }) {
 
     if (!response.ok) {
       console.log("Add Request Failed");
+      return;
     }
 
     setFavorites((prev) => [...prev, data]);
@@ -47,6 +45,7 @@ export default function Card({ data, i, favorites, setFavorites }) {
 
     if (!response.ok) {
       console.log("Delete Request Failed");
+      return;
     }
 
     setFavorites((prev) => prev.filter((fav) => fav.info !== data.info));
