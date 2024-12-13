@@ -8,7 +8,6 @@ import Contacts from "./components/Contancts";
 import About from "./components/About";
 import ToggleTheme from "./components/ToggleTheme";
 import SearchSection from "./presentational/SearchSection";
-
 import { SelectInputContextProvider } from "./context/SelectInputContext";
 import { DisplayContextProvider } from "./context/DisplayContext";
 import { PageContextProvider } from "./context/PagesContext";
@@ -52,12 +51,9 @@ function App() {
               {showFavorites ? (
                 <div className="min-h-fit">
                   <Favorites
-                    data={data}
-                    setShowFavorites={setShowFavorites}
                     favorites={favorites}
                     setFavorites={setFavorites}
                     isLoading={isLoading}
-                    setIsLoading={setIsLoading}
                   />
                 </div>
               ) : (
@@ -67,7 +63,6 @@ function App() {
                     favorites={favorites}
                     setFavorites={setFavorites}
                     isLoading={isLoading}
-                    setIsLoading={setIsLoading}
                   />
                 </div>
               )}
