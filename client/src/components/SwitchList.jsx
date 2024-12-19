@@ -12,9 +12,9 @@ export default function SwitchList() {
 
   const displayStyleClass = {
     active:
-      "w-12 hover:bg-cadet dark:hover:bg-iron px-2 press text-white rounded-l-md h-fit bg-zinc-600 top-[2px] shadow-none bg-zinc-800",
+      "w-12 hover:bg-cadet dark:hover:bg-iron px-2 press text-white h-fit bg-zinc-600 top-[2px] shadow-none bg-zinc-800",
     inactive:
-      "w-12 hover:bg-cadet dark:hover:bg-iron px-2 press text-white rounded-l-md h-fit bg-zinc-600",
+      "w-12 hover:bg-cadet dark:hover:bg-iron px-2 press text-white h-fit bg-zinc-600",
   };
 
   const handleClick = () => {
