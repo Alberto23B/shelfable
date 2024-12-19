@@ -12,9 +12,9 @@ export default function Favorites({ favorites, setFavorites, isLoading }) {
 
   const selectInputClass = {
     selected:
-      "md:min-h-72 flex border border-slate-200 flex-row flex-wrap items-center justify-center lg:w-[80vw] min-h-56 display-results dark:bg-cadet",
+      "md:min-h-72 flex border border-slate-200 rounded-b-xs flex-row flex-wrap items-center justify-center lg:w-[80vw] min-h-56 display-results dark:bg-cadet",
     notSelected:
-      "md:min-h-56 flex border border-slate-200 flex-row flex-wrap items-center justify-center lg:w-[80vw] min-h-56 display-results dark:bg-cadet",
+      "md:min-h-56 flex border border-slate-200 rounded-b-xs flex-row flex-wrap items-center justify-center lg:w-[80vw] min-h-56 display-results dark:bg-cadet",
   };
 
   if (isLoading) {

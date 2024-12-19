@@ -9,8 +9,8 @@ export default function Card({ data, i, favorites, setFavorites }) {
 
   const cardAspectClass = {
     icons:
-      "flex sm:flex-row mx-1 my-2 bg-cream-100 rounded-lg dark:bg-black shadow-md shadow-slate-600 dark:shadow-slate-900 sm:w-80 flex-col",
-    list: "flex sm:flex-row mx-1 my-2 bg-cream-100 rounded-lg dark:bg-black shadow-md shadow-slate-600 dark:shadow-slate-900 w-11/12 sm:flex-row",
+      "flex sm:flex-row mx-1 my-2 bg-cream-100 rounded-sm dark:bg-black shadow-md shadow-slate-600 dark:shadow-slate-900 sm:w-80 flex-col",
+    list: "flex sm:flex-row mx-1 my-2 bg-cream-100 rounded-sm dark:bg-black shadow-md shadow-slate-600 dark:shadow-slate-900 w-11/12 sm:flex-row",
   };
 
   const textAspectClass = {
