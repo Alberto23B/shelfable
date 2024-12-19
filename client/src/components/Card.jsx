@@ -9,12 +9,12 @@ export default function Card({ data, i, favorites, setFavorites }) {
 
   const cardAspectClass = {
     icons:
-      "flex sm:flex-row mx-1 my-2 bg-cream-100 rounded-sm dark:bg-black shadow-md shadow-slate-600 dark:shadow-slate-900 sm:w-80 flex-col",
-    list: "flex sm:flex-row mx-1 my-2 bg-cream-100 rounded-sm dark:bg-black shadow-md shadow-slate-600 dark:shadow-slate-900 w-11/12 sm:flex-row",
+      "flex flex-col sm:flex-row mx-1 my-2 sm:w-80 bg-cream-100 rounded-sm shadow-md shadow-slate-600 dark:bg-black dark:shadow-slate-900",
+    list: "flex sm:flex-row w-11/12 mx-1 my-2 bg-cream-100 rounded-sm shadow-md shadow-slate-600 dark:bg-black dark:shadow-slate-900",
   };
 
   const textAspectClass = {
-    icons: "flex-col justify-between w-full overflow-hidden sm:flex hidden",
+    icons: "hidden sm:flex flex-col justify-between w-full overflow-hidden",
     list: "flex w-full",
   };
 
@@ -30,8 +30,8 @@ export default function Card({ data, i, favorites, setFavorites }) {
 
   const moreAspectClass = {
     icons:
-      "hidden px-2 w-16 mr-2 text-black h-8 dark:shadow-none sm:inline-block bg-cream-200 dark:bg-slate-900 dark:text-white",
-    list: "px-2 mx-2 text-black w-16 dark:shadow-none h-2/5 bg-cream-200 dark:bg-slate-900 dark:text-white ",
+      "hidden w-16 h-8 px-2 mr-2 sm:inline-block bg-cream-200 text-black dark:bg-slate-900 dark:text-white dark:shadow-none",
+    list: "w-16 h-2/5 px-2 mx-2 bg-cream-200 text-black dark:bg-slate-900 dark:text-white dark:shadow-none",
   };
 
   return (
