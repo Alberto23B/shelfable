@@ -25,7 +25,9 @@ export default function Favorites({ favorites, setFavorites, isLoading }) {
         <h3 className="w-full my-2 text-2xl font-light text-center ">
           Favorites
         </h3>
-        <ChangePageButton data={favorites} />
+        <div className="hidden w-full mb-2 sm:block">
+          <ChangePageButton data={favorites} />
+        </div>
         {favorites.length !== 0 ? (
           elementsInPage.map((data, i) => {
             return (
@@ -45,7 +47,9 @@ export default function Favorites({ favorites, setFavorites, isLoading }) {
             </p>
           </div>
         )}
-        <ChangePageButton data={favorites} />
+        <div className="w-full mt-2">
+          <ChangePageButton data={favorites} />
+        </div>
         <div className="w-full text-center">
           {favorites.length !== 0 && <ClearAll setFavorites={setFavorites} />}
         </div>

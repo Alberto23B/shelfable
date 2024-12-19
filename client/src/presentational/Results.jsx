@@ -23,7 +23,9 @@ export default function Results({ data, isLoading, favorites, setFavorites }) {
   return (
     <>
       <div className="md:min-h-56 flex border border-slate-200 flex-row py-4 flex-wrap items-center justify-center lg:w-[80vw] rounded-b-xs overflow-auto min-h-56 max-h-96 md:max-h-full display-results dark:bg-cadet">
-        <ChangePageButton data={data} />
+        <div className="hidden w-full mb-2 sm:block">
+          <ChangePageButton data={data} />
+        </div>
         {data.length !== 0 ? (
           elementsInPage.map((element, i) => {
             return (
@@ -46,7 +48,9 @@ export default function Results({ data, isLoading, favorites, setFavorites }) {
             <p className="italic font-thin">Waiting to dive in</p>
           </div>
         )}
-        <ChangePageButton data={data} />
+        <div className="w-full mt-2">
+          <ChangePageButton data={data} />
+        </div>
       </div>
     </>
   );
