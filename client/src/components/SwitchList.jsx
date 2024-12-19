@@ -24,7 +24,7 @@ export default function SwitchList() {
   };
 
   return (
-    <div className="relative top-[3px] right-2 ml-4">
+    <div className="relative top-[3px] sm:right-2 ml-4">
       <button
         className={
           display === "icons"
