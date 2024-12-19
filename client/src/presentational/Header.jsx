@@ -21,7 +21,7 @@ export default function Header() {
                 : selectedClass.notSelected
             }
           >
-            The Good Reads
+            shelfable
           </h1>
         </a>
       </div>
