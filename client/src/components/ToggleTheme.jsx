@@ -1,5 +1,7 @@
 import { NavbarDispatchContext, NavbarContext } from "../context/NavbarContext";
 import { useContext, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 
 export default function ToggleTheme() {
   const dispatch = useContext(NavbarDispatchContext);
@@ -18,6 +20,7 @@ export default function ToggleTheme() {
   }, [theme]);
 
   const handleChange = (e) => {
+    console.log(e.target.value);
     dispatch({ type: `theme/to${e.target.value}` });
   };
 
@@ -27,7 +30,7 @@ export default function ToggleTheme() {
         Theme:
       </label>
       <select
-        className="ml-2 mr-4 dark:bg-cadet"
+        className="hidden ml-2 mr-4 dark:bg-cadet sm:inline"
         defaultValue={theme === "light" ? "Light" : "Dark"}
         id="theme"
         onChange={handleChange}
@@ -39,6 +42,23 @@ export default function ToggleTheme() {
           Dark
         </option>
       </select>
+      <div className="inline ml-2 sm:hidden">
+        {theme === "light" ? (
+          <>
+            <label htmlFor="light">
+              <FontAwesomeIcon icon={faSun}></FontAwesomeIcon>
+            </label>
+            <button id="light" value={"Dark"} onClick={handleChange}></button>
+          </>
+        ) : (
+          <>
+            <label htmlFor="dark">
+              <FontAwesomeIcon icon={faMoon}></FontAwesomeIcon>
+            </label>
+            <button id="dark" value={"Light"} onClick={handleChange}></button>
+          </>
+        )}
+      </div>
     </>
   );
 }
