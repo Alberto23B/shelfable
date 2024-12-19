@@ -28,13 +28,14 @@ export default function ToggleTheme() {
       </label>
       <select
         className="ml-2 mr-4 dark:bg-cadet"
+        defaultValue={theme === "light" ? "Light" : "Dark"}
         id="theme"
         onChange={handleChange}
       >
-        <option key={1} selected={theme === "light"} value={"Light"}>
+        <option key={1} value={"Light"}>
           Light
         </option>
-        <option key={2} selected={theme === "dark"} value={"Dark"}>
+        <option key={2} value={"Dark"}>
           Dark
         </option>
       </select>
