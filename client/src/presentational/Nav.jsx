@@ -1,6 +1,8 @@
 import { useState, useContext } from "react";
 import { NavbarDispatchContext } from "../context/NavbarContext";
 import { useOutsideClick } from "../helpers/useOutsideClick.jsx";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 export default function Nav({ children }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +20,10 @@ export default function Nav({ children }) {
   };
 
   return (
-    <nav ref={ref} className="relative w-full overflow-hidden dark:bg-black">
+    <nav
+      ref={ref}
+      className="flex items-center w-full overflow-hidden dark:bg-black"
+    >
       <div className={isOpen ? "inline-block" : "hidden"}>
         <button
           onClick={() => dispatch({ type: "contacts/toggle" })}
@@ -32,7 +37,7 @@ export default function Nav({ children }) {
         {children}
       </div>
       <button className="hover:bg-none" onClick={showMenu}>
-        <i className="block p-4 fa fa-bars hover:shadow-sm"></i>
+        <FontAwesomeIcon icon={faBars} className="m-4 font-6xl" size="xl" />
       </button>
     </nav>
   );
