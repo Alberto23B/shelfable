@@ -1,21 +1,12 @@
 import { useContext } from "react";
 import Card from "../components/Card";
 import Loading from "./Loading";
-import { SelectInputContext } from "../context/SelectInputContext";
 import { PageContext } from "../context/PagesContext";
 import ChangePageButton from "../components/ChangePageButton";
 import ClearAll from "../components/ClearAll";
 
 export default function Favorites({ favorites, setFavorites, isLoading }) {
   const { elementsInPage } = useContext(PageContext);
-  const isInputSelected = useContext(SelectInputContext);
-
-  const selectInputClass = {
-    selected:
-      "md:min-h-72 flex border border-slate-200 rounded-b-xs flex-row flex-wrap items-center justify-center lg:w-[80vw] min-h-56 display-results dark:bg-cadet",
-    notSelected:
-      "md:min-h-56 flex border border-slate-200 rounded-b-xs flex-row flex-wrap items-center justify-center lg:w-[80vw] min-h-56 display-results dark:bg-cadet",
-  };
 
   if (isLoading) {
     return <Loading />;
@@ -23,13 +14,7 @@ export default function Favorites({ favorites, setFavorites, isLoading }) {
 
   return (
     <>
-      <div
-        className={
-          isInputSelected
-            ? selectInputClass.selected
-            : selectInputClass.notSelected
-        }
-      >
+      <div className="md:min-h-56 flex border border-slate-200 rounded-b-xs flex-row flex-wrap items-center justify-center lg:w-[80vw] min-h-56 display-results dark:bg-cadet">
         <h3 className="w-full my-2 text-2xl font-light text-center ">
           Favorites
         </h3>

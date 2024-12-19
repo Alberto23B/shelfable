@@ -1,11 +1,9 @@
-import { useState, useContext } from "react";
-import { SelectInputDispatchContext } from "../context/SelectInputContext";
+import { useState } from "react";
 import { extractVolumeInfo } from "../helpers/extractVolumeInfo.jsx";
 import { fetchData } from "../helpers/fetchData.jsx";
 
 export default function SearchBar({ setData, setIsLoading, setShowFavorites }) {
   const [query, setQuery] = useState("");
-  const dispatch = useContext(SelectInputDispatchContext);
   let results = [];
 
   const handleClick = async (e) => {
@@ -36,7 +34,6 @@ export default function SearchBar({ setData, setIsLoading, setShowFavorites }) {
           type="search"
           name="q"
           value={query}
-          onFocus={() => dispatch({ type: true })}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Find your next read..."
           required

@@ -1,15 +1,12 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import Card from "../components/Card";
 import ChangePageButton from "../components/ChangePageButton";
 import search from "../img/search.png";
 import Loading from "./Loading";
 import { PageContext } from "../context/PagesContext";
-import { SelectInputContext } from "../context/SelectInputContext";
 
 export default function Results({ data, isLoading, favorites, setFavorites }) {
   const { elementsInPage } = useContext(PageContext);
-  const isInputSelected = useContext(SelectInputContext);
-  const [hasAnimationRun, setHasAnimationRun] = useState(false);
 
   if (isLoading) {
     return <Loading />;
