@@ -22,7 +22,7 @@ export default function Results({ data, isLoading, favorites, setFavorites }) {
 
   return (
     <>
-      <div className="md:min-h-56 flex border border-slate-200 flex-row py-4 flex-wrap items-center justify-center lg:w-[80vw] rounded-b-xs overflow-auto min-h-56 max-h-96 md:max-h-full display-results dark:bg-cadet">
+      <div className="md:min-h-[50vh] flex border border-slate-200 flex-row py-4 flex-wrap items-center justify-center lg:w-[80vw] rounded-b-xs overflow-auto min-h-[40vh] max-h-[60vh] md:max-h-full display-results dark:bg-cadet">
         <div className="hidden w-full mb-2 sm:block">
           <ChangePageButton data={data} />
         </div>
