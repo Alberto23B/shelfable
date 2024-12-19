@@ -9,7 +9,7 @@ function Quote() {
   }, []);
 
   return (
-    <p className="w-2/3 h-12 mx-auto text-xs italic text-center sm:my-6 sm:text-base">
+    <p className="w-2/3 h-24 mx-auto text-xs italic text-center sm:my-6 sm:text-base">
       {quote}
     </p>
   );
