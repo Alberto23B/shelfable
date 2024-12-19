@@ -11,30 +11,13 @@ export default function Results({ data, isLoading, favorites, setFavorites }) {
   const isInputSelected = useContext(SelectInputContext);
   const [hasAnimationRun, setHasAnimationRun] = useState(false);
 
-  const selectedClass = {
-    selected:
-      "md:min-h-72 flex border border-slate-200 flex-row py-4 flex-wrap items-center justify-center lg:w-[80vw] rounded-b-xs overflow-auto min-h-56 max-h-96 md:max-h-full display-results dark:bg-cadet",
-    notSelected:
-      "md:min-h-56 flex border border-slate-200 flex-row py-4 flex-wrap items-center justify-center lg:w-[80vw] rounded-b-xs overflow-auto min-h-56 max-h-96 md:max-h-full display-results dark:bg-cadet",
-  };
-
-  useEffect(() => {
-    if (isInputSelected === true) {
-      setHasAnimationRun(true);
-    }
-  }, [hasAnimationRun]);
-
   if (isLoading) {
     return <Loading />;
   }
 
   return (
     <>
-      <div
-        className={
-          isInputSelected ? selectedClass.selected : selectedClass.notSelected
-        }
-      >
+      <div className="md:min-h-56 flex border border-slate-200 flex-row py-4 flex-wrap items-center justify-center lg:w-[80vw] rounded-b-xs overflow-auto min-h-56 max-h-96 md:max-h-full display-results dark:bg-cadet">
         <ChangePageButton data={data} />
         {data.length !== 0 ? (
           elementsInPage.map((element, i) => {
