@@ -13,8 +13,18 @@ export default function Card({ data, i, favorites, setFavorites }) {
     list: "flex sm:flex-row mx-1 my-2 bg-cream-100 rounded-lg dark:bg-black shadow-md shadow-slate-600 dark:shadow-slate-900 w-11/12 sm:flex-row",
   };
 
-  const buttonAspectClass = {
+  const textAspectClass = {
     icons: "flex-col justify-between w-full overflow-hidden sm:flex hidden",
+    list: "flex",
+  };
+
+  const containerAspectClass = {
+    icons: "flex flex-col justify-between w-full",
+    list: "flex",
+  };
+
+  const buttonsAspectClass = {
+    icons: "self-center",
     list: "flex",
   };
 
@@ -33,11 +43,19 @@ export default function Card({ data, i, favorites, setFavorites }) {
         ></img>
       </a>
       <div
+        id="container"
         className={
-          display === "icons" ? buttonAspectClass.icons : buttonAspectClass.list
+          display === "icons"
+            ? containerAspectClass.icons
+            : containerAspectClass.list
         }
       >
-        <div>
+        <div
+          id="text"
+          className={
+            display === "icons" ? textAspectClass.icons : textAspectClass.list
+          }
+        >
           <a href={data.info}>
             <h3 className="font-semibold line-clamp-2">{data.title}</h3>
             {data.author[0] && (
@@ -50,9 +68,16 @@ export default function Card({ data, i, favorites, setFavorites }) {
             )}
           </a>
         </div>
-        <div className="flex justify-center">
+        <div
+          id="buttons"
+          className={
+            display === "icons"
+              ? buttonsAspectClass.icons
+              : buttonsAspectClass.list
+          }
+        >
           <a href={data.info} rel="noopener noreferrer" target="_blank">
-            <button className="px-2 mr-2 text-black rounded-md dark:shadow-none bg-cream-200 dark:bg-slate-900 dark:text-white w-fit ">
+            <button className="hidden px-2 mr-2 text-black rounded-md dark:shadow-none sm:inline-block bg-cream-200 dark:bg-slate-900 dark:text-white w-fit ">
               More
             </button>
           </a>
