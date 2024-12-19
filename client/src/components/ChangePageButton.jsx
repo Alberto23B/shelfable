@@ -50,7 +50,7 @@ export default function ChangePageButton({ data }) {
           <p>{page}</p>
           <button
             onClick={handleIncrementPage}
-            disabled={page === data.length / 20}
+            disabled={data.length < page * 20 || page === data.length / 20}
           >
             <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>
           </button>
