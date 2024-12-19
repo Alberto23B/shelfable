@@ -15,17 +15,23 @@ export default function Card({ data, i, favorites, setFavorites }) {
 
   const textAspectClass = {
     icons: "flex-col justify-between w-full overflow-hidden sm:flex hidden",
-    list: "flex",
+    list: "flex w-full",
   };
 
   const containerAspectClass = {
     icons: "flex flex-col justify-between w-full",
-    list: "flex",
+    list: "flex w-full",
   };
 
   const buttonsAspectClass = {
     icons: "self-center",
-    list: "flex",
+    list: "flex flex-col justify-evenly",
+  };
+
+  const moreAspectClass = {
+    icons:
+      "hidden px-2 w-16 mr-2 text-black h-8 dark:shadow-none sm:inline-block bg-cream-200 dark:bg-slate-900 dark:text-white",
+    list: "px-2 mx-2 text-black w-16 dark:shadow-none h-2/5 bg-cream-200 dark:bg-slate-900 dark:text-white ",
   };
 
   return (
@@ -76,11 +82,16 @@ export default function Card({ data, i, favorites, setFavorites }) {
               : buttonsAspectClass.list
           }
         >
-          <a href={data.info} rel="noopener noreferrer" target="_blank">
-            <button className="hidden px-2 mr-2 text-black rounded-md dark:shadow-none sm:inline-block bg-cream-200 dark:bg-slate-900 dark:text-white w-fit ">
-              More
-            </button>
-          </a>
+          <button
+            type="button"
+            className={
+              display === "icons" ? moreAspectClass.icons : moreAspectClass.list
+            }
+          >
+            <a href={data.info} rel="noopener noreferrer" target="_blank">
+              <i>info</i>
+            </a>
+          </button>
           <AddOrDeleteFavorite
             data={data}
             setFavorites={setFavorites}

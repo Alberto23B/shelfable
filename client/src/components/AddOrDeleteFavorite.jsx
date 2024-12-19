@@ -10,8 +10,8 @@ export default function AddOrDeleteFavorite({
 
   const displayStyle = {
     icons:
-      "px-2 text-black rounded-md dark:shadow-none bg-cream-200 dark:bg-slate-900 dark:text-white w-fit",
-    list: "px-2 mx-2 text-black rounded-md dark:shadow-none bg-cream-200 dark:bg-slate-900 dark:text-white w-fit",
+      "px-2 text-xl font-thin text-black h-8 dark:shadow-none bg-cream-200 dark:bg-slate-900 dark:text-white w-16",
+    list: "px-2 mx-2 text-black dark:shadow-none bg-cream-200 dark:bg-slate-900 dark:text-white h-2/5 w-16",
   };
 
   const handleAddFavorites = async (data) => {
