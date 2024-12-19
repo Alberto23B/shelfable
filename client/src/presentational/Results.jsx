@@ -1,9 +1,17 @@
+import PropTypes from "prop-types";
 import { useContext } from "react";
 import Card from "../components/Card";
 import ChangePageButton from "../components/ChangePageButton";
 import search from "../img/search.png";
 import Loading from "./Loading";
 import { PageContext } from "../context/PagesContext";
+
+Results.propTypes = {
+  data: PropTypes.array,
+  isLoading: PropTypes.bool,
+  favorites: PropTypes.array,
+  setFavorites: PropTypes.func,
+};
 
 export default function Results({ data, isLoading, favorites, setFavorites }) {
   const { elementsInPage } = useContext(PageContext);

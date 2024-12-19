@@ -1,6 +1,14 @@
+import PropTypes from "prop-types";
 import SearchBar from "../components/SearchBar";
 import ShowFavorites from "../components/ShowFavorites";
 import SwitchList from "../components/SwitchList";
+
+SearchSection.propTypes = {
+  setData: PropTypes.func,
+  setIsLoading: PropTypes.func,
+  setShowFavorites: PropTypes.func,
+  showFavorites: PropTypes.bool,
+};
 
 export default function SearchSection({
   setData,

@@ -1,7 +1,15 @@
+import PropTypes from "prop-types";
 import { useContext } from "react";
 import no_picture_available from "../img/no_picture_available.png";
 import { DisplayContext } from "../context/DisplayContext";
 import AddOrDeleteFavorite from "./AddOrDeleteFavorite";
+
+Card.propTypes = {
+  data: PropTypes.object,
+  i: PropTypes.number,
+  favorites: PropTypes.array,
+  setFavorites: PropTypes.func,
+};
 
 export default function Card({ data, i, favorites, setFavorites }) {
   const isFavorite = favorites.some((fav) => fav.info === data.info);

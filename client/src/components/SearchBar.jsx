@@ -1,6 +1,13 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
 import { extractVolumeInfo } from "../helpers/extractVolumeInfo.jsx";
 import { fetchData } from "../helpers/fetchData.jsx";
+
+SearchBar.propTypes = {
+  setData: PropTypes.func,
+  setIsLoading: PropTypes.func,
+  setShowFavorites: PropTypes.func,
+};
 
 export default function SearchBar({ setData, setIsLoading, setShowFavorites }) {
   const [query, setQuery] = useState("");

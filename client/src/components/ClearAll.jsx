@@ -1,3 +1,9 @@
+import PropTypes from "prop-types";
+
+ClearAll.propTypes = {
+  setFavorites: PropTypes.func,
+};
+
 export default function ClearAll({ setFavorites }) {
   const handleClearAll = async () => {
     await fetch("/api/all", {

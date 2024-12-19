@@ -1,3 +1,10 @@
+import PropTypes from "prop-types";
+
+ShowFavorites.propTypes = {
+  setShowFavorites: PropTypes.func,
+  showFavorites: PropTypes.bool,
+};
+
 export default function ShowFavorites({ setShowFavorites, showFavorites }) {
   const showFavoritesClass = {
     active:
