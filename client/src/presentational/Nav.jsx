@@ -3,6 +3,11 @@ import { NavbarDispatchContext } from "../context/NavbarContext";
 import { useOutsideClick } from "../helpers/useOutsideClick.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import PropTypes from "prop-types";
+
+Nav.propTypes = {
+  children: PropTypes.object,
+};
 
 export default function Nav({ children }) {
   const [isOpen, setIsOpen] = useState(false);
