@@ -1,5 +1,12 @@
 import { useContext } from "react";
 import { DisplayContext } from "../context/DisplayContext";
+import PropTypes from "prop-types";
+
+AddOrDeleteFavorite.propTypes = {
+  data: PropTypes.array,
+  setFavorites: PropTypes.func,
+  isFavorite: PropTypes.bool,
+};
 
 export default function AddOrDeleteFavorite({
   data,
