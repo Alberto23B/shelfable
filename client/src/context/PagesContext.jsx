@@ -6,7 +6,7 @@ function pageReducer(page, action) {
   switch (action.type) {
     case "set": {
       return {
-        page: 1,
+        ...page,
         elementsInPage: action.elements,
       };
     }

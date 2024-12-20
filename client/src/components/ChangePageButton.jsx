@@ -15,15 +15,31 @@ export default function ChangePageButton({ data }) {
 
   useEffect(() => {
     if (data.length) {
-      dispatch({ type: "set", elements: data.slice(0, 20) });
+      if (page === 1) {
+        dispatch({ type: "set", elements: data.slice(0, 20) });
+      } else if (page === 2) {
+        dispatch({ type: "set", elements: data.slice(page * 10, page * 20) });
+      } else {
+        dispatch({
+          type: "set",
+          elements: data.slice((page - 1) * 20, page * 20),
+        });
+      }
     }
-  }, [data, dispatch]);
+  }, [data, page, dispatch]);
 
   const handleIncrementPage = () => {
-    dispatch({
-      type: "increment",
-      elements: data.slice((page + 1) * 10, (page + 1) * 20),
-    });
+    if (page === 1) {
+      dispatch({
+        type: "increment",
+        elements: data.slice((page + 1) * 10, (page + 1) * 20),
+      });
+    } else {
+      dispatch({
+        type: "increment",
+        elements: data.slice(page * 20, (page + 1) * 20),
+      });
+    }
   };
 
   const handleDecrementPage = () => {
