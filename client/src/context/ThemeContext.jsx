@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { createContext, useReducer } from "react";
 export const ThemeContext = createContext(null);
 export const ThemeDispatchContext = createContext(null);
@@ -17,6 +18,10 @@ function themeReducer(theme, action) {
 }
 
 const initialTheme = localStorage.getItem("theme");
+
+ThemeContextProvider.propTypes = {
+  children: PropTypes.object,
+};
 
 export function ThemeContextProvider({ children }) {
   const [theme, dispatch] = useReducer(themeReducer, initialTheme);
