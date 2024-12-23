@@ -41,7 +41,11 @@ export default function Nav({ children }) {
         </button>
         {children}
       </div>
-      <button className="hover:bg-none" onClick={showMenu}>
+      <button
+        className="hover:bg-none"
+        aria-label="show about and contacts"
+        onClick={showMenu}
+      >
         <FontAwesomeIcon icon={faBars} className="m-4 font-6xl" size="xl" />
       </button>
     </nav>
