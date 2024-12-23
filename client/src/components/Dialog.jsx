@@ -13,7 +13,7 @@ export default function Alert() {
   const dispatch = useContext(DialogDispatchContext);
 
   const style = {
-    open: "absolute bottom-2 block w-5/6 p-4 mb-4 mx-auto text-base leading-5 rounded-lg opacity-100 font-regular bg-gradient-to-tr from-cream-100 to-cream-200",
+    open: "absolute bottom-2 block w-5/6 p-4 mb-4 mx-auto border-2 border-white leading-5 rounded-lg opacity-100 font-regular bg-gradient-to-tr from-cream-100 to-cream-200 dark:bg-gradient-to-tr from-cadet to-black dark:text-white",
     closed: "hidden",
   };
 

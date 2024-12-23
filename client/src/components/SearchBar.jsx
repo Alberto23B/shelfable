@@ -47,14 +47,14 @@ export default function SearchBar({ setData, setIsLoading, setShowFavorites }) {
   return (
     <div className="items-center flex-none my-2 md:flex">
       <dialog ref={alertRef}>
-        <div className="px-16 text-center rounded-md bg-cream-100 py-14">
-          <h1 className="mb-4 text-xl font-bold text-slate-500">
+        <div className="px-16 text-center border-2 border-white rounded-md bg-cream-100 py-14 dark:bg-cadet">
+          <h1 className="mb-4 text-xl font-bold text-slate-700 dark:text-white">
             {query === ""
               ? "Please provide a title"
               : `No results found matching the string ${query}`}
           </h1>
           <button
-            className="py-2 ml-2 font-semibold text-white rounded-md bg-teak px-7 text-md"
+            className="py-2 ml-2 font-semibold text-white rounded-md bg-teak dark:bg-slate-500 px-7 text-md"
             onClick={() => {
               toggleAlert();
               setQuery("");

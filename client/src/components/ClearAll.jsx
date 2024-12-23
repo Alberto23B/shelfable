@@ -31,18 +31,18 @@ export default function ClearAll({ setFavorites }) {
   return (
     <>
       <dialog ref={alertRef}>
-        <div className="px-16 text-center rounded-md bg-cream-100 py-14">
+        <div className="px-16 text-center border-2 border-white rounded-md bg-cream-100 dark:bg-cadet py-14">
           <h1 className="mb-4 text-xl font-bold text-slate-500">
             Are you sure? You can&apos;t recover your favorites after delete
           </h1>
           <button
-            className="px-4 py-2 text-white rounded-md bg-pearl text-md"
+            className="px-4 py-2 text-white rounded-md bg-pearl dark:bg-slate-700 text-md"
             onClick={toggleAlert}
           >
             Cancel
           </button>
           <button
-            className="py-2 ml-2 font-semibold text-white rounded-md bg-teak px-7 text-md"
+            className="py-2 ml-2 font-semibold text-white rounded-md bg-teak dark:bg-slate-500 px-7 text-md"
             onClick={handleClearAll}
           >
             Ok
