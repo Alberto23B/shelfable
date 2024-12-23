@@ -42,7 +42,7 @@ export default function ToggleTheme() {
           Dark
         </option>
       </select>
-      <div className="inline ml-2 sm:hidden">
+      <div className="inline mx-2 sm:hidden">
         {theme === "light" ? (
           <>
             <label htmlFor="light">
