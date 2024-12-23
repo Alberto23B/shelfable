@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { DisplayContext } from "../context/DisplayContext";
+import { DialogDispatchContext } from "../context/DialogContext";
 import PropTypes from "prop-types";
 
 AddOrDeleteFavorite.propTypes = {
@@ -14,6 +15,7 @@ export default function AddOrDeleteFavorite({
   isFavorite,
 }) {
   const display = useContext(DisplayContext);
+  const dispatch = useContext(DialogDispatchContext);
 
   const displayStyle = {
     icons:
@@ -36,6 +38,7 @@ export default function AddOrDeleteFavorite({
     }
 
     setFavorites((prev) => [...prev, data]);
+    dispatch({ type: "add" });
   };
 
   const handleDeleteFavorites = async (data) => {
@@ -53,6 +56,7 @@ export default function AddOrDeleteFavorite({
     }
 
     setFavorites((prev) => prev.filter((fav) => fav.info !== data.info));
+    dispatch({ type: "remove" });
   };
 
   return (

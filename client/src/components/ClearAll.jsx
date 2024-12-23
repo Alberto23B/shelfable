@@ -1,3 +1,5 @@
+import { useContext, useRef } from "react";
+import { DialogDispatchContext } from "../context/DialogContext";
 import PropTypes from "prop-types";
 
 ClearAll.propTypes = {
@@ -5,20 +7,54 @@ ClearAll.propTypes = {
 };
 
 export default function ClearAll({ setFavorites }) {
+  const alertRef = useRef(null);
+  const dispatch = useContext(DialogDispatchContext);
+
+  const toggleAlert = () => {
+    if (!alertRef.current) {
+      return;
+    }
+    alertRef.current.hasAttribute("open")
+      ? alertRef.current.close()
+      : alertRef.current.showModal();
+  };
+
   const handleClearAll = async () => {
     await fetch("/api/all", {
       method: "DELETE",
     });
-
+    dispatch({ type: "clear" });
     setFavorites([]);
+    toggleAlert();
   };
 
   return (
-    <button
-      className="px-4 m-2 text-white rounded-md w-36 h-fit bg-zinc-600"
-      onClick={handleClearAll}
-    >
-      Clear All
-    </button>
+    <>
+      <dialog ref={alertRef}>
+        <div className="px-16 text-center rounded-md bg-cream-100 py-14">
+          <h1 className="mb-4 text-xl font-bold text-slate-500">
+            Are you sure? You can&apos;t recover your favorites after delete
+          </h1>
+          <button
+            className="px-4 py-2 text-white rounded-md bg-pearl text-md"
+            onClick={toggleAlert}
+          >
+            Cancel
+          </button>
+          <button
+            className="py-2 ml-2 font-semibold text-white rounded-md bg-teak px-7 text-md"
+            onClick={handleClearAll}
+          >
+            Ok
+          </button>
+        </div>
+      </dialog>
+      <button
+        className="px-4 m-2 text-white rounded-md w-36 h-fit bg-zinc-600"
+        onClick={toggleAlert}
+      >
+        Clear All
+      </button>
+    </>
   );
 }
