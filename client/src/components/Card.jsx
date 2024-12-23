@@ -17,13 +17,13 @@ export default function Card({ data, i, favorites, setFavorites }) {
 
   const cardAspectClass = {
     icons:
-      "flex flex-col sm:flex-row mx-1 my-2 sm:w-80 bg-cream-100 rounded-sm shadow-md shadow-slate-600 dark:bg-black dark:shadow-slate-900",
+      "flex flex-col sm:flex-row basis-36 sm:basis-80 shrink sm:shrink-0 sm:mx-1 my-2 sm:w-80 bg-cream-100 rounded-sm shadow-md shadow-slate-600 dark:bg-black dark:shadow-slate-900",
     list: "flex sm:flex-row w-11/12 mx-1 my-2 bg-cream-100 rounded-sm shadow-md shadow-slate-600 dark:bg-black dark:shadow-slate-900",
   };
 
   const textAspectClass = {
     icons: "hidden sm:flex flex-col justify-between w-full overflow-hidden",
-    list: "flex w-full",
+    list: "flex ml-1 w-full",
   };
 
   const containerAspectClass = {
@@ -34,6 +34,11 @@ export default function Card({ data, i, favorites, setFavorites }) {
   const buttonsAspectClass = {
     icons: "self-center",
     list: "flex flex-col justify-evenly",
+  };
+
+  const imageAspectClass = {
+    icons: "h-64 sm:h-32 my-auto mr-2 rounded-l-lg sm:w-24 sm:aspect-square",
+    list: "object-cover h-32 my-auto mr-2 rounded-l-lg sm:max-w-24 aspect-square",
   };
 
   const moreAspectClass = {
@@ -51,7 +56,9 @@ export default function Card({ data, i, favorites, setFavorites }) {
     >
       <a href={data.info}>
         <img
-          className="object-cover h-32 my-auto mr-2 rounded-l-lg max-w-24 aspect-square"
+          className={
+            display === "icons" ? imageAspectClass.icons : imageAspectClass.list
+          }
           src={data.img ? data.img : no_picture_available}
           alt="book cover"
         ></img>
