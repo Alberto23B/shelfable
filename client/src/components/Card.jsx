@@ -22,7 +22,8 @@ export default function Card({ data, i, favorites, setFavorites }) {
   };
 
   const textAspectClass = {
-    icons: "hidden sm:flex flex-col justify-between w-full overflow-hidden",
+    icons:
+      "hidden sm:flex flex-col ml-1 justify-between w-full overflow-hidden",
     list: "flex ml-1 w-full",
   };
 

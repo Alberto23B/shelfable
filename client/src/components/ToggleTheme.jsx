@@ -20,7 +20,6 @@ export default function ToggleTheme() {
   }, [theme]);
 
   const handleChange = (e) => {
-    console.log(e.target.value);
     dispatch({ type: `theme/to${e.target.value}` });
   };
 
