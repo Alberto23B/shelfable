@@ -3,6 +3,8 @@ import { useState, useRef, useContext } from "react";
 import { extractVolumeInfo } from "../helpers/extractVolumeInfo.jsx";
 import { fetchData } from "../helpers/fetchData.jsx";
 import { ShowElementsDispatchContext } from "../context/ShowElementsContext.jsx";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 SearchBar.propTypes = {
   setData: PropTypes.func,
@@ -76,12 +78,13 @@ export default function SearchBar({ setData, setIsLoading }) {
           placeholder="Find your next read..."
           required
         />
-        <input
-          className="block h-16 px-4 my-2 text-white rounded-md md:ml-4 bg-[#2faeb7] w-fit "
+        <button
+          className="block h-16 px-4 my-2 text-white rounded-md md:ml-4 shadow-sm shadow-slate-600 bg-[#2faeb7] w-fit "
           type="submit"
-          value="Search"
           onClick={handleClick}
-        />
+        >
+          <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
+        </button>
       </form>
     </div>
   );

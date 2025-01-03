@@ -19,11 +19,11 @@ html {
     box-shadow: 0 2px #999;
   }
 
-  input[type="submit"]:hover {
+  button[type="submit"]:hover {
     background-color: rgb(42, 48, 54);
   }
 
-  input[type="submit"]:active {
+  button[type="submit"]:active {
     background-color: rgb(42, 48, 54);
     box-shadow: 0 1px rgb(65, 74, 83);
     transform: translateY(2px);
@@ -31,11 +31,6 @@ html {
 }
 
 @layer components {
-  .press {
-    box-shadow: 0 2px #999;
-    position: relative;
-  }
-
   .press:active {
     background-color: rgb(42, 48, 54);
     box-shadow: none;
