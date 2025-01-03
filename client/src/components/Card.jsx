@@ -33,7 +33,7 @@ export default function Card({ data, i, favorites, setFavorites }) {
   };
 
   const buttonsAspectClass = {
-    icons: "self-center",
+    icons: "flex self-center",
     list: "flex flex-col justify-evenly",
   };
 

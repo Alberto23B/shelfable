@@ -44,7 +44,10 @@ function App() {
                   "bg-gradient-to-br from-[#91d2da] to-[#3cb2bc] dark:bg-gradient-to-br dark:from-black dark:to-black dark:text-stone-300 h-screen overflow-auto gutter"
                 }
               >
-                <div className="flex items-center justify-between m-5">
+                <div
+                  id="header"
+                  className="flex items-center justify-between mx-20"
+                >
                   <Dialog />
                   <Header />
                   <SearchSection

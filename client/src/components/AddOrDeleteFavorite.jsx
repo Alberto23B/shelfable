@@ -73,9 +73,9 @@ export default function AddOrDeleteFavorite({
       }
     >
       {isFavorite ? (
-        <FontAwesomeIcon icon={faX} />
+        <FontAwesomeIcon icon={faX} size="sm" />
       ) : (
-        <FontAwesomeIcon icon={faHeart} />
+        <FontAwesomeIcon icon={faHeart} size="sm" />
       )}
     </button>
   );
