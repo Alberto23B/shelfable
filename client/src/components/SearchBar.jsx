@@ -47,14 +47,14 @@ export default function SearchBar({ setData, setIsLoading, setShowFavorites }) {
   return (
     <div className="items-center flex-none my-2 md:flex">
       <dialog ref={alertRef}>
-        <div className="px-16 text-center border-2 border-white rounded-md bg-cream-100 py-14 dark:bg-cadet">
-          <h1 className="mb-4 text-xl font-bold text-slate-700 dark:text-white">
+        <div className="px-16 text-center border-2 border-white rounded-md bg-[#2faeb7] py-14 dark:bg-cadet">
+          <h1 className="mb-4 text-xl font-bold text-white dark:text-white">
             {query === ""
               ? "Please provide a title"
               : `No results found matching the string ${query}`}
           </h1>
           <button
-            className="py-2 ml-2 font-semibold text-white rounded-md bg-teak dark:bg-slate-500 px-7 text-md"
+            className="py-2 ml-2 font-semibold bg-white rounded-md dark:bg-slate-500 px-7 text-md"
             onClick={() => {
               toggleAlert();
               setQuery("");
@@ -66,7 +66,7 @@ export default function SearchBar({ setData, setIsLoading, setShowFavorites }) {
       </dialog>
       <form method="get" className="flex flex-col items-center md:flex-row">
         <input
-          className="px-3 h-16 min-w-[50vw] rounded-lg border-slate-200 shadow-sm shadow-slate-600 border"
+          className="px-3 h-16 min-w-[50vw] bg-[#2faeb7] rounded-lg border-slate-200 shadow-sm shadow-slate-600 border placeholder:text-white"
           type="search"
           name="q"
           value={query}
@@ -75,7 +75,7 @@ export default function SearchBar({ setData, setIsLoading, setShowFavorites }) {
           required
         />
         <input
-          className="block h-16 px-4 my-2 text-white rounded-md md:ml-4 bg-zinc-600 w-fit "
+          className="block h-16 px-4 my-2 text-white rounded-md md:ml-4 bg-[#2faeb7] w-fit "
           type="submit"
           value="Search"
           onClick={handleClick}

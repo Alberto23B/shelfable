@@ -44,7 +44,7 @@ function App() {
           <PageContextProvider>
             <div
               className={
-                "bg-[#E2EEF0] dark:bg-cool dark:text-stone-300 h-screen overflow-auto gutter"
+                "bg-[#66c3cb] dark:bg-cool dark:text-stone-300 h-screen overflow-auto gutter"
               }
             >
               <div className="flex items-center justify-between m-5">
@@ -60,14 +60,13 @@ function App() {
                   setShowFavorites={setShowFavorites}
                   showFavorites={showFavorites}
                 />
-                <ShowFavorites />
                 <Contacts />
                 <About />
                 <Nav>
                   <ToggleTheme />
                 </Nav>
               </div>
-              {showFavorites ? (
+              {/* {showFavorites ? (
                 <div className="min-h-fit">
                   <Favorites
                     favorites={favorites}
@@ -84,7 +83,7 @@ function App() {
                     isLoading={isLoading}
                   />
                 </div>
-              )}
+              )} */}
               <Homepage />
             </div>
           </PageContextProvider>
