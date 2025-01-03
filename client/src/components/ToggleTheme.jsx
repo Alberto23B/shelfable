@@ -19,8 +19,12 @@ export default function ToggleTheme() {
     }
   }, [theme]);
 
-  const handleChange = (e) => {
-    dispatch({ type: `theme/to${e.target.value}` });
+  const handleChange = () => {
+    if (theme === "light") {
+      dispatch({ type: `theme/toDark` });
+    } else {
+      dispatch({ type: `theme/toLight` });
+    }
   };
 
   return (
@@ -32,7 +36,7 @@ export default function ToggleTheme() {
               id="light"
               value={"Dark"}
               onClick={handleChange}
-              className="bg-[#2faeb7] w-24 hover:bg-cadet dark:hover:bg-iron text-white shadow-sm shadow-slate-600 top-[2px]  rounded-lg h-16 mr-2"
+              className="bg-[#2faeb7] w-24 hover:bg-cadet dark:bg-iron text-white shadow-sm shadow-slate-600 top-[2px]  rounded-lg h-16 mr-2"
             >
               <FontAwesomeIcon icon={faSun}></FontAwesomeIcon>
             </button>
@@ -43,7 +47,7 @@ export default function ToggleTheme() {
               id="dark"
               value={"Light"}
               onClick={handleChange}
-              className="bg-[#2faeb7] w-24 hover:bg-cadet dark:hover:bg-iron text-white shadow-sm shadow-slate-600 top-[2px]  rounded-lg h-16 mr-2"
+              className="bg-[#2faeb7] w-24 hover:bg-cadet dark:bg-iron text-white shadow-sm shadow-slate-600 top-[2px]  rounded-lg h-16 mr-2"
             >
               <FontAwesomeIcon icon={faMoon}></FontAwesomeIcon>
             </button>

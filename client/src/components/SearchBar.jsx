@@ -70,7 +70,7 @@ export default function SearchBar({ setData, setIsLoading }) {
       </dialog>
       <form method="get" className="flex flex-col items-center md:flex-row">
         <input
-          className="px-3 h-16 min-w-[50vw] bg-[#2faeb7] rounded-lg border-slate-200 shadow-sm shadow-slate-600 border placeholder:text-white"
+          className="px-3 h-16 min-w-[50vw] bg-[#2faeb7] rounded-lg dark:bg-iron border-slate-200 shadow-sm shadow-slate-600 border placeholder:text-white"
           type="search"
           name="q"
           value={query}
@@ -79,7 +79,7 @@ export default function SearchBar({ setData, setIsLoading }) {
           required
         />
         <button
-          className="block h-16 px-4 my-2 text-white rounded-md md:ml-4 shadow-sm shadow-slate-600 bg-[#2faeb7] w-fit "
+          className="block h-16 px-4 my-2 text-white rounded-md md:ml-4 shadow-sm dark:bg-iron shadow-slate-600 bg-[#2faeb7] w-fit "
           type="submit"
           onClick={handleClick}
         >
