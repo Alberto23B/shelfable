@@ -1,9 +1,6 @@
 import { useState, useEffect } from "react";
 import Header from "./presentational/Header";
 import ShowFavorites from "./components/ShowFavorites";
-import Nav from "./presentational/Nav";
-import Contacts from "./components/Contancts";
-import About from "./components/About";
 import ToggleTheme from "./components/ToggleTheme";
 import SearchSection from "./presentational/SearchSection";
 import Dialog from "./components/Dialog";
@@ -53,11 +50,7 @@ function App() {
                     setIsLoading={setIsLoading}
                   />
                   <ShowFavorites />
-                  <Contacts />
-                  <About />
-                  <Nav>
-                    <ToggleTheme />
-                  </Nav>
+                  <ToggleTheme />
                 </div>
                 <Main
                   data={data}

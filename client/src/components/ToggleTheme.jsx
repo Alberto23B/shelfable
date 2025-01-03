@@ -25,36 +25,28 @@ export default function ToggleTheme() {
 
   return (
     <>
-      <label htmlFor="theme" className="pl-4">
-        Theme:
-      </label>
-      <select
-        className="hidden ml-2 mr-4 dark:bg-cadet sm:inline"
-        defaultValue={theme === "light" ? "Light" : "Dark"}
-        id="theme"
-        onChange={handleChange}
-      >
-        <option key={1} value={"Light"}>
-          Light
-        </option>
-        <option key={2} value={"Dark"}>
-          Dark
-        </option>
-      </select>
-      <div className="inline mx-2 sm:hidden">
+      <div className="inline mx-2 ">
         {theme === "light" ? (
           <>
-            <label htmlFor="light">
+            <button
+              id="light"
+              value={"Dark"}
+              onClick={handleChange}
+              className="bg-[#2faeb7] w-24 hover:bg-cadet dark:hover:bg-iron text-white shadow-sm shadow-slate-600 top-[2px]  rounded-lg h-16 mr-2"
+            >
               <FontAwesomeIcon icon={faSun}></FontAwesomeIcon>
-            </label>
-            <button id="light" value={"Dark"} onClick={handleChange}></button>
+            </button>
           </>
         ) : (
           <>
-            <label htmlFor="dark">
+            <button
+              id="dark"
+              value={"Light"}
+              onClick={handleChange}
+              className="bg-[#2faeb7] w-24 hover:bg-cadet dark:hover:bg-iron text-white shadow-sm shadow-slate-600 top-[2px]  rounded-lg h-16 mr-2"
+            >
               <FontAwesomeIcon icon={faMoon}></FontAwesomeIcon>
-            </label>
-            <button id="dark" value={"Light"} onClick={handleChange}></button>
+            </button>
           </>
         )}
       </div>
