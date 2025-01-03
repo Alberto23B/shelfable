@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import Header from "./presentational/Header";
-import Quote from "./components/Quote";
 import Results from "./presentational/Results";
 import Favorites from "./presentational/Favorites";
+import Homepage from "./presentational/Homepage";
 import ShowFavorites from "./components/ShowFavorites";
 import Nav from "./presentational/Nav";
 import Contacts from "./components/Contancts";
@@ -47,7 +47,7 @@ function App() {
                 "bg-[#E2EEF0] dark:bg-cool dark:text-stone-300 h-screen overflow-auto gutter"
               }
             >
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between m-5">
                 <Dialog />
                 <Header />
                 <SearchSection
@@ -67,7 +67,6 @@ function App() {
                   <ToggleTheme />
                 </Nav>
               </div>
-              <Quote />
               {showFavorites ? (
                 <div className="min-h-fit">
                   <Favorites
@@ -86,6 +85,7 @@ function App() {
                   />
                 </div>
               )}
+              <Homepage />
             </div>
           </PageContextProvider>
         </DisplayContextProvider>
