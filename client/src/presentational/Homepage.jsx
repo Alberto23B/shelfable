@@ -7,7 +7,7 @@ export default function Homepage() {
       <img src={library}></img>
       <div className="flex flex-col items-center">
         <h2 className="text-4xl text-white">
-          Book search enging built upon Google Books API
+          Book search engine built upon Google Books API
         </h2>
         <Quote />
         <div className="flex w-full">
