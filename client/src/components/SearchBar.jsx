@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { extractVolumeInfo } from "../helpers/extractVolumeInfo.jsx";
 import { fetchData } from "../helpers/fetchData.jsx";
+import { ShowElementsDispatchContext } from "../context/ShowElementsContext.jsx";
 
 SearchBar.propTypes = {
   setData: PropTypes.func,
@@ -9,9 +10,10 @@ SearchBar.propTypes = {
   setShowFavorites: PropTypes.func,
 };
 
-export default function SearchBar({ setData, setIsLoading, setShowFavorites }) {
+export default function SearchBar({ setData, setIsLoading }) {
   const [query, setQuery] = useState("");
   let results = [];
+  const dispatch = useContext(ShowElementsDispatchContext);
 
   const alertRef = useRef(null);
 
@@ -31,7 +33,6 @@ export default function SearchBar({ setData, setIsLoading, setShowFavorites }) {
       return;
     }
     setData([]);
-    setShowFavorites(false);
     setIsLoading(true);
     const response = await fetchData(query);
     if (!response) {
@@ -72,7 +73,7 @@ export default function SearchBar({ setData, setIsLoading, setShowFavorites }) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Find your next read..."
-          // onFocus=""
+          onFocus={() => dispatch({ type: "showSearch" })}
           required
         />
         <input
