@@ -7,7 +7,7 @@ import {
 export default function ShowFavorites() {
   const showFavoritesClass = {
     active:
-      "w-24 hover:bg-cadet dark:hover:bg-iron text-white bg-zinc-600 press top-[2px] shadow-none rounded-lg bg-[#366b71] h-16 mr-2",
+      "w-24 hover:bg-cadet dark:hover:bg-iron text-white press top-[2px] shadow-none rounded-lg bg-[#366b71] h-16 mr-2",
     inactive:
       "w-24 hover:bg-cadet dark:hover:bg-iron text-white h-16 rounded-lg bg-[#2faeb7] press mr-2",
   };

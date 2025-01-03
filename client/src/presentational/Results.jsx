@@ -5,6 +5,7 @@ import ChangePageButton from "../components/ChangePageButton";
 import search from "../img/search.png";
 import Loading from "./Loading";
 import { PageContext } from "../context/PagesContext";
+import SwitchList from "../components/SwitchList";
 
 Results.propTypes = {
   data: PropTypes.array,
@@ -23,6 +24,7 @@ export default function Results({ data, isLoading, favorites, setFavorites }) {
   return (
     <>
       <div className="mt-16 md:min-h-[50vh] flex gap-1 flex-row py-4 flex-wrap items-center justify-center bg-white lg:w-[80vw] rounded-lg overflow-auto min-h-[40vh] max-h-[60vh] md:max-h-full display-results dark:bg-cadet">
+        {data.length && <SwitchList />}
         <div className="hidden w-full mb-2 sm:block">
           <ChangePageButton data={data} />
         </div>

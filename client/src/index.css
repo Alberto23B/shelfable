@@ -82,6 +82,15 @@ html {
     border-radius: 6px;
     background-color: #32366d;
   }
+  .toggle-checkbox:checked {
+    @apply: right-0 border-green-400;
+    right: 0;
+    border-color: #b0cac5;
+  }
+  .toggle-checkbox:checked + .toggle-label {
+    @apply: bg-[#2faeb7];
+    background-color: #2faeb7;
+  }
 }
 
 @keyframes bounce {
