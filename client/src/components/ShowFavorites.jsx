@@ -3,6 +3,8 @@ import {
   ShowElementsContext,
   ShowElementsDispatchContext,
 } from "../context/ShowElementsContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 export default function ShowFavorites() {
   const showFavoritesClass = {
@@ -33,7 +35,7 @@ export default function ShowFavorites() {
       }
       onClick={handleShowFavoritesClick}
     >
-      ♡
+      <FontAwesomeIcon icon={faHeart} />
     </button>
   );
 }

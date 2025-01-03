@@ -104,7 +104,12 @@ export default function Card({ data, i, favorites, setFavorites }) {
               display === "icons" ? moreAspectClass.icons : moreAspectClass.list
             }
           >
-            <a href={data.info} rel="noopener noreferrer" target="_blank">
+            <a
+              href={data.info}
+              rel="noopener noreferrer"
+              target="_blank"
+              className="text-white"
+            >
               <i>info</i>
             </a>
           </button>
