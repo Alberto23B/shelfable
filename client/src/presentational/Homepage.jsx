@@ -10,7 +10,14 @@ export default function Homepage() {
           Book search enging built upon Google Books API
         </h2>
         <Quote />
-        <button className="w-1/3 h-16 bg-white border rounded-lg">Login</button>
+        <div className="flex w-full">
+          <button className="w-1/3 h-16 mx-auto bg-white border rounded-lg">
+            Login
+          </button>
+          <button className="w-1/3 h-16 mx-auto bg-white border rounded-lg">
+            Register
+          </button>
+        </div>
       </div>
     </div>
   );
