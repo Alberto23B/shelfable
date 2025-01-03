@@ -30,7 +30,7 @@ export default function SwitchList() {
           className="block h-6 overflow-hidden bg-gray-300 rounded-full cursor-pointer toggle-label"
         ></label>
       </div>
-      <label htmlFor="toggle" className="text-xs text-gray-700">
+      <label htmlFor="toggle" className="text-xs text-black dark:text-white">
         List View
       </label>
     </div>

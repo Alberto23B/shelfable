@@ -11,10 +11,10 @@ export default function Homepage() {
         </h2>
         <Quote />
         <div className="flex w-full">
-          <button className="w-1/3 h-16 mx-auto bg-white border rounded-lg">
+          <button className="w-1/3 h-16 mx-auto bg-white border rounded-lg dark:text-black">
             Login
           </button>
-          <button className="w-1/3 h-16 mx-auto bg-white border rounded-lg">
+          <button className="w-1/3 h-16 mx-auto bg-white border rounded-lg dark:text-black">
             Register
           </button>
         </div>
