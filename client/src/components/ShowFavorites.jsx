@@ -17,7 +17,6 @@ export default function ShowFavorites() {
   const showElements = useContext(ShowElementsContext);
 
   const handleShowFavoritesClick = () => {
-    console.log(showElements);
     if (showElements.showFavorites) {
       dispatch({ type: "showSearch" });
     } else {
