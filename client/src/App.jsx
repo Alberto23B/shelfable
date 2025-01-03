@@ -12,6 +12,8 @@ import { DialogContextProvider } from "./context/DialogContext";
 import { ShowElementsContextProvider } from "./context/ShowElementsContext";
 import "./App.css";
 import Main from "./presentational/Main";
+import LoginForm from "./presentational/LoginForm";
+import RegistrationForm from "./presentational/RegistrationForm";
 
 function App() {
   const [data, setData] = useState([]);
@@ -52,6 +54,8 @@ function App() {
                   <ShowFavorites />
                   <ToggleTheme />
                 </div>
+                <LoginForm />
+                <RegistrationForm />
                 <Main
                   data={data}
                   isLoading={isLoading}
