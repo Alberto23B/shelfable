@@ -43,6 +43,7 @@ export default function SearchBar({ setData, setIsLoading }) {
       setQuery("");
     }
     setIsLoading(false);
+    dispatch({ type: "showSearch" });
   };
 
   return (
@@ -73,7 +74,6 @@ export default function SearchBar({ setData, setIsLoading }) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Find your next read..."
-          onFocus={() => dispatch({ type: "showSearch" })}
           required
         />
         <input
