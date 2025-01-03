@@ -5,6 +5,7 @@ import Loading from "./Loading";
 import { PageContext } from "../context/PagesContext";
 import ChangePageButton from "../components/ChangePageButton";
 import ClearAll from "../components/ClearAll";
+import SwitchList from "../components/SwitchList";
 
 Favorites.propTypes = {
   favorites: PropTypes.array,
@@ -21,7 +22,8 @@ export default function Favorites({ favorites, setFavorites, isLoading }) {
 
   return (
     <>
-      <div className="md:min-h-[50vh] flex border border-slate-200 gap-1 rounded-b-xs flex-row flex-wrap items-center justify-center lg:w-[80vw] min-h-[40vh] display-results dark:bg-cadet">
+      <div className="mt-16 md:min-h-[50vh] flex  gap-1 rounded-lg flex-row flex-wrap items-center justify-center lg:w-[80vw] min-h-[40vh] bg-white display-results dark:bg-cadet">
+        <SwitchList />
         <h3 className="w-full my-2 text-2xl font-light text-center ">
           Favorites
         </h3>

@@ -17,8 +17,8 @@ export default function Card({ data, i, favorites, setFavorites }) {
 
   const cardAspectClass = {
     icons:
-      "flex flex-col sm:flex-row basis-36 sm:basis-80 shrink sm:shrink-0 sm:mx-1 my-2 sm:w-80 bg-cream-100 rounded-sm shadow-md shadow-slate-600 dark:bg-black dark:shadow-slate-900",
-    list: "flex sm:flex-row w-11/12 mx-1 my-2 bg-cream-100 rounded-sm shadow-md shadow-slate-600 dark:bg-black dark:shadow-slate-900",
+      "flex flex-col sm:flex-row basis-36 sm:basis-80 shrink sm:shrink-0 sm:mx-1 my-2 sm:w-80 bg-[#6bc4cd] rounded-lg shadow-md shadow-slate-600 dark:bg-black dark:shadow-slate-900",
+    list: "flex sm:flex-row w-11/12 mx-1 my-2 bg-cream-100 rounded-lg shadow-md shadow-slate-600  bg-[#6bc4cd] dark:bg-black dark:shadow-slate-900",
   };
 
   const textAspectClass = {
@@ -44,8 +44,8 @@ export default function Card({ data, i, favorites, setFavorites }) {
 
   const moreAspectClass = {
     icons:
-      "hidden w-16 h-8 px-2 mr-2 sm:inline-block bg-cream-200 text-black dark:bg-slate-900 dark:text-white dark:shadow-none",
-    list: "w-16 h-2/5 px-2 mx-2 bg-cream-200 text-black dark:bg-slate-900 dark:text-white dark:shadow-none",
+      "hidden w-16 h-8 px-2 mr-2 sm:inline-block bg-[#2faeb7] text-black dark:bg-slate-900 dark:text-white dark:shadow-none",
+    list: "w-16 h-2/5 px-2 mx-2 bg-[#2faeb7] text-black dark:bg-slate-900 dark:text-white dark:shadow-none",
   };
 
   return (

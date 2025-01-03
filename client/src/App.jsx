@@ -42,7 +42,7 @@ function App() {
             <PageContextProvider>
               <div
                 className={
-                  "bg-[#66c3cb] dark:bg-cool dark:text-stone-300 h-screen overflow-auto gutter"
+                  "bg-gradient-to-br from-[#91d2da] to-[#3cb2bc] dark:bg-cool dark:text-stone-300 h-screen overflow-auto gutter"
                 }
               >
                 <div className="flex items-center justify-between m-5">
