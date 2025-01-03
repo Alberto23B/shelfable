@@ -7,6 +7,7 @@ function showElementsReducer(state, action) {
   switch (action.type) {
     case "showSearch": {
       return {
+        ...state,
         showHomepage: false,
         showSearch: true,
         showFavorites: false,
@@ -14,9 +15,36 @@ function showElementsReducer(state, action) {
     }
     case "showFavorites": {
       return {
+        ...state,
         showHomepage: false,
         showSearch: false,
         showFavorites: true,
+      };
+    }
+    case "showLogin": {
+      return {
+        ...state,
+        showLogin: true,
+        showRegistration: false,
+      };
+    }
+    case "hideLogin": {
+      return {
+        ...state,
+        showLogin: false,
+      };
+    }
+    case "showRegistration": {
+      return {
+        ...state,
+        showLogin: false,
+        showRegistration: true,
+      };
+    }
+    case "hideRegistration": {
+      return {
+        ...state,
+        showRegistration: false,
       };
     }
     default: {
@@ -24,6 +52,8 @@ function showElementsReducer(state, action) {
         showHomepage: true,
         showSearch: false,
         showFavorites: false,
+        showLogin: false,
+        showRegistration: false,
       };
     }
   }
@@ -33,6 +63,8 @@ const initialShowElements = {
   showHomepage: true,
   showSearch: false,
   showFavorites: false,
+  showLogin: false,
+  showRegistration: false,
 };
 
 ShowElementsContextProvider.propTypes = {
