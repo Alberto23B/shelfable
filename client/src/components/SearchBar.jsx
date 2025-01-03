@@ -66,7 +66,7 @@ export default function SearchBar({ setData, setIsLoading, setShowFavorites }) {
       </dialog>
       <form method="get" className="flex flex-col items-center md:flex-row">
         <input
-          className="h-10 px-3 min-w-[40vw] border-slate-200 shadow-sm shadow-slate-600 border"
+          className="px-3 h-16 min-w-[50vw] rounded-lg border-slate-200 shadow-sm shadow-slate-600 border"
           type="search"
           name="q"
           value={query}
@@ -75,7 +75,7 @@ export default function SearchBar({ setData, setIsLoading, setShowFavorites }) {
           required
         />
         <input
-          className="block px-4 my-2 text-white md:ml-4 bg-zinc-600 w-fit "
+          className="block h-16 px-4 my-2 text-white rounded-md md:ml-4 bg-zinc-600 w-fit "
           type="submit"
           value="Search"
           onClick={handleClick}

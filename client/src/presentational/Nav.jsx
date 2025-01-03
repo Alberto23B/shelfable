@@ -27,7 +27,7 @@ export default function Nav({ children }) {
   return (
     <nav
       ref={ref}
-      className="flex items-center w-full overflow-hidden dark:bg-black"
+      className="flex items-center overflow-hidden w-min dark:bg-black"
     >
       <div className={isOpen ? "inline-block" : "hidden"}>
         <button

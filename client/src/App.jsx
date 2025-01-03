@@ -3,6 +3,7 @@ import Header from "./presentational/Header";
 import Quote from "./components/Quote";
 import Results from "./presentational/Results";
 import Favorites from "./presentational/Favorites";
+import ShowFavorites from "./components/ShowFavorites";
 import Nav from "./presentational/Nav";
 import Contacts from "./components/Contancts";
 import About from "./components/About";
@@ -46,20 +47,27 @@ function App() {
                 "bg-[#E2EEF0] dark:bg-cool dark:text-stone-300 h-screen overflow-auto gutter"
               }
             >
-              <Dialog />
-              <Contacts />
-              <About />
-              <Nav>
-                <ToggleTheme />
-              </Nav>
-              <Header />
+              <div className="flex items-center justify-between">
+                <Dialog />
+                <Header />
+                <SearchSection
+                  setData={setData}
+                  setIsLoading={setIsLoading}
+                  setShowFavorites={setShowFavorites}
+                  showFavorites={showFavorites}
+                />
+                <ShowFavorites
+                  setShowFavorites={setShowFavorites}
+                  showFavorites={showFavorites}
+                />
+                <ShowFavorites />
+                <Contacts />
+                <About />
+                <Nav>
+                  <ToggleTheme />
+                </Nav>
+              </div>
               <Quote />
-              <SearchSection
-                setData={setData}
-                setIsLoading={setIsLoading}
-                setShowFavorites={setShowFavorites}
-                showFavorites={showFavorites}
-              />
               {showFavorites ? (
                 <div className="min-h-fit">
                   <Favorites
