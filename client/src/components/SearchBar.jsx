@@ -72,6 +72,7 @@ export default function SearchBar({ setData, setIsLoading, setShowFavorites }) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Find your next read..."
+          // onFocus=""
           required
         />
         <input
