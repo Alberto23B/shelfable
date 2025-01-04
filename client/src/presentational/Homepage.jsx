@@ -5,7 +5,7 @@ import RegistrationButton from "../components/RegistrationButton";
 
 export default function Homepage() {
   return (
-    <div className="flex flex-row items-center justify-center mx-5">
+    <div className="flex flex-col items-center justify-center mx-5 md:flex-row">
       <img src={library}></img>
       <div className="flex flex-col items-center">
         <h2 className="text-4xl text-white">
