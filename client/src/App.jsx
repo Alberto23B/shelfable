@@ -46,7 +46,7 @@ function App() {
               >
                 <div
                   id="header"
-                  className="flex flex-wrap items-center md:justify-between md:mx-20 md:flex-nowrap"
+                  className="flex flex-wrap items-center pt-5 ml-4 md:justify-between md:mx-20 md:flex-nowrap"
                 >
                   <Dialog />
                   <Header />
