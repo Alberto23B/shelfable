@@ -49,7 +49,7 @@ export default function SearchBar({ setData, setIsLoading }) {
   };
 
   return (
-    <div className="items-center flex-none my-2 md:flex">
+    <div className="flex w-5/6 my-2">
       <dialog ref={alertRef}>
         <div className="px-16 text-center border-2 border-white rounded-md bg-[#2faeb7] py-14 dark:bg-cadet">
           <h1 className="mb-4 text-xl font-bold text-white dark:text-white">
@@ -68,7 +68,7 @@ export default function SearchBar({ setData, setIsLoading }) {
           </button>
         </div>
       </dialog>
-      <form method="get" className="flex flex-col items-center md:flex-row">
+      <form method="get" className="flex items-center md:flex-row">
         <input
           className="px-3 h-16 min-w-[50vw] bg-[#2faeb7] rounded-lg dark:bg-iron border-slate-200 shadow-sm shadow-slate-600 border placeholder:text-white"
           type="search"
@@ -79,7 +79,7 @@ export default function SearchBar({ setData, setIsLoading }) {
           required
         />
         <button
-          className="block h-16 px-4 my-2 text-white rounded-md md:ml-4 shadow-sm dark:bg-iron shadow-slate-600 bg-[#2faeb7] w-fit "
+          className="block h-16 px-4 md:my-2 text-white rounded-md md:ml-4 shadow-sm dark:bg-iron shadow-slate-600 bg-[#2faeb7] w-fit "
           type="submit"
           onClick={handleClick}
         >

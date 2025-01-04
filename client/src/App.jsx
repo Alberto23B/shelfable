@@ -46,16 +46,26 @@ function App() {
               >
                 <div
                   id="header"
-                  className="flex items-center justify-between mx-20"
+                  className="flex flex-wrap items-center md:justify-between md:mx-20 md:flex-nowrap"
                 >
                   <Dialog />
                   <Header />
+                  <div className="md:hidden">
+                    <ToggleTheme />
+                  </div>
+                  <div className="md:hidden">
+                    <ShowFavorites />
+                  </div>
                   <SearchSection
                     setData={setData}
                     setIsLoading={setIsLoading}
                   />
-                  <ShowFavorites />
-                  <ToggleTheme />
+                  <div className="hidden md:block">
+                    <ShowFavorites />
+                  </div>
+                  <div className="hidden md:block">
+                    <ToggleTheme />
+                  </div>
                 </div>
                 <LoginForm />
                 <RegistrationForm />

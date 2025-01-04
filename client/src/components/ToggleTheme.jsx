@@ -29,14 +29,14 @@ export default function ToggleTheme() {
 
   return (
     <>
-      <div className="inline mx-2 ">
+      <div className="inline md:mx-2 ">
         {theme === "light" ? (
           <>
             <button
               id="light"
               value={"Dark"}
               onClick={handleChange}
-              className="bg-[#2faeb7] w-24 hover:bg-cadet dark:bg-iron text-white shadow-sm shadow-slate-600 top-[2px]  rounded-lg h-16 mr-2"
+              className="bg-[#2faeb7] w-16 md:w-24 hover:bg-cadet dark:bg-iron text-white shadow-sm shadow-slate-600 top-[2px]  rounded-lg md:h-16 mr-2"
             >
               <FontAwesomeIcon icon={faSun}></FontAwesomeIcon>
             </button>
@@ -47,7 +47,7 @@ export default function ToggleTheme() {
               id="dark"
               value={"Light"}
               onClick={handleChange}
-              className="bg-[#2faeb7] w-24 hover:bg-cadet dark:bg-iron text-white shadow-sm shadow-slate-600 top-[2px]  rounded-lg h-16 mr-2"
+              className="bg-[#2faeb7] w-16 md:w-24 hover:bg-cadet dark:bg-iron text-white shadow-sm shadow-slate-600 top-[2px]  rounded-lg md:h-16 mr-2"
             >
               <FontAwesomeIcon icon={faMoon}></FontAwesomeIcon>
             </button>
