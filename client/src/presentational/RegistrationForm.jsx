@@ -33,14 +33,22 @@ export default function RegistrationForm() {
                 <input
                   className="px-6 py-2 text-center bg-black bg-opacity-50 border-none rounded-lg shadow-lg outline-none text-inherit placeholder-slate-400 backdrop-blur-md"
                   type="text"
-                  name="name"
+                  name="username"
+                  placeholder="username"
+                />
+              </div>
+              <div className="mb-4 text-lg">
+                <input
+                  className="px-6 py-2 text-center bg-black bg-opacity-50 border-none rounded-lg shadow-lg outline-none text-inherit placeholder-slate-400 backdrop-blur-md"
+                  type="text"
+                  name="email"
                   placeholder="id@email.com"
                 />
               </div>
               <div className="mb-4 text-lg">
                 <input
                   className="px-6 py-2 text-center bg-black bg-opacity-50 border-none rounded-lg shadow-lg outline-none text-inherit placeholder-slate-400 backdrop-blur-md"
-                  type="Password"
+                  type="password"
                   name="name"
                   placeholder="*********"
                 />
