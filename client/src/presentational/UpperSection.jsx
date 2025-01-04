@@ -13,8 +13,8 @@ UpperSection.propTypes = {
 export default function UpperSection({ setData, setIsLoading }) {
   return (
     <div
-      id="header"
-      className="flex flex-wrap items-center pt-5 ml-4 justify-evenly md:justify-between md:mx-20 md:flex-nowrap"
+      id="upper"
+      className="flex flex-wrap items-center pt-5 justify-evenly md:justify-between md:mx-20 md:flex-nowrap"
     >
       <Dialog />
       <Header />
