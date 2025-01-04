@@ -15,7 +15,7 @@ export default function SwitchList() {
   };
 
   return (
-    <div className="relative top-[3px] sm:right-2 ml-4 rounded-lg">
+    <div className="relative top-[3px] w-full text-center sm:right-2 ml-4 rounded-lg">
       <div className="relative inline-block w-10 mr-2 align-middle transition duration-200 ease-in select-none">
         <input
           type="checkbox"
