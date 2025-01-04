@@ -10,7 +10,8 @@ export default function LoginForm() {
   const showElements = useContext(ShowElementsContext);
   const dispatch = useContext(ShowElementsDispatchContext);
 
-  const handleClose = () => {
+  const handleClose = (e) => {
+    e.preventDefault();
     dispatch({ type: "hideLogin" });
   };
 

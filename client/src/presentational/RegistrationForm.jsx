@@ -10,7 +10,8 @@ export default function RegistrationForm() {
   const showElements = useContext(ShowElementsContext);
   const dispatch = useContext(ShowElementsDispatchContext);
 
-  const handleClose = () => {
+  const handleClose = (e) => {
+    e.preventDefault();
     dispatch({ type: "hideRegistration" });
   };
 
