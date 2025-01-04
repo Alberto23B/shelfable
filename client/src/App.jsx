@@ -1,9 +1,5 @@
 import { useState, useEffect } from "react";
-import Header from "./presentational/Header";
-import ShowFavorites from "./components/ShowFavorites";
-import ToggleTheme from "./components/ToggleTheme";
-import SearchSection from "./presentational/SearchSection";
-import Dialog from "./components/Dialog";
+import UpperSection from "./presentational/UpperSection";
 import { fetchFavorites } from "./helpers/fetchFavorites";
 import { DisplayContextProvider } from "./context/DisplayContext";
 import { PageContextProvider } from "./context/PagesContext";
@@ -44,27 +40,7 @@ function App() {
                   "bg-gradient-to-br from-[#91d2da] to-[#3cb2bc] dark:bg-gradient-to-br dark:from-black dark:to-black dark:text-stone-300 h-screen overflow-auto gutter"
                 }
               >
-                <div
-                  id="header"
-                  className="flex flex-wrap items-center pt-5 ml-4 justify-evenly md:justify-between md:mx-20 md:flex-nowrap"
-                >
-                  <Dialog />
-                  <Header />
-                  <div className="md:hidden">
-                    <ToggleTheme />
-                    <ShowFavorites />
-                  </div>
-                  <SearchSection
-                    setData={setData}
-                    setIsLoading={setIsLoading}
-                  />
-                  <div className="hidden md:block">
-                    <ShowFavorites />
-                  </div>
-                  <div className="hidden md:block">
-                    <ToggleTheme />
-                  </div>
-                </div>
+                <UpperSection setData={setData} setIsLoading={setIsLoading} />
                 <LoginForm />
                 <RegistrationForm />
                 <Main
