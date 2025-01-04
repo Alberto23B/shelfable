@@ -22,7 +22,7 @@ export default function Favorites({ favorites, setFavorites, isLoading }) {
 
   return (
     <>
-      <div className="mt-16 md:min-h-[50vh] flex  gap-1 rounded-lg flex-row flex-wrap items-center justify-center lg:w-[80vw] min-h-[40vh] bg-white display-results dark:bg-cadet">
+      <div className="mt-16 md:min-h-[50vh] flex  gap-1 rounded-lg flex-row flex-wrap items-center justify-center lg:w-[80vw] min-h-[40vh] bg-cream-100 display-results dark:bg-cadet">
         <SwitchList />
         <h3 className="w-full my-2 text-2xl font-light text-center ">
           Favorites

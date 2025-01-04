@@ -23,7 +23,7 @@ export default function Results({ data, isLoading, favorites, setFavorites }) {
 
   return (
     <>
-      <div className="mt-16 md:min-h-[50vh] flex gap-1 flex-row py-4 flex-wrap items-center justify-center bg-white lg:w-[80vw] rounded-lg overflow-auto min-h-[40vh] max-h-[60vh] md:max-h-full display-results dark:bg-cadet">
+      <div className="mt-16 md:min-h-[50vh] flex gap-1 flex-row py-4 flex-wrap items-center justify-center bg-cream-100 lg:w-[80vw] rounded-lg overflow-auto min-h-[40vh] max-h-[60vh] md:max-h-full display-results dark:bg-cadet">
         {data.length !== 0 && <SwitchList />}
         <div className="hidden w-full mb-2 sm:block">
           <ChangePageButton data={data} />
