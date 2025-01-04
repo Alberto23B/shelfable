@@ -14,7 +14,7 @@ export default function SearchSection({
   setShowFavorites,
 }) {
   return (
-    <div className="flex">
+    <div className="flex w-full md:w-auto">
       <SearchBar
         setShowFavorites={setShowFavorites}
         setIsLoading={setIsLoading}

@@ -46,14 +46,12 @@ function App() {
               >
                 <div
                   id="header"
-                  className="flex flex-wrap items-center pt-5 ml-4 md:justify-between md:mx-20 md:flex-nowrap"
+                  className="flex flex-wrap items-center pt-5 ml-4 justify-evenly md:justify-between md:mx-20 md:flex-nowrap"
                 >
                   <Dialog />
                   <Header />
                   <div className="md:hidden">
                     <ToggleTheme />
-                  </div>
-                  <div className="md:hidden">
                     <ShowFavorites />
                   </div>
                   <SearchSection

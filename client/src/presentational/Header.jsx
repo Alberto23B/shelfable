@@ -1,6 +1,6 @@
 export default function Header() {
   return (
-    <header className="mx-4">
+    <header className="w-1/2 mr-8 md:w-fit md:mx-4 md:mr-0">
       <div className="w-full">
         <a href="/">
           <h1 className="mb-0 text-4xl font-semibold md:text-6xl font-lcd">

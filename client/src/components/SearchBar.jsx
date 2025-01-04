@@ -49,7 +49,7 @@ export default function SearchBar({ setData, setIsLoading }) {
   };
 
   return (
-    <div className="flex w-5/6 my-2">
+    <div className="flex justify-around w-full my-2 md:w-5/6">
       <dialog ref={alertRef}>
         <div className="px-16 text-center border-2 border-white rounded-md bg-[#2faeb7] py-14 dark:bg-cadet">
           <h1 className="mb-4 text-xl font-bold text-white dark:text-white">
@@ -68,9 +68,12 @@ export default function SearchBar({ setData, setIsLoading }) {
           </button>
         </div>
       </dialog>
-      <form method="get" className="flex items-center md:flex-row">
+      <form
+        method="get"
+        className="flex items-center w-full justify-evenly md:flex-row"
+      >
         <input
-          className="px-3 h-16 min-w-[50vw] bg-[#2faeb7] rounded-lg dark:bg-iron border-slate-200 shadow-sm shadow-slate-600 border placeholder:text-white"
+          className="px-3 h-16 md:w-2/3 w-3/4 md:min-w-[50vw] bg-[#2faeb7] rounded-lg dark:bg-iron border-slate-200 shadow-sm shadow-slate-600 border placeholder:text-white"
           type="search"
           name="q"
           value={query}
