@@ -12,7 +12,7 @@ async function connection(callback) {
 
   try {
     await client.connect();
-    await client.db("TGRCluster").command({ ping: 1 });
+    await client.db("TheGoodReads").command({ ping: 1 });
     console.log(
       "Pinged your deployment. You successfullt connected to MongoDB!"
     );
