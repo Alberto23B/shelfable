@@ -33,21 +33,28 @@ export default function RegistrationForm() {
         }),
       });
 
+      if (!response.ok) {
+        alert("Failed response from the server");
+      }
+
+      const data = await response.json();
+
+      if (data.found) {
+        alert(data.message);
+      } else {
+        alert(data.message);
+      }
+
       setPassword("");
       setUsername("");
       setEmail("");
 
       dispatch({ type: "hideRegistration" });
 
-      if (!response.ok) {
-        alert("Registration went wrong");
-        throw new Error("Registration went wrong");
-      }
-
-      const data = await response.json();
       return data;
     } catch (e) {
-      throw new Error(`Error: ${e}`);
+      console.error("Error during registration:", e);
+      alert("An error occurred.");
     }
   };
 
