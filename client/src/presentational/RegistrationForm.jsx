@@ -1,6 +1,6 @@
 import { faBook } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import {
   ShowElementsContext,
   ShowElementsDispatchContext,
@@ -9,10 +9,46 @@ import {
 export default function RegistrationForm() {
   const showElements = useContext(ShowElementsContext);
   const dispatch = useContext(ShowElementsDispatchContext);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
 
   const handleClose = (e) => {
     e.preventDefault();
     dispatch({ type: "hideRegistration" });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+          email: email,
+        }),
+      });
+
+      setPassword("");
+      setUsername("");
+      setEmail("");
+
+      dispatch({ type: "hideRegistration" });
+
+      if (!response.ok) {
+        alert("Registration went wrong");
+        throw new Error("Registration went wrong");
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (e) {
+      throw new Error(`Error: ${e}`);
+    }
   };
 
   return (
@@ -29,13 +65,15 @@ export default function RegistrationForm() {
               <h1 className="mb-2 text-2xl">shelfable</h1>
               <span className="text-gray-300">Enter Profile Details</span>
             </div>
-            <form action="#">
+            <form action="#" onSubmit={handleSubmit}>
               <div className="mb-4 text-lg">
                 <input
                   className="px-6 py-2 text-center bg-black bg-opacity-50 border-none rounded-lg shadow-lg outline-none text-inherit placeholder-slate-400 backdrop-blur-md"
                   type="text"
                   name="username"
                   placeholder="username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
               <div className="mb-4 text-lg">
@@ -44,14 +82,18 @@ export default function RegistrationForm() {
                   type="text"
                   name="email"
                   placeholder="id@email.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="mb-4 text-lg">
                 <input
                   className="px-6 py-2 text-center bg-black bg-opacity-50 border-none rounded-lg shadow-lg outline-none text-inherit placeholder-slate-400 backdrop-blur-md"
                   type="password"
-                  name="name"
+                  name="password"
                   placeholder="*********"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <div className="flex justify-center mt-8 text-lg text-black">
