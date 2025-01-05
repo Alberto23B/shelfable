@@ -3,6 +3,7 @@ import Dialog from "../components/Dialog";
 import ToggleTheme from "../components/ToggleTheme";
 import SearchSection from "./SearchSection";
 import ShowFavorites from "../components/ShowFavorites";
+import ShowUserSettings from "../components/ShowUserSettings";
 import PropTypes from "prop-types";
 
 UpperSection.propTypes = {
@@ -23,6 +24,7 @@ export default function UpperSection({ setData, setIsLoading }) {
         <ShowFavorites />
       </div>
       <SearchSection setData={setData} setIsLoading={setIsLoading} />
+      <ShowUserSettings />
       <div className="hidden md:block">
         <ShowFavorites />
       </div>

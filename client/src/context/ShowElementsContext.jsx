@@ -47,6 +47,20 @@ function showElementsReducer(state, action) {
         showRegistration: false,
       };
     }
+    case "showUserSettings": {
+      return {
+        ...state,
+        showUserSettings: true,
+        showLogin: false,
+        showRegistration: false,
+      };
+    }
+    case "hideUserSettings": {
+      return {
+        ...state,
+        showUserSettings: false,
+      };
+    }
     default: {
       return {
         showHomepage: true,
@@ -54,6 +68,7 @@ function showElementsReducer(state, action) {
         showFavorites: false,
         showLogin: false,
         showRegistration: false,
+        showUserSettings: false,
       };
     }
   }
@@ -65,6 +80,7 @@ const initialShowElements = {
   showFavorites: false,
   showLogin: false,
   showRegistration: false,
+  showUserSettings: false,
 };
 
 ShowElementsContextProvider.propTypes = {
