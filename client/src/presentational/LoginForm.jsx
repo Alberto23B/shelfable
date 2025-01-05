@@ -1,6 +1,6 @@
 import { faBook } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import {
   ShowElementsContext,
   ShowElementsDispatchContext,
@@ -9,10 +9,44 @@ import {
 export default function LoginForm() {
   const showElements = useContext(ShowElementsContext);
   const dispatch = useContext(ShowElementsDispatchContext);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleClose = (e) => {
     e.preventDefault();
     dispatch({ type: "hideLogin" });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+        }),
+      });
+
+      if (response.status === 500) {
+        alert("status 500");
+      }
+
+      if (!response.ok) {
+        alert("incorrect username or password");
+        throw new Error("incorrect username or password");
+      }
+
+      const data = await response.json();
+      console.log("Login successful", data);
+      return data;
+    } catch (e) {
+      console.error(`Error: ${e.message}`);
+      alert("An error occurred during login");
+    }
   };
 
   return (
@@ -27,28 +61,29 @@ export default function LoginForm() {
               <h1 className="mb-2 text-2xl">shelfable</h1>
               <span className="text-gray-300">Enter Login Details</span>
             </div>
-            <form action="#">
+            <form onSubmit={handleSubmit}>
               <div className="mb-4 text-lg">
                 <input
                   className="px-6 py-2 text-center bg-black bg-opacity-50 border-none rounded-lg shadow-lg outline-none text-inherit placeholder-slate-400 backdrop-blur-md"
                   type="text"
-                  name="name"
-                  placeholder="id@email.com"
+                  name="username"
+                  placeholder="username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
               <div className="mb-4 text-lg">
                 <input
                   className="px-6 py-2 text-center bg-black bg-opacity-50 border-none rounded-lg shadow-lg outline-none text-inherit placeholder-slate-400 backdrop-blur-md"
-                  type="Password"
-                  name="name"
+                  type="password"
+                  name="password"
                   placeholder="*********"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <div className="flex justify-center mt-8 text-lg text-black">
-                <button
-                  type="submit"
-                  className="w-1/2 py-2 text-white transition-colors duration-300 bg-[#2faeb7] bg-opacity-50 shadow-xl rounded-lg backdrop-blur-md"
-                >
+                <button className="w-1/2 py-2 text-white transition-colors duration-300 bg-[#2faeb7] bg-opacity-50 shadow-xl rounded-lg backdrop-blur-md">
                   Login
                 </button>
                 <button

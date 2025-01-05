@@ -8,12 +8,49 @@ import bcrypt from "bcrypt";
 
 const api = express.Router();
 
+let db;
+
+const checkDbConnection = (req, res, next) => {
+  if (!db) {
+    console.log("Not connected (middleware)");
+    return res.status(500).json({ error: "Database not connected yet" });
+  }
+  next();
+};
+
 connection(async (client) => {
-  const db = await client.db("TheGoodReads").collection("users");
+  // try {
+  //   const db = client.db("TheGoodReads").collection("users");
+
+  //   // Verifica il numero di documenti nella collezione
+  //   const count = await db.countDocuments();
+  //   console.log(`Total documents in users collection: ${count}`);
+
+  //   // Test findOne
+  //   const user = await db.findOne({});
+  //   if (user) {
+  //     console.log("Database test query successful:", user);
+  //   } else {
+  //     console.warn("Database test query returned no results");
+  //   }
+  // } catch (err) {
+  //   console.error("Database test query failed:", err);
+  // }
+  db = client.db("TheGoodReads").collection("users");
+
+  // db.findOne({}, (err, user) => {
+  //   if (err) {
+  //     console.error("Database test query failed:", err);
+  //   } else {
+  //     console.log("Database test query successful:", user);
+  //   }
+  // });
+
+  api.use(checkDbConnection);
 
   api.use(
     session({
-      secret: process.env.SESSION_SECRET,
+      secret: process.env.SESSION_SECRET || "fallbackSecret",
       resave: true,
       saveUninitialized: true,
       cookie: { secure: false },
@@ -24,15 +61,18 @@ connection(async (client) => {
   api.use(passport.session());
 
   passport.use(
-    new LocalStrategy((username, password, done) => {
-      db.findOne({ username: username }, (err, user) => {
-        console.log(`User ${username} attempted to log in.`);
-        if (err) return done(err);
-        if (!user) return done(null, false);
-        if (!bcrypt.compareSync(password, user.password))
-          return done(null, false);
-        return done(null, user);
-      });
+    new LocalStrategy(async (username, password, done) => {
+      console.log("Local strategy start");
+      const user = await db.findOne({ username: username });
+      console.log(user);
+      if (!user) {
+        return done(null, false, { message: "User not found" });
+      }
+      if (!bcrypt.compareSync(password, user.password)) {
+        return done(null, false, { message: "Incorrect password" });
+      }
+
+      return done(null, user);
     })
   );
 
@@ -62,16 +102,32 @@ connection(async (client) => {
   //     }
   //   } else {
   //     console.log("issue@api.js// login to save favorites");
-  //     next(req);
+  //     next();
   //   }
   // });
 
   //login routes
 
-  api.post("/login", (req, res) => {
-    passport.authenticate("local", { failureRedirect: "/" }, (req, res) => {
-      res.redirect("/");
-    });
+  api.post("/login", (req, res, next) => {
+    console.log("Starting authentication");
+    console.log("request body:", req.body);
+    passport.authenticate("local", (err, user, info) => {
+      console.log("Authentication callback triggered");
+      if (err) return next(err);
+      if (!user) {
+        console.warn("No user found");
+        return res
+          .status(401)
+          .json({ success: false, message: "Login failed" });
+      }
+      req.logIn(user, (err) => {
+        console.log("Logging in user");
+        if (err) return next(err);
+        return res
+          .status(200)
+          .json({ success: true, message: "Login successful" });
+      });
+    })(req, res, next);
   });
 
   api.get("/logout", (req, res) => {
@@ -129,6 +185,7 @@ connection(async (client) => {
   //collection routes
 
   api.get("/", async (req, res) => {
+    console.log(req.isAuthenticated());
     if (req.isAuthenticated()) {
       let collection = req.collection || [];
       try {
