@@ -175,6 +175,23 @@ connection(async (client) => {
     }
   );
 
+  passport.serializeUser((user, done) => {
+    console.log("serializing User");
+    done(null, user._id);
+  });
+
+  passport.deserializeUser(async (id, done) => {
+    // FORSE ORA VA BENE (05/01/2025)
+    console.log("Deserializing user");
+    const user = await db.findOne({ _id: new ObjectId(id) });
+    if (!user) {
+      console.log("User not found (deserialize)");
+      return;
+    }
+    console.log(user);
+    done(null, user);
+  });
+
   //collection routes
 
   api.get("/", async (req, res) => {
