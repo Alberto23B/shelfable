@@ -50,7 +50,7 @@ connection(async (client) => {
 
   api.use(
     session({
-      secret: process.env.SESSION_SECRET || "fallbackSecret",
+      secret: process.env.SESSION_SECRET,
       resave: true,
       saveUninitialized: true,
       cookie: { secure: false },
@@ -64,47 +64,40 @@ connection(async (client) => {
     new LocalStrategy(async (username, password, done) => {
       console.log("Local strategy start");
       const user = await db.findOne({ username: username });
-      console.log(user);
       if (!user) {
         return done(null, false, { message: "User not found" });
       }
       if (!bcrypt.compareSync(password, user.password)) {
         return done(null, false, { message: "Incorrect password" });
       }
-
+      console.log("Correct authentication", user);
       return done(null, user);
     })
   );
 
-  passport.serializeUser((user, done) => {
-    done(null, user._id);
+  api.use("/", async (req, res, next) => {
+    console.log("Starting middleware");
+    console.log(req.session.id);
+    if (req.isAuthenticated()) {
+      try {
+        const userId = req.user._id;
+        console.log(userId);
+        const user = await db.findOne({ _id: new ObjectId(userId) });
+        if (!user) {
+          console.log("User not found (middleware level)");
+          res.sendStatus(404);
+        }
+        req.user = user;
+        console.log("User found (middleware level)");
+        next();
+      } catch (err) {
+        next(err);
+      }
+    } else {
+      console.log("login to save favorites (middleware level)");
+      next();
+    }
   });
-
-  passport.deserializeUser((id, done) => {
-    db.findOne({ _id: new ObjectId(id) }, (err, doc) => {
-      done(null, doc);
-    });
-  });
-
-  // api.use("/", async (req, res, next) => {
-
-  //   if (req.isAuthenticated()) {
-  //     try {
-  //       let user = await db.collection("users");
-  //       if (!user) {
-  //         console.log("User not found");
-  //         res.sendStatus(404);
-  //       }
-  //       req.collection = user.favorites;
-  //       next();
-  //     } catch (err) {
-  //       next(err);
-  //     }
-  //   } else {
-  //     console.log("issue@api.js// login to save favorites");
-  //     next();
-  //   }
-  // });
 
   //login routes
 
