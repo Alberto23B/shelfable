@@ -83,14 +83,17 @@ connection(async (client) => {
       console.log("Authentication callback triggered");
       if (err) return next(err);
       if (!user) {
-        console.warn("No user found");
+        console.error("No user found");
         return res
           .status(401)
           .json({ success: false, message: "Login failed" });
       }
       req.logIn(user, (err) => {
         console.log("Logging in user");
-        if (err) return next(err);
+        if (err) {
+          return next(err);
+        }
+        console.log("Login successful");
         return res
           .status(200)
           .json({ success: true, message: "Login successful" });
