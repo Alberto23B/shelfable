@@ -102,8 +102,18 @@ connection(async (client) => {
   });
 
   api.get("/logout", (req, res) => {
-    req.logout();
-    res.redirect("/");
+    console.log("Logging out user");
+    req.logOut((err) => {
+      if (err) {
+        console.error("error during logout", err);
+        return res
+          .status(401)
+          .json({ success: false, message: "Logout failed" });
+      }
+      return res
+        .status(200)
+        .json({ success: true, message: "Logged out successfully" });
+    });
   });
 
   api.post(
