@@ -37,7 +37,6 @@ connection(async (client) => {
 
   passport.use(
     new LocalStrategy(async (username, password, done) => {
-      console.log("Local strategy start");
       const user = await db.findOne({ username: username });
       if (!user) {
         return done(null, false, { message: "User not found" });
@@ -52,7 +51,6 @@ connection(async (client) => {
 
   api.use("/", async (req, res, next) => {
     console.log("Starting middleware");
-    console.log(req.session.id);
     if (req.isAuthenticated()) {
       try {
         const userId = req.user._id;
