@@ -19,32 +19,7 @@ const checkDbConnection = (req, res, next) => {
 };
 
 connection(async (client) => {
-  // try {
-  //   const db = client.db("TheGoodReads").collection("users");
-
-  //   // Verifica il numero di documenti nella collezione
-  //   const count = await db.countDocuments();
-  //   console.log(`Total documents in users collection: ${count}`);
-
-  //   // Test findOne
-  //   const user = await db.findOne({});
-  //   if (user) {
-  //     console.log("Database test query successful:", user);
-  //   } else {
-  //     console.warn("Database test query returned no results");
-  //   }
-  // } catch (err) {
-  //   console.error("Database test query failed:", err);
-  // }
-  db = client.db("TheGoodReads").collection("users");
-
-  // db.findOne({}, (err, user) => {
-  //   if (err) {
-  //     console.error("Database test query failed:", err);
-  //   } else {
-  //     console.log("Database test query successful:", user);
-  //   }
-  // });
+  db = await client.db("TheGoodReads").collection("users");
 
   api.use(checkDbConnection);
 
