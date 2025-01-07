@@ -77,8 +77,6 @@ connection(async (client) => {
   //login routes
 
   api.post("/login", (req, res, next) => {
-    console.log("Starting authentication");
-    console.log("request body:", req.body);
     passport.authenticate("local", (err, user, info) => {
       console.log("Authentication callback triggered");
       if (err) return next(err);
@@ -183,17 +181,19 @@ connection(async (client) => {
   //collection routes
 
   api.get("/", async (req, res) => {
-    console.log(req.isAuthenticated());
     if (req.isAuthenticated()) {
-      let collection = req.collection || [];
+      let user = req.user;
       try {
-        let results = await collection.find().toArray();
+        let results = user.favorites;
+        console.log(results);
+        console.log("Session authenticated");
         res.send(results).status(200);
       } catch (err) {
         throw new Error("An error has occured. Error:" + err);
       }
     } else {
       let collection = [];
+      console.log("Session not authenticated");
       res.send(collection).status(200);
     }
   });
@@ -213,11 +213,13 @@ connection(async (client) => {
       description: description,
     };
 
-    let collection = req.collection;
+    let user = req.user;
 
     try {
-      await collection.insertOne(toInsert);
-      const result = await collection.findOne({ info: toInsert.info });
+      const result = await db.updateOne(
+        { _id: user._id },
+        { $addToSet: { favorites: toInsert } }
+      );
       res.status(200).send(result);
     } catch (err) {
       throw new Error("An error has occured. Error:" + err);
@@ -226,34 +228,25 @@ connection(async (client) => {
 
   api.delete("/", async (req, res) => {
     let identifyer = req.body.info;
-    let collection = req.collection;
+    let user = req.user;
 
     try {
-      const toDelete = await collection.findOne({ info: identifyer });
-
-      if (!toDelete) {
-        return res.sendStatus(404);
-      } else {
-        await collection.deleteOne({ _id: toDelete._id });
-        res.sendStatus(204);
-      }
+      await db.updateOne(
+        { _id: user._id },
+        { $pull: { favorites: { info: identifyer } } }
+      );
+      res.status(200);
     } catch (err) {
       throw new Error("An error has occured. Error:" + err);
     }
   });
 
   api.delete("/all", async (req, res) => {
-    let collection = req.collection;
+    let user = req.user;
 
     try {
-      const toDelete = await collection.find({}).toArray();
-
-      if (!toDelete) {
-        return res.sendStatus(404);
-      } else {
-        await collection.deleteMany({});
-        res.sendStatus(204);
-      }
+      await db.updateOne({ _id: user._id }, { $set: { favorites: [] } });
+      res.status(200).redirect("/");
     } catch (err) {
       throw new Error("An error has occured. Error:" + err);
     }
