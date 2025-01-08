@@ -39,7 +39,7 @@ export default function RegistrationForm() {
         alert("Email already registered");
       }
 
-      if (response.body.success) {
+      if (response.status === 201) {
         const data = await response.json();
         setPassword("");
         setUsername("");
