@@ -99,7 +99,6 @@ connection(async (client) => {
         return res.status(200).json({
           success: true,
           message: "Login successful",
-          username: req.user.username,
         });
       });
     })(req, res, next);
@@ -137,12 +136,10 @@ connection(async (client) => {
 
         if (user) {
           console.log("User found");
-          return res
-            .status(400)
-            .json({
-              success: false,
-              message: "This email is already registered",
-            });
+          return res.status(400).json({
+            success: false,
+            message: "This email is already registered",
+          });
         }
 
         console.log("user not found, insert");
@@ -174,6 +171,14 @@ connection(async (client) => {
       res.redirect("/");
     }
   );
+
+  api.get("/auth", (req, res) => {
+    if (req.isAuthenticated()) {
+      res.json({ loggedIn: true, username: req.user.username });
+    } else {
+      res.json({ loggedIn: false, username: "" });
+    }
+  });
 
   passport.serializeUser((user, done) => {
     console.log("serializing User");
