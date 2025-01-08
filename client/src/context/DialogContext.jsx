@@ -5,22 +5,40 @@ export const DialogDispatchContext = createContext(null);
 
 function dialogReducer(state, action) {
   switch (action.type) {
-    case "add": {
+    case "favorites/add": {
       return {
         state: "open",
         message: "Book added to favorites",
       };
     }
-    case "remove": {
+    case "favorites/remove": {
       return {
         state: "open",
         message: "Book removed from favorites",
       };
     }
-    case "clear": {
+    case "favorites/clear": {
       return {
         state: "open",
         message: "Favorites cleared",
+      };
+    }
+    case "user/login": {
+      return {
+        state: "open",
+        message: "Successfully logged in",
+      };
+    }
+    case "user/logout": {
+      return {
+        state: "open",
+        message: "Successfully logged out",
+      };
+    }
+    case "user/register": {
+      return {
+        state: "open",
+        message: "Successfully registered",
       };
     }
     case "close": {

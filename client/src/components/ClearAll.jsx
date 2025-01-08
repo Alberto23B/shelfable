@@ -23,8 +23,8 @@ export default function ClearAll({ setFavorites }) {
     await fetch("/api/all", {
       method: "DELETE",
     });
-    dispatch({ type: "clear" });
     setFavorites([]);
+    dispatch({ type: "favorites/clear" });
     toggleAlert();
   };
 

@@ -41,7 +41,7 @@ export default function AddOrDeleteFavorite({
     }
 
     setFavorites((prev) => [...prev, data]);
-    dispatch({ type: "add" });
+    dispatch({ type: "favorites/add" });
   };
 
   const handleDeleteFavorites = async (data) => {
@@ -59,7 +59,7 @@ export default function AddOrDeleteFavorite({
     }
 
     setFavorites((prev) => prev.filter((fav) => fav.info !== data.info));
-    dispatch({ type: "remove" });
+    dispatch({ type: "favorites/remove" });
   };
 
   return (
