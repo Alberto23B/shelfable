@@ -11,6 +11,7 @@ import Main from "./presentational/Main";
 import LoginForm from "./presentational/LoginForm";
 import RegistrationForm from "./presentational/RegistrationForm";
 import UserSettings from "./presentational/UserSettings";
+import { AuthContextProvider } from "./context/AuthContext";
 
 function App() {
   const [data, setData] = useState([]);
@@ -31,32 +32,34 @@ function App() {
   }, []);
 
   return (
-    <NavbarContextProvider>
-      <ShowElementsContextProvider>
-        <DialogContextProvider>
-          <DisplayContextProvider>
-            <PageContextProvider>
-              <div
-                className={
-                  "bg-gradient-to-br from-[#91d2da] to-[#3cb2bc] dark:bg-gradient-to-br dark:from-black dark:to-black dark:text-stone-300 h-screen overflow-auto gutter"
-                }
-              >
-                <UpperSection setData={setData} setIsLoading={setIsLoading} />
-                <LoginForm />
-                <RegistrationForm />
-                <UserSettings />
-                <Main
-                  data={data}
-                  isLoading={isLoading}
-                  favorites={favorites}
-                  setFavorites={setFavorites}
-                />
-              </div>
-            </PageContextProvider>
-          </DisplayContextProvider>
-        </DialogContextProvider>
-      </ShowElementsContextProvider>
-    </NavbarContextProvider>
+    <AuthContextProvider>
+      <NavbarContextProvider>
+        <ShowElementsContextProvider>
+          <DialogContextProvider>
+            <DisplayContextProvider>
+              <PageContextProvider>
+                <div
+                  className={
+                    "bg-gradient-to-br from-[#91d2da] to-[#3cb2bc] dark:bg-gradient-to-br dark:from-black dark:to-black dark:text-stone-300 h-screen overflow-auto gutter"
+                  }
+                >
+                  <UpperSection setData={setData} setIsLoading={setIsLoading} />
+                  <LoginForm />
+                  <RegistrationForm />
+                  <UserSettings />
+                  <Main
+                    data={data}
+                    isLoading={isLoading}
+                    favorites={favorites}
+                    setFavorites={setFavorites}
+                  />
+                </div>
+              </PageContextProvider>
+            </DisplayContextProvider>
+          </DialogContextProvider>
+        </ShowElementsContextProvider>
+      </NavbarContextProvider>
+    </AuthContextProvider>
   );
 }
 
