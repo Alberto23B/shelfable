@@ -1,7 +1,12 @@
 import { createContext, useState, useEffect } from "react";
 import { checkAuthStatus } from "../helpers/checkAuthStatus";
+import PropTypes from "prop-types";
 
 export const AuthContext = createContext();
+
+AuthContextProvider.propTypes = {
+  children: PropTypes.object,
+};
 
 export function AuthContextProvider({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
