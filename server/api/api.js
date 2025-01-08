@@ -132,15 +132,17 @@ connection(async (client) => {
       try {
         const hash = bcrypt.hashSync(req.body.password, 10);
         const user = await db.findOne({
-          username: req.body.username,
           email: req.body.email,
         });
 
         if (user) {
           console.log("User found");
           return res
-            .status(200)
-            .json({ found: true, message: "User already exists" });
+            .status(400)
+            .json({
+              success: false,
+              message: "This email is already registered",
+            });
         }
 
         console.log("user not found, insert");
@@ -156,11 +158,11 @@ connection(async (client) => {
           console.log("user added to the db");
           return res
             .status(201)
-            .json({ found: false, message: "User successfully registered" });
+            .json({ success: true, message: "User successfully registered" });
         } else {
           return res
             .status(500)
-            .json({ found: false, message: "Failed to register user" });
+            .json({ success: false, message: "Failed to register user" });
         }
       } catch (err) {
         console.error("Error during registration:" + err);

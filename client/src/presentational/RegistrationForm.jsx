@@ -5,17 +5,19 @@ import {
   ShowElementsContext,
   ShowElementsDispatchContext,
 } from "../context/ShowElementsContext";
+import { DialogDispatchContext } from "../context/DialogContext";
 
 export default function RegistrationForm() {
   const showElements = useContext(ShowElementsContext);
-  const dispatch = useContext(ShowElementsDispatchContext);
+  const dispatchShowElements = useContext(ShowElementsDispatchContext);
+  const dispatchDialog = useContext(DialogDispatchContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
   const handleClose = (e) => {
     e.preventDefault();
-    dispatch({ type: "hideRegistration" });
+    dispatchShowElements({ type: "hideRegistration" });
   };
 
   const handleSubmit = async (e) => {
@@ -33,25 +35,21 @@ export default function RegistrationForm() {
         }),
       });
 
-      if (!response.ok) {
-        alert("Failed response from the server");
+      if (response.status === 400) {
+        alert("Email already registered");
       }
 
-      const data = await response.json();
-
-      if (data.found) {
-        alert(data.message);
+      if (response.body.success) {
+        const data = await response.json();
+        setPassword("");
+        setUsername("");
+        setEmail("");
+        dispatchShowElements({ type: "hideRegistration" });
+        dispatchDialog({ type: "user/register" });
+        return data;
       } else {
-        alert(data.message);
+        alert("Registration Failed");
       }
-
-      setPassword("");
-      setUsername("");
-      setEmail("");
-
-      dispatch({ type: "hideRegistration" });
-
-      return data;
     } catch (e) {
       console.error("Error during registration:", e);
       alert("An error occurred.");
