@@ -99,6 +99,7 @@ connection(async (client) => {
         return res.status(200).json({
           success: true,
           message: "Login successful",
+          redirectUrl: "/",
         });
       });
     })(req, res, next);
@@ -114,9 +115,11 @@ connection(async (client) => {
             .status(401)
             .json({ success: false, message: "Logout failed" });
         }
-        return res
-          .status(200)
-          .json({ success: true, message: "Logged out successfully" });
+        return res.status(200).json({
+          success: true,
+          message: "Logged out successfully",
+          redirectUrl: "/",
+        });
       });
     } else {
       return res
@@ -204,7 +207,7 @@ connection(async (client) => {
       res.status(200).send(collection);
     } else {
       let collection = [];
-      res.status(200).send(collection);
+      res.status(200).json(collection);
     }
   });
 

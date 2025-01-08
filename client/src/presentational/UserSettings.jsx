@@ -28,6 +28,12 @@ export default function UserSettings() {
         alert("failed to logout");
         return;
       }
+
+      const data = await response.json(response);
+
+      if (data.redirectUrl) {
+        window.location.href = data.redirectUrl;
+      }
     } catch (e) {
       console.error("Error during logout:", e);
       alert("An error occurred.");
