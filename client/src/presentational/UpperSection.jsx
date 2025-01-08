@@ -4,6 +4,8 @@ import SearchSection from "./SearchSection";
 import ShowFavorites from "../components/ShowFavorites";
 import ShowUserSettings from "../components/ShowUserSettings";
 import PropTypes from "prop-types";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 UpperSection.propTypes = {
   setData: PropTypes.func,
@@ -11,6 +13,8 @@ UpperSection.propTypes = {
 };
 
 export default function UpperSection({ setData, setIsLoading }) {
+  const { isLoggedIn } = useContext(AuthContext);
+
   return (
     <div
       id="upper"
@@ -18,12 +22,14 @@ export default function UpperSection({ setData, setIsLoading }) {
     >
       <Dialog />
       <Header />
-      <div className="md:hidden">
-        <ShowFavorites />
+      <div className="flex flex-row md:hidden">
+        <div className={isLoggedIn ? "" : "hidden"}>
+          <ShowFavorites />
+        </div>
         <ShowUserSettings />
       </div>
       <SearchSection setData={setData} setIsLoading={setIsLoading} />
-      <div className="hidden md:block">
+      <div className={isLoggedIn ? "hidden md:block" : "hidden"}>
         <ShowFavorites />
       </div>
       <div className="hidden md:block">
