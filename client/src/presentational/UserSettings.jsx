@@ -5,14 +5,16 @@ import {
   ShowElementsContext,
   ShowElementsDispatchContext,
 } from "../context/ShowElementsContext";
+import { DialogDispatchContext } from "../context/DialogContext";
 
 export default function UserSettings() {
   const showElements = useContext(ShowElementsContext);
-  const dispatch = useContext(ShowElementsDispatchContext);
+  const dispatchShowElements = useContext(ShowElementsDispatchContext);
+  const dispatchDialog = useContext(DialogDispatchContext);
 
   const handleClose = (e) => {
     e.preventDefault();
-    dispatch({ type: "hideUserSettings" });
+    dispatchShowElements({ type: "hideUserSettings" });
   };
 
   const handleLogout = async () => {
@@ -27,7 +29,8 @@ export default function UserSettings() {
       console.error("Error during logout:", e);
       alert("An error occurred.");
     }
-    dispatch({ type: "hideUserSettings" });
+    dispatchShowElements({ type: "hideUserSettings" });
+    dispatchDialog({ type: "user/logout" });
   };
 
   return (
