@@ -44,37 +44,43 @@ connection(async (client) => {
       if (!bcrypt.compareSync(password, user.password)) {
         return done(null, false, { message: "Incorrect password" });
       }
-      console.log("Correct authentication", user);
+      console.log("Correct authentication (in Local Strategy)");
       return done(null, user);
     })
   );
 
+  api.use("*", (req, res, next) => {
+    console.log(req.session.id);
+    next();
+  });
+
   api.use("/", async (req, res, next) => {
-    console.log("Starting middleware");
+    if (req.user) {
+      return next();
+    }
     if (req.isAuthenticated()) {
       try {
         const userId = req.user._id;
-        console.log(userId);
         const user = await db.findOne({ _id: new ObjectId(userId) });
         if (!user) {
-          console.log("User not found (middleware level)");
-          res.sendStatus(404);
+          return res.sendStatus(404);
         }
         req.user = user;
-        console.log("User found (middleware level)");
-        next();
+        return next();
       } catch (err) {
-        next(err);
+        return next(err);
       }
     } else {
-      console.log("login to save favorites (middleware level)");
-      next();
+      return next();
     }
   });
 
   //login routes
 
   api.post("/login", (req, res, next) => {
+    if (req.user) {
+      return res.status(400).send({ message: "Already logged in" });
+    }
     passport.authenticate("local", (err, user, info) => {
       console.log("Authentication callback triggered");
       if (err) return next(err);
@@ -98,18 +104,24 @@ connection(async (client) => {
   });
 
   api.get("/logout", (req, res) => {
-    console.log("Logging out user");
-    req.logOut((err) => {
-      if (err) {
-        console.error("error during logout", err);
+    if (req.user) {
+      console.log("Logging out user");
+      req.logOut((err) => {
+        if (err) {
+          console.error("error during logout", err);
+          return res
+            .status(401)
+            .json({ success: false, message: "Logout failed" });
+        }
         return res
-          .status(401)
-          .json({ success: false, message: "Logout failed" });
-      }
+          .status(200)
+          .json({ success: true, message: "Logged out successfully" });
+      });
+    } else {
       return res
-        .status(200)
-        .json({ success: true, message: "Logged out successfully" });
-    });
+        .status(401)
+        .json({ success: false, message: "No user logged in" });
+    }
   });
 
   api.post(
@@ -172,27 +184,18 @@ connection(async (client) => {
       console.log("User not found (deserialize)");
       return;
     }
-    console.log(user);
     done(null, user);
   });
 
   //collection routes
 
   api.get("/", async (req, res) => {
-    if (req.isAuthenticated()) {
-      let user = req.user;
-      try {
-        let results = user.favorites;
-        console.log(results);
-        console.log("Session authenticated");
-        res.send(results).status(200);
-      } catch (err) {
-        throw new Error("An error has occured. Error:" + err);
-      }
+    if (req.user) {
+      let collection = req.user.favorites;
+      res.status(200).send(collection);
     } else {
       let collection = [];
-      console.log("Session not authenticated");
-      res.send(collection).status(200);
+      res.status(200).send(collection);
     }
   });
 
