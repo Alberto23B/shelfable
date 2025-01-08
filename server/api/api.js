@@ -240,6 +240,7 @@ connection(async (client) => {
   });
 
   api.delete("/", async (req, res) => {
+    console.log("Delete call received");
     let identifyer = req.body.info;
     let user = req.user;
 
@@ -248,7 +249,7 @@ connection(async (client) => {
         { _id: user._id },
         { $pull: { favorites: { info: identifyer } } }
       );
-      res.status(200);
+      res.status(200).send();
     } catch (err) {
       throw new Error("An error has occured. Error:" + err);
     }
