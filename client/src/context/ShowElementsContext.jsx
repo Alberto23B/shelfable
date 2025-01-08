@@ -26,6 +26,7 @@ function showElementsReducer(state, action) {
         ...state,
         showLogin: true,
         showRegistration: false,
+        showUserSettings: false,
       };
     }
     case "hideLogin": {
@@ -39,6 +40,7 @@ function showElementsReducer(state, action) {
         ...state,
         showLogin: false,
         showRegistration: true,
+        showUserSettings: false,
       };
     }
     case "hideRegistration": {
