@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { useContext } from "react";
 import no_picture_available from "../img/no_picture_available.png";
 import { DisplayContext } from "../context/DisplayContext";
+import { AuthContext } from "../context/AuthContext";
 import AddOrDeleteFavorite from "./AddOrDeleteFavorite";
 
 Card.propTypes = {
@@ -14,6 +15,7 @@ Card.propTypes = {
 export default function Card({ data, i, favorites, setFavorites }) {
   const isFavorite = favorites.some((fav) => fav.info === data.info);
   const display = useContext(DisplayContext);
+  const { isLoggedIn } = useContext(AuthContext);
 
   const cardAspectClass = {
     icons:
@@ -113,11 +115,13 @@ export default function Card({ data, i, favorites, setFavorites }) {
               <i>info</i>
             </a>
           </button>
-          <AddOrDeleteFavorite
-            data={data}
-            setFavorites={setFavorites}
-            isFavorite={isFavorite}
-          />
+          <div className={isLoggedIn ? "" : "hidden"}>
+            <AddOrDeleteFavorite
+              data={data}
+              setFavorites={setFavorites}
+              isFavorite={isFavorite}
+            />
+          </div>
         </div>
       </div>
     </div>
