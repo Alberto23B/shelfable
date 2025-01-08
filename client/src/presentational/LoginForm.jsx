@@ -5,16 +5,18 @@ import {
   ShowElementsContext,
   ShowElementsDispatchContext,
 } from "../context/ShowElementsContext";
+import { DialogDispatchContext } from "../context/DialogContext";
 
 export default function LoginForm() {
   const showElements = useContext(ShowElementsContext);
-  const dispatch = useContext(ShowElementsDispatchContext);
+  const dispatchShowElements = useContext(ShowElementsDispatchContext);
+  const dispatchDialog = useContext(DialogDispatchContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleClose = (e) => {
     e.preventDefault();
-    dispatch({ type: "hideLogin" });
+    dispatchShowElements({ type: "hideLogin" });
   };
 
   const handleSubmit = async (e) => {
@@ -31,21 +33,22 @@ export default function LoginForm() {
         }),
       });
 
-      if (response.status === 500) {
-        alert("status 500");
+      if (response.status === 400) {
+        alert("User already logged in");
+        dispatchShowElements({ type: "hideLogin" });
+        return;
       }
 
-      if (!response.ok) {
-        alert("incorrect username or password");
-        throw new Error("incorrect username or password");
+      if (response.status === 401) {
+        alert("Incorrect username or password");
       }
 
       const data = await response.json();
-      console.log("Login successful", data);
+      dispatchDialog({ type: "user/login" });
+      dispatchShowElements({ type: "hideLogin" });
       return data;
     } catch (e) {
       console.error(`Error: ${e.message}`);
-      alert("An error occurred during login");
     }
   };
 

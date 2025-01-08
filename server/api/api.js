@@ -96,13 +96,11 @@ connection(async (client) => {
           return next(err);
         }
         console.log("Login successful");
-        return res
-          .status(200)
-          .json({
-            success: true,
-            message: "Login successful",
-            username: req.user.username,
-          });
+        return res.status(200).json({
+          success: true,
+          message: "Login successful",
+          username: req.user.username,
+        });
       });
     })(req, res, next);
   });
