@@ -109,12 +109,12 @@ export default function RegistrationForm() {
               <div className="flex justify-center mt-8 text-lg text-black">
                 <button
                   type="submit"
-                  className="w-1/2 py-2 text-white transition-colors duration-300 bg-[#2faeb7] bg-opacity-50 shadow-xl rounded-lg backdrop-blur-md"
+                  className="w-1/2 py-2 text-white transition-colors duration-300 bg-opacity-50 rounded-lg shadow-xl bg-verdigris backdrop-blur-md"
                 >
                   Register
                 </button>
                 <button
-                  className="w-1/3 py-2 ml-2 text-white transition-colors duration-300 bg-[#2faeb7] bg-opacity-50 shadow-xl rounded-lg backdrop-blur-md hover:bg-red-700"
+                  className="w-1/3 py-2 ml-2 text-white transition-colors duration-300 bg-opacity-50 rounded-lg shadow-xl bg-verdigris backdrop-blur-md hover:bg-red-700"
                   onClick={handleClose}
                   disabled={loading}
                 >

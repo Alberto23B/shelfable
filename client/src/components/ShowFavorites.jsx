@@ -11,7 +11,7 @@ export default function ShowFavorites() {
     active:
       "w-16 md:w-24 hover:bg-cadet dark:bg-iron text-white shadow-sm shadow-slate-600 top-[2px] shadow-none rounded-lg bg-[#366b71] md:h-16 mr-2",
     inactive:
-      "w-16 md:w-24 hover:bg-cadet dark:bg-iron text-white md:h-16 shadow-sm shadow-slate-600 rounded-lg bg-[#2faeb7] mr-2",
+      "w-16 md:w-24 hover:bg-cadet dark:bg-iron text-white md:h-16 shadow-sm shadow-slate-600 rounded-lg bg-verdigris mr-2",
   };
   const dispatch = useContext(ShowElementsDispatchContext);
   const showElements = useContext(ShowElementsContext);

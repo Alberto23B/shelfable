@@ -51,7 +51,7 @@ export default function SearchBar({ setData, setIsLoading }) {
   return (
     <div className="flex justify-around w-full my-2 md:w-5/6">
       <dialog ref={alertRef}>
-        <div className="px-16 text-center border-2 border-white rounded-md bg-[#2faeb7] py-14 dark:bg-cadet">
+        <div className="px-16 text-center border-2 border-white rounded-md bg-verdigris py-14 dark:bg-cadet">
           <h1 className="mb-4 text-xl font-bold text-white dark:text-white">
             {query === ""
               ? "Please provide a title"
@@ -73,7 +73,7 @@ export default function SearchBar({ setData, setIsLoading }) {
         className="flex items-center w-full justify-evenly md:flex-row"
       >
         <input
-          className="px-3 h-16 md:w-2/3 w-3/4 md:min-w-[50vw] bg-[#2faeb7] rounded-lg dark:bg-iron border-slate-200 shadow-sm shadow-slate-600 border placeholder:text-white"
+          className="px-3 h-16 md:w-2/3 w-3/4 md:min-w-[50vw] bg-verdigris rounded-lg dark:bg-iron border-slate-200 shadow-sm shadow-slate-600 border placeholder:text-white"
           type="search"
           name="q"
           value={query}
@@ -82,7 +82,7 @@ export default function SearchBar({ setData, setIsLoading }) {
           required
         />
         <button
-          className="block h-16 px-4 md:my-2 text-white rounded-md md:ml-4 shadow-sm dark:bg-iron shadow-slate-600 bg-[#2faeb7] w-fit "
+          className="block h-16 px-4 text-white rounded-md shadow-sm md:my-2 md:ml-4 dark:bg-iron shadow-slate-600 bg-verdigris w-fit "
           type="submit"
           aria-label="search"
           onClick={handleClick}

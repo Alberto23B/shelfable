@@ -14,7 +14,7 @@ export default function ShowUserSettings() {
     <button
       aria-label="show-settings"
       onClick={handleClick}
-      className="w-16 hover:bg-cadet dark:bg-iron text-white md:h-16 shadow-sm shadow-slate-600 rounded-lg bg-[#2faeb7] mr-2"
+      className="w-16 mr-2 text-white rounded-lg shadow-sm hover:bg-cadet dark:bg-iron md:h-16 shadow-slate-600 bg-verdigris"
     >
       <FontAwesomeIcon icon={faGear}></FontAwesomeIcon>
     </button>

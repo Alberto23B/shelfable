@@ -83,7 +83,7 @@ html {
     border-color: #b0cac5;
   }
   .toggle-checkbox:checked + .toggle-label {
-    @apply: bg-[#2faeb7];
+    @apply: bg-verdigris;
     background-color: #2faeb7;
   }
 }

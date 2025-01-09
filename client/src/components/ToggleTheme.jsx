@@ -36,7 +36,7 @@ export default function ToggleTheme() {
               id="light"
               value={"Dark"}
               onClick={handleChange}
-              className="bg-[#2faeb7] w-16 md:w-24 hover:bg-cadet dark:bg-iron text-white shadow-sm shadow-slate-600 top-[2px]  rounded-lg md:h-16"
+              className="bg-verdigris w-16 md:w-24 hover:bg-cadet dark:bg-iron text-white shadow-sm shadow-slate-600 top-[2px]  rounded-lg md:h-16"
             >
               <FontAwesomeIcon icon={faSun}></FontAwesomeIcon>
             </button>
@@ -47,7 +47,7 @@ export default function ToggleTheme() {
               id="dark"
               value={"Light"}
               onClick={handleChange}
-              className="bg-[#2faeb7] w-16 md:w-24 hover:bg-cadet dark:bg-iron text-white shadow-sm shadow-slate-600 top-[2px]  rounded-lg md:h-16"
+              className="bg-verdigris w-16 md:w-24 hover:bg-cadet dark:bg-iron text-white shadow-sm shadow-slate-600 top-[2px]  rounded-lg md:h-16"
             >
               <FontAwesomeIcon icon={faMoon}></FontAwesomeIcon>
             </button>
