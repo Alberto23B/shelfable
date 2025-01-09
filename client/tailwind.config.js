@@ -4,15 +4,6 @@ export default {
   darkMode: "selector",
   theme: {
     extend: {
-      keyframes: {
-        resizeTitle: {
-          "0%": { fontSize: "6rem" },
-          "100%": { fontSize: "3rem" },
-        },
-      },
-      animation: {
-        resizeTitle: "resizeTitle 1.2s ease-in-out forwards",
-      },
       colors: {
         transparent: "transparent",
         current: "currentColor",

@@ -1,24 +1,40 @@
-export default function ShowFavorites({ setShowFavorites, showFavorites }) {
+import { useContext } from "react";
+import {
+  ShowElementsContext,
+  ShowElementsDispatchContext,
+} from "../context/ShowElementsContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+
+export default function ShowFavorites() {
   const showFavoritesClass = {
     active:
-      "w-24 hover:bg-cadet dark:hover:bg-iron text-white mx-2 rounded-md h-fit bg-zinc-600 press top-[2px] shadow-none bg-zinc-800",
+      "w-16 md:w-24 hover:bg-cadet dark:bg-iron text-white shadow-sm shadow-slate-600 top-[2px] shadow-none rounded-lg bg-[#366b71] md:h-16 mr-2",
     inactive:
-      "w-24 hover:bg-cadet dark:hover:bg-iron text-white mx-2 rounded-md h-fit bg-zinc-600 press",
+      "w-16 md:w-24 hover:bg-cadet dark:bg-iron text-white md:h-16 shadow-sm shadow-slate-600 rounded-lg bg-[#2faeb7] mr-2",
   };
+  const dispatch = useContext(ShowElementsDispatchContext);
+  const showElements = useContext(ShowElementsContext);
 
   const handleShowFavoritesClick = () => {
-    setShowFavorites(!showFavorites);
+    if (showElements.showFavorites) {
+      dispatch({ type: "showSearch" });
+    } else {
+      dispatch({ type: "showFavorites" });
+    }
   };
 
   return (
     <button
-      type="button"
+      type="submit"
       className={
-        showFavorites ? showFavoritesClass.active : showFavoritesClass.inactive
+        showElements.showFavorites
+          ? showFavoritesClass.active
+          : showFavoritesClass.inactive
       }
       onClick={handleShowFavoritesClick}
     >
-      ♡
+      <FontAwesomeIcon icon={faHeart} />
     </button>
   );
 }

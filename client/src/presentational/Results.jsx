@@ -1,28 +1,21 @@
-import { useContext, useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import { useContext } from "react";
 import Card from "../components/Card";
 import ChangePageButton from "../components/ChangePageButton";
 import search from "../img/search.png";
 import Loading from "./Loading";
 import { PageContext } from "../context/PagesContext";
-import { SelectInputContext } from "../context/SelectInputContext";
+import SwitchList from "../components/SwitchList";
+
+Results.propTypes = {
+  data: PropTypes.array,
+  isLoading: PropTypes.bool,
+  favorites: PropTypes.array,
+  setFavorites: PropTypes.func,
+};
 
 export default function Results({ data, isLoading, favorites, setFavorites }) {
   const { elementsInPage } = useContext(PageContext);
-  const isInputSelected = useContext(SelectInputContext);
-  const [hasAnimationRun, setHasAnimationRun] = useState(false);
-
-  const selectedClass = {
-    selected:
-      "md:min-h-72 flex border border-slate-200 flex-row py-4 flex-wrap items-center justify-center lg:w-[80vw] rounded-b-md overflow-auto min-h-56 max-h-96 md:max-h-full display-results dark:bg-cadet",
-    notSelected:
-      "md:min-h-56 flex border border-slate-200 flex-row py-4 flex-wrap items-center justify-center lg:w-[80vw] rounded-b-md overflow-auto min-h-56 max-h-96 md:max-h-full display-results dark:bg-cadet",
-  };
-
-  useEffect(() => {
-    if (isInputSelected === true) {
-      setHasAnimationRun(true);
-    }
-  }, [hasAnimationRun]);
 
   if (isLoading) {
     return <Loading />;
@@ -30,12 +23,11 @@ export default function Results({ data, isLoading, favorites, setFavorites }) {
 
   return (
     <>
-      <div
-        className={
-          isInputSelected ? selectedClass.selected : selectedClass.notSelected
-        }
-      >
-        <ChangePageButton data={data} />
+      <div className="mt-16 md:min-h-[50vh] flex gap-1 flex-row py-4 flex-wrap items-center justify-center bg-cream-100 lg:w-[80vw] rounded-lg overflow-auto min-h-[40vh] h-[75vh] md:max-h-full display-results dark:bg-cadet">
+        {data.length !== 0 && <SwitchList />}
+        <div className="hidden w-full mb-2 sm:block">
+          <ChangePageButton data={data} />
+        </div>
         {data.length !== 0 ? (
           elementsInPage.map((element, i) => {
             return (
@@ -58,7 +50,9 @@ export default function Results({ data, isLoading, favorites, setFavorites }) {
             <p className="italic font-thin">Waiting to dive in</p>
           </div>
         )}
-        <ChangePageButton data={data} />
+        <div className="w-full mt-2">
+          <ChangePageButton data={data} />
+        </div>
       </div>
     </>
   );
