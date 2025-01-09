@@ -6,6 +6,11 @@ import {
   ShowElementsDispatchContext,
 } from "../context/ShowElementsContext";
 import { DialogDispatchContext } from "../context/DialogContext";
+import {
+  validateUsername,
+  validatePassword,
+  validateEmail,
+} from "../helpers/validation";
 
 export default function RegistrationForm() {
   const showElements = useContext(ShowElementsContext);
@@ -23,6 +28,14 @@ export default function RegistrationForm() {
   };
 
   const handleSubmit = async (e) => {
+    if (
+      !validateUsername(username) ||
+      !validatePassword(password, passwordCheck) ||
+      !validateEmail(email)
+    ) {
+      alert("invalid input");
+      return;
+    }
     e.preventDefault();
     setLoading(true);
     try {
