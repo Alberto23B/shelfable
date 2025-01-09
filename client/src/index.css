@@ -65,6 +65,9 @@ html {
 }
 
 @layer utilities {
+  button {
+    @apply transition-colors duration-300;
+  }
   ::-webkit-scrollbar {
     width: 6px;
   }
