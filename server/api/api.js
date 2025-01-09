@@ -12,7 +12,6 @@ let db;
 
 const checkDbConnection = (req, res, next) => {
   if (!db) {
-    console.log("Not connected (middleware)");
     return res.status(500).json({ error: "Database not connected yet" });
   }
   next();
@@ -44,15 +43,9 @@ connection(async (client) => {
       if (!bcrypt.compareSync(password, user.password)) {
         return done(null, false, { message: "Incorrect password" });
       }
-      console.log("Correct authentication (in Local Strategy)");
       return done(null, user);
     })
   );
-
-  api.use("*", (req, res, next) => {
-    console.log(req.session.id);
-    next();
-  });
 
   api.use("/", async (req, res, next) => {
     if (req.user) {
@@ -107,7 +100,6 @@ connection(async (client) => {
 
   api.get("/logout", (req, res) => {
     if (req.user) {
-      console.log("Logging out user");
       req.logOut((err) => {
         if (err) {
           console.error("error during logout", err);
@@ -145,8 +137,6 @@ connection(async (client) => {
           });
         }
 
-        console.log("user not found, insert");
-
         const result = await db.insertOne({
           username: req.body.username,
           email: req.body.email,
@@ -155,7 +145,6 @@ connection(async (client) => {
         });
 
         if (result.insertedId) {
-          console.log("user added to the db");
           return res
             .status(201)
             .json({ success: true, message: "User successfully registered" });
