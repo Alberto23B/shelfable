@@ -14,6 +14,7 @@ export default function RegistrationForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [passwordCheck, setPasswordCheck] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleClose = (e) => {
@@ -78,17 +79,20 @@ export default function RegistrationForm() {
             <form action="#" onSubmit={handleSubmit}>
               <div className="mb-4 text-lg">
                 <input
-                  className="px-6 py-2 text-center bg-black bg-opacity-50 border-none rounded-lg shadow-lg outline-none text-inherit placeholder-slate-400 backdrop-blur-md"
+                  className="px-6 py-2 text-center bg-black border-none rounded-lg shadow-lg outline-none focus:bg-slate-700 text-inherit placeholder-slate-400 backdrop-blur-md"
+                  aria-label="input username"
                   type="text"
                   name="username"
                   placeholder="username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
+                  required
                 />
               </div>
               <div className="mb-4 text-lg">
                 <input
-                  className="px-6 py-2 text-center bg-black bg-opacity-50 border-none rounded-lg shadow-lg outline-none text-inherit placeholder-slate-400 backdrop-blur-md"
+                  className="px-6 py-2 text-center bg-black border-none rounded-lg shadow-lg outline-none focus:bg-slate-700 text-inherit placeholder-slate-400 backdrop-blur-md"
+                  aria-label="input email"
                   type="text"
                   name="email"
                   placeholder="id@email.com"
@@ -98,7 +102,8 @@ export default function RegistrationForm() {
               </div>
               <div className="mb-4 text-lg">
                 <input
-                  className="px-6 py-2 text-center bg-black bg-opacity-50 border-none rounded-lg shadow-lg outline-none text-inherit placeholder-slate-400 backdrop-blur-md"
+                  className="px-6 py-2 text-center bg-black border-none rounded-lg shadow-lg outline-none focus:bg-slate-700 text-inherit placeholder-slate-400 backdrop-blur-md"
+                  aria-label="input password"
                   type="password"
                   name="password"
                   placeholder="*********"
@@ -106,15 +111,26 @@ export default function RegistrationForm() {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
+              <div className="mb-4 text-lg">
+                <input
+                  className="px-6 py-2 text-center bg-black border-none rounded-lg shadow-lg outline-none focus:bg-slate-700 text-inherit placeholder-slate-400 backdrop-blur-md"
+                  aria-label="input password"
+                  type="password"
+                  name="password"
+                  placeholder="*********"
+                  value={passwordCheck}
+                  onChange={(e) => setPasswordCheck(e.target.value)}
+                />
+              </div>
               <div className="flex justify-center mt-8 text-lg text-black">
                 <button
                   type="submit"
-                  className="w-1/2 py-2 text-white transition-colors duration-300 bg-opacity-50 rounded-lg shadow-xl bg-verdigris backdrop-blur-md"
+                  className="w-1/2 py-2 text-white rounded-lg shadow-xl bg-verdigris backdrop-blur-md"
                 >
                   Register
                 </button>
                 <button
-                  className="w-1/3 py-2 ml-2 text-white transition-colors duration-300 bg-opacity-50 rounded-lg shadow-xl bg-verdigris backdrop-blur-md hover:bg-red-700"
+                  className="w-1/3 py-2 ml-2 text-white rounded-lg shadow-xl bg-verdigris backdrop-blur-md hover:bg-red-700"
                   onClick={handleClose}
                   disabled={loading}
                 >

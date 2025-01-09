@@ -74,7 +74,8 @@ export default function LoginForm() {
             <form onSubmit={handleSubmit}>
               <div className="mb-4 text-lg">
                 <input
-                  className="px-6 py-2 text-center bg-black bg-opacity-50 border-none rounded-lg shadow-lg outline-none text-inherit placeholder-slate-400 backdrop-blur-md"
+                  className="px-6 py-2 text-center bg-black border-none rounded-lg shadow-lg outline-none focus:bg-slate-700 text-inherit placeholder-slate-400 backdrop-blur"
+                  aria-label="input username"
                   type="text"
                   name="username"
                   placeholder="username"
@@ -84,7 +85,8 @@ export default function LoginForm() {
               </div>
               <div className="mb-4 text-lg">
                 <input
-                  className="px-6 py-2 text-center bg-black bg-opacity-50 border-none rounded-lg shadow-lg outline-none text-inherit placeholder-slate-400 backdrop-blur-md"
+                  className="px-6 py-2 text-center bg-black border-none rounded-lg shadow-lg outline-none focus:bg-slate-700 text-inherit placeholder-slate-400 backdrop-blur"
+                  aria-label="input password"
                   type="password"
                   name="password"
                   placeholder="*********"
@@ -95,13 +97,13 @@ export default function LoginForm() {
               <div className="flex justify-center mt-8 text-lg text-black">
                 <button
                   type="submit"
-                  className="w-1/2 py-2 text-white transition-colors duration-300 bg-opacity-50 rounded-lg shadow-xl bg-verdigris backdrop-blur-md hover:bg-slate-700"
+                  className="w-1/2 py-2 text-white bg-opacity-50 rounded-lg shadow-xl bg-verdigris backdrop-blur-md hover:bg-slate-700"
                   disabled={loading}
                 >
                   Login
                 </button>
                 <button
-                  className="w-1/3 py-2 ml-2 text-white transition-colors duration-300 bg-opacity-50 rounded-lg shadow-xl bg-verdigris hover:bg-red-700 backdrop-blur-md"
+                  className="w-1/3 py-2 ml-2 text-white bg-opacity-50 rounded-lg shadow-xl bg-verdigris hover:bg-red-700 backdrop-blur-md"
                   onClick={handleClose}
                 >
                   Close
