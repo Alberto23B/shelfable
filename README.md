@@ -1,4 +1,4 @@
-# The Good Reads
+# Shelfable
 
 ## Table of Contents
 
@@ -12,7 +12,7 @@
 
 ## General Information
 
-The Good Reads is a full-stack application designed to fetch books using the Google Books API. Users can search for books and save their favorites in a personal area. The application requires login credentials to manage the user's personal favorites list.
+Shelfable is a full-stack application designed to fetch books using the Google Books API. Users can search for books and save their favorites in a personal area. The application requires login credentials to manage the user's personal favorites list.
 
 This is the second part of the project, focusing on both the frontend and backend functionalities, ensuring smooth integration and user experience.
 
