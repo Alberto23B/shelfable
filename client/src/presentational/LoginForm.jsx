@@ -6,11 +6,13 @@ import {
   ShowElementsDispatchContext,
 } from "../context/ShowElementsContext";
 import { DialogDispatchContext } from "../context/DialogContext";
+import { AuthContext } from "../context/AuthContext";
 
 export default function LoginForm() {
   const showElements = useContext(ShowElementsContext);
   const dispatchShowElements = useContext(ShowElementsDispatchContext);
   const dispatchDialog = useContext(DialogDispatchContext);
+  const { loading } = useContext(AuthContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -91,7 +93,10 @@ export default function LoginForm() {
                 />
               </div>
               <div className="flex justify-center mt-8 text-lg text-black">
-                <button className="w-1/2 py-2 text-white transition-colors duration-300 bg-[#2faeb7] bg-opacity-50 shadow-xl rounded-lg backdrop-blur-md">
+                <button
+                  className="w-1/2 py-2 text-white transition-colors duration-300 bg-[#2faeb7] bg-opacity-50 shadow-xl rounded-lg backdrop-blur-md"
+                  disabled={loading}
+                >
                   Login
                 </button>
                 <button
