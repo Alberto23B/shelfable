@@ -1,6 +1,4 @@
-# The Good Reads
-
-Live demo here.
+# Shelfable
 
 ## Table of Contents
 
