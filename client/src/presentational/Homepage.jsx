@@ -1,7 +1,7 @@
 import library from "../img/library.webp";
 import Quote from "../components/Quote";
-import LoginButton from "../components/LoginButton";
-import RegistrationButton from "../components/RegistrationButton";
+import ShowLogin from "../components/ShowLogin";
+import ShowRegistration from "../components/ShowRegistration";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
@@ -23,8 +23,8 @@ export default function Homepage() {
         </h2>
         <Quote />
         <div className={isLoggedIn ? "hidden" : "flex w-full"}>
-          <LoginButton />
-          <RegistrationButton />
+          <ShowLogin />
+          <ShowRegistration />
         </div>
         <div className={isLoggedIn ? "flex flex-col items-center" : "hidden"}>
           <h2 className="text-4xl text-white">Welcome back, {username}</h2>

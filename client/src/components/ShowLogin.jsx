@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ShowElementsDispatchContext } from "../context/ShowElementsContext";
 
-export default function LoginButton() {
+export default function ShowLogin() {
   const dispatch = useContext(ShowElementsDispatchContext);
 
   const handleClick = () => {
