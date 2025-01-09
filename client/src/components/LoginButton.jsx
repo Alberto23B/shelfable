@@ -11,6 +11,7 @@ export default function LoginButton() {
   return (
     <button
       onClick={handleClick}
+      aria-label="login"
       className="w-1/3 h-16 mx-auto bg-white border rounded-lg dark:text-black"
     >
       Login

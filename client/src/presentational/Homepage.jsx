@@ -10,7 +10,7 @@ export default function Homepage() {
 
   return (
     <div className="flex flex-col items-center justify-center mx-5 md:flex-row">
-      <img src={library}></img>
+      <img src={library} alt="an illustration of a library"></img>
       <div className="flex flex-col items-center">
         <h2 className="text-4xl text-white">
           Book search engine built upon Google Books API

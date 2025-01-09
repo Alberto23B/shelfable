@@ -84,6 +84,7 @@ export default function SearchBar({ setData, setIsLoading }) {
         <button
           className="block h-16 px-4 md:my-2 text-white rounded-md md:ml-4 shadow-sm dark:bg-iron shadow-slate-600 bg-[#2faeb7] w-fit "
           type="submit"
+          aria-label="search"
           onClick={handleClick}
         >
           <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>

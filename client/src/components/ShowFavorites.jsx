@@ -27,6 +27,7 @@ export default function ShowFavorites() {
   return (
     <button
       type="submit"
+      aria-label="show-favorites"
       className={
         showElements.showFavorites
           ? showFavoritesClass.active
