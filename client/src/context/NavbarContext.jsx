@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { createContext, useReducer } from "react";
 export const NavbarContext = createContext(null);
 export const NavbarDispatchContext = createContext(null);
@@ -47,6 +48,10 @@ const initialNavbarState = {
   theme: localStorage.getItem("theme"),
   showContacts: false,
   showAbout: false,
+};
+
+NavbarContextProvider.propTypes = {
+  children: PropTypes.object,
 };
 
 export function NavbarContextProvider({ children }) {

@@ -1,5 +1,16 @@
 import { useContext } from "react";
 import { DisplayContext } from "../context/DisplayContext";
+import { DialogDispatchContext } from "../context/DialogContext";
+import PropTypes from "prop-types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faX } from "@fortawesome/free-solid-svg-icons";
+
+AddOrDeleteFavorite.propTypes = {
+  data: PropTypes.object,
+  setFavorites: PropTypes.func,
+  isFavorite: PropTypes.bool,
+};
 
 export default function AddOrDeleteFavorite({
   data,
@@ -7,11 +18,12 @@ export default function AddOrDeleteFavorite({
   isFavorite,
 }) {
   const display = useContext(DisplayContext);
+  const dispatch = useContext(DialogDispatchContext);
 
   const displayStyle = {
     icons:
-      "px-2 text-black rounded-md dark:shadow-none bg-cream-200 dark:bg-slate-900 dark:text-white w-fit",
-    list: "px-2 mx-2 text-black rounded-md dark:shadow-none bg-cream-200 dark:bg-slate-900 dark:text-white w-fit",
+      "px-2 text-xl font-thin text-white h-8 dark:shadow-none bg-[#2faeb7] dark:bg-slate-900 dark:text-white w-16",
+    list: "px-2 mx-2 text-white dark:shadow-none bg-[#2faeb7] dark:bg-slate-900 dark:text-white w-16",
   };
 
   const handleAddFavorites = async (data) => {
@@ -29,6 +41,7 @@ export default function AddOrDeleteFavorite({
     }
 
     setFavorites((prev) => [...prev, data]);
+    dispatch({ type: "favorites/add" });
   };
 
   const handleDeleteFavorites = async (data) => {
@@ -46,6 +59,7 @@ export default function AddOrDeleteFavorite({
     }
 
     setFavorites((prev) => prev.filter((fav) => fav.info !== data.info));
+    dispatch({ type: "favorites/remove" });
   };
 
   return (
@@ -58,7 +72,11 @@ export default function AddOrDeleteFavorite({
           : () => handleAddFavorites(data)
       }
     >
-      {isFavorite ? "X" : "♡"}
+      {isFavorite ? (
+        <FontAwesomeIcon icon={faX} size="sm" />
+      ) : (
+        <FontAwesomeIcon icon={faHeart} size="sm" />
+      )}
     </button>
   );
 }

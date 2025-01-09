@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { createContext, useReducer } from "react";
 export const PageContext = createContext(null);
 export const PageDispatchContext = createContext(null);
@@ -6,7 +7,7 @@ function pageReducer(page, action) {
   switch (action.type) {
     case "set": {
       return {
-        page: 1,
+        ...page,
         elementsInPage: action.elements,
       };
     }
@@ -31,6 +32,10 @@ function pageReducer(page, action) {
 const initialPage = {
   page: 1,
   elementsInPage: [],
+};
+
+PageContextProvider.propTypes = {
+  children: PropTypes.object,
 };
 
 export function PageContextProvider({ children }) {

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { createContext, useReducer } from "react";
 export const DisplayContext = createContext(null);
 export const DisplayDispatchContext = createContext(null);
@@ -17,6 +18,10 @@ function displayReducer(display, action) {
 }
 
 const initialDisplay = "icons";
+
+DisplayContextProvider.propTypes = {
+  children: PropTypes.object,
+};
 
 export function DisplayContextProvider({ children }) {
   const [display, dispatch] = useReducer(displayReducer, initialDisplay);

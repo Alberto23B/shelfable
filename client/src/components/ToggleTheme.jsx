@@ -1,5 +1,7 @@
 import { NavbarDispatchContext, NavbarContext } from "../context/NavbarContext";
 import { useContext, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 
 export default function ToggleTheme() {
   const dispatch = useContext(NavbarDispatchContext);
@@ -17,27 +19,41 @@ export default function ToggleTheme() {
     }
   }, [theme]);
 
-  const handleChange = (e) => {
-    dispatch({ type: `theme/to${e.target.value}` });
+  const handleChange = () => {
+    if (theme === "light") {
+      dispatch({ type: `theme/toDark` });
+    } else {
+      dispatch({ type: `theme/toLight` });
+    }
   };
 
   return (
     <>
-      <label htmlFor="theme" className="pl-4">
-        Theme:
-      </label>
-      <select
-        className="ml-2 mr-4 dark:bg-cadet"
-        id="theme"
-        onChange={handleChange}
-      >
-        <option key={1} selected={theme === "light"} value={"Light"}>
-          Light
-        </option>
-        <option key={2} selected={theme === "dark"} value={"Dark"}>
-          Dark
-        </option>
-      </select>
+      <div className="z-0 inline ">
+        {theme === "light" ? (
+          <>
+            <button
+              id="light"
+              value={"Dark"}
+              onClick={handleChange}
+              className="bg-[#2faeb7] w-16 md:w-24 hover:bg-cadet dark:bg-iron text-white shadow-sm shadow-slate-600 top-[2px]  rounded-lg md:h-16"
+            >
+              <FontAwesomeIcon icon={faSun}></FontAwesomeIcon>
+            </button>
+          </>
+        ) : (
+          <>
+            <button
+              id="dark"
+              value={"Light"}
+              onClick={handleChange}
+              className="bg-[#2faeb7] w-16 md:w-24 hover:bg-cadet dark:bg-iron text-white shadow-sm shadow-slate-600 top-[2px]  rounded-lg md:h-16"
+            >
+              <FontAwesomeIcon icon={faMoon}></FontAwesomeIcon>
+            </button>
+          </>
+        )}
+      </div>
     </>
   );
 }

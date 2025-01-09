@@ -5,9 +5,9 @@ export default function Contacts() {
   const { showAbout } = useContext(NavbarContext);
   const aboutClass = {
     absolute:
-      "absolute z-10 w-full md:w-1/3 border border-white rounded-lg shadow-sm bg-cream-100 dark:bg-cadet top-12 left-2",
+      "absolute top-12 left-2 z-10 w-5/6 md:w-1/3 border border-white rounded-lg shadow-sm bg-cream-100 dark:bg-cadet",
     hidden:
-      "hidden z-10 w-full md:w-1/3 border border-white rounded-lg shadow-sm bg-cream-100 dark:bg-cadet top-12 left-2",
+      "hidden z-10 top-12 left-2 w-5/6 md:w-1/3 border border-white rounded-lg shadow-sm bg-cream-100 dark:bg-cadet",
   };
 
   return (
