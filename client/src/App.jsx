@@ -8,8 +8,8 @@ import { DialogContextProvider } from "./context/DialogContext";
 import { ShowElementsContextProvider } from "./context/ShowElementsContext";
 import "./App.css";
 import Main from "./presentational/Main";
-import LoginForm from "./presentational/LoginForm";
-import RegistrationForm from "./presentational/RegistrationForm";
+import LoginForm from "./components/LoginForm";
+import RegistrationForm from "./components/RegistrationForm";
 import UserSettings from "./presentational/UserSettings";
 import { AuthContextProvider } from "./context/AuthContext";
 
