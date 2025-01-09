@@ -22,8 +22,8 @@ export default function AddOrDeleteFavorite({
 
   const displayStyle = {
     icons:
-      "px-2 text-xl font-thin text-white h-8 dark:shadow-none bg-verdigris dark:bg-slate-900 dark:text-white w-16",
-    list: "px-2 mx-2 text-white dark:shadow-none bg-verdigris dark:bg-slate-900 dark:text-white w-16",
+      "px-2 text-xl font-thin text-white h-8 bg-verdigris rounded-lg dark:shadow-none hover:bg-slate-700 dark:bg-slate-900 dark:text-white w-16",
+    list: "px-2 mx-2 text-white rounded-lg bg-verdigris hover:bg-slate-700 dark:shadow-none dark:bg-slate-900 dark:text-white w-16",
   };
 
   const handleAddFavorites = async (data) => {

@@ -46,8 +46,8 @@ export default function Card({ data, i, favorites, setFavorites }) {
 
   const moreAspectClass = {
     icons:
-      "hidden w-16 h-8 px-2 mr-2 sm:inline-block bg-verdigris text-black dark:bg-slate-900 dark:text-white dark:shadow-none",
-    list: "w-16 h-2/5 px-2 mx-2 bg-verdigris text-black dark:bg-slate-900 dark:text-white dark:shadow-none",
+      "hidden w-16 h-8 px-2 mr-2 sm:inline-block rounded-lg bg-verdigris text-black hover:bg-slate-700 dark:bg-slate-900 dark:text-white dark:shadow-none",
+    list: "w-16 h-2/5 px-2 mx-2 rounded-lg bg-verdigris text-black hover:bg-slate-700 dark:bg-slate-900 dark:text-white dark:shadow-none",
   };
 
   return (
