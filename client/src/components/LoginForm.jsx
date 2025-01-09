@@ -94,7 +94,8 @@ export default function LoginForm() {
               </div>
               <div className="flex justify-center mt-8 text-lg text-black">
                 <button
-                  className="w-1/2 py-2 text-white transition-colors duration-300 bg-[#2faeb7] bg-opacity-50 shadow-xl rounded-lg backdrop-blur-md"
+                  type="submit"
+                  className="w-1/2 py-2 text-white transition-colors duration-300 bg-[#2faeb7] bg-opacity-50 shadow-xl rounded-lg backdrop-blur-md hover:bg-slate-700"
                   disabled={loading}
                 >
                   Login

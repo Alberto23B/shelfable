@@ -109,7 +109,7 @@ export default function RegistrationForm() {
               <div className="flex justify-center mt-8 text-lg text-black">
                 <button
                   type="submit"
-                  className="w-1/2 py-2 text-white transition-colors duration-300 bg-[#2faeb7] bg-opacity-50 shadow-xl rounded-lg backdrop-blur-md hover:bg-yellow-600"
+                  className="w-1/2 py-2 text-white transition-colors duration-300 bg-[#2faeb7] bg-opacity-50 shadow-xl rounded-lg backdrop-blur-md"
                 >
                   Register
                 </button>
