@@ -81,6 +81,7 @@ export default function LoginForm() {
                   placeholder="username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
+                  required
                 />
               </div>
               <div className="mb-4 text-lg">
@@ -92,6 +93,7 @@ export default function LoginForm() {
                   placeholder="*********"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
               </div>
               <div className="flex justify-center mt-8 text-lg text-black">

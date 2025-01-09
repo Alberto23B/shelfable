@@ -16,11 +16,30 @@ export default function RegistrationForm() {
   const showElements = useContext(ShowElementsContext);
   const dispatchShowElements = useContext(ShowElementsDispatchContext);
   const dispatchDialog = useContext(DialogDispatchContext);
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [passwordCheck, setPasswordCheck] = useState("");
+
   const [loading, setLoading] = useState(false);
+
+  const [focus, setFocus] = useState(null);
+
+  const infoText = {
+    username: `Must be: 
+        - At least six character long
+        - No spaces
+        - Only letters, digits and .-_`,
+    password: `Must be: 
+    - At least six character long
+    - At least one UpperCase letter
+    - At least one LowerCase letter
+    - At least a digit
+    - At least a special character #?!@$%^&*-`,
+    email: `Only valid format: 
+    name@domain.x / name@domain.x.y`,
+  };
 
   const handleClose = (e) => {
     e.preventDefault();
@@ -28,16 +47,39 @@ export default function RegistrationForm() {
   };
 
   const handleSubmit = async (e) => {
-    if (
-      !validateUsername(username) ||
-      !validatePassword(password, passwordCheck) ||
-      !validateEmail(email)
-    ) {
-      alert("invalid input");
-      return;
-    }
     e.preventDefault();
     setLoading(true);
+
+    if (!validateUsername(username)) {
+      alert(`Invalid Username
+        Must be: 
+        - At least six character long
+        - No spaces
+        - Only letters, digits and .-_
+        `);
+      return;
+    }
+
+    if (!validatePassword(password, passwordCheck)) {
+      alert(`Invalid Password
+        Must be: 
+        - At least six character long
+        - At least one UpperCase letter
+        - At least one LowerCase letter
+        - At least a digit
+        - At least a special character #?!@$%^&*-
+        `);
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      alert(`Invalid Email
+        Only valid format: 
+        name@domain.x / name@domain.x.y
+        `);
+      return;
+    }
+
     try {
       const response = await fetch("/api/register", {
         method: "POST",
@@ -82,8 +124,8 @@ export default function RegistrationForm() {
       }
     >
       <div className="z-50 flex items-center justify-center bg-no-repeat bg-cover w-ful">
-        <div className="px-16 py-10 bg-gray-800 bg-opacity-50 shadow-lg backdrop-blur rounded-xl max-sm:px-8">
-          <div className="text-white">
+        <div className="w-2/3 px-16 py-10 bg-gray-800 bg-opacity-50 shadow-lg backdrop-blur rounded-xl max-sm:px-8 ">
+          <div className="w-full text-center text-white">
             <div className="flex flex-col items-center mb-8">
               <FontAwesomeIcon icon={faBook} size="xl" />
               <h1 className="mb-2 text-2xl">shelfable</h1>
@@ -99,6 +141,7 @@ export default function RegistrationForm() {
                   placeholder="username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
+                  onFocus={() => setFocus("username")}
                   required
                 />
               </div>
@@ -111,6 +154,8 @@ export default function RegistrationForm() {
                   placeholder="id@email.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  onFocus={() => setFocus("email")}
+                  required
                 />
               </div>
               <div className="mb-4 text-lg">
@@ -122,6 +167,8 @@ export default function RegistrationForm() {
                   placeholder="*********"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  onFocus={() => setFocus("password")}
+                  required
                 />
               </div>
               <div className="mb-4 text-lg">
@@ -133,7 +180,11 @@ export default function RegistrationForm() {
                   placeholder="*********"
                   value={passwordCheck}
                   onChange={(e) => setPasswordCheck(e.target.value)}
+                  required
                 />
+              </div>
+              <div id="infos">
+                <p>{infoText[focus]}</p>
               </div>
               <div className="flex justify-center mt-8 text-lg text-black">
                 <button
