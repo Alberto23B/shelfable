@@ -63,7 +63,7 @@ export default function RegistrationForm() {
       }
     >
       <div className="flex items-center justify-center bg-no-repeat bg-cover w-ful">
-        <div className="px-16 py-10 bg-gray-800 bg-opacity-50 shadow-lg rounded-xl backdrop-blur-md max-sm:px-8">
+        <div className="px-16 py-10 bg-gray-800 bg-opacity-50 shadow-lg rounded-xl max-sm:px-8">
           <div className="text-white">
             <div className="flex flex-col items-center mb-8">
               <FontAwesomeIcon icon={faBook} size="xl" />

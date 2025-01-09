@@ -29,7 +29,7 @@ export default function ToggleTheme() {
 
   return (
     <>
-      <div className="inline ">
+      <div className="z-0 inline ">
         {theme === "light" ? (
           <>
             <button

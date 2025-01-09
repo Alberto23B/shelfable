@@ -48,7 +48,7 @@ export default function UserSettings() {
         showElements.showUserSettings ? "absolute w-full top-1/4" : "hidden"
       }
     >
-      <div className="flex items-center justify-center bg-no-repeat bg-cover w-ful">
+      <div className="relative z-50 flex items-center justify-center bg-no-repeat bg-cover w-ful">
         <div className="px-16 py-10 bg-gray-800 bg-opacity-50 shadow-lg rounded-xl backdrop-blur-md max-sm:px-8">
           <div className="text-white">
             <div className="flex flex-col items-center mb-8">
@@ -63,7 +63,7 @@ export default function UserSettings() {
               )}
               <ToggleTheme />
             </div>
-            <div className="flex justify-center mt-8 text-lg text-black">
+            <div className="flex justify-center gap-2 mt-8 text-lg text-black">
               <button
                 className={
                   isLoggedIn

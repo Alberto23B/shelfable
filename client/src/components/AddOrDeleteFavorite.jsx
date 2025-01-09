@@ -23,7 +23,7 @@ export default function AddOrDeleteFavorite({
   const displayStyle = {
     icons:
       "px-2 text-xl font-thin text-white h-8 dark:shadow-none bg-[#2faeb7] dark:bg-slate-900 dark:text-white w-16",
-    list: "px-2 mx-2 text-white dark:shadow-none bg-[#2faeb7] dark:bg-slate-900 dark:text-white h-2/5 w-16",
+    list: "px-2 mx-2 text-white dark:shadow-none bg-[#2faeb7] dark:bg-slate-900 dark:text-white w-16",
   };
 
   const handleAddFavorites = async (data) => {
