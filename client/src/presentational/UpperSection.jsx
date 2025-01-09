@@ -1,5 +1,5 @@
 import Header from "./Header";
-import Dialog from "../components/Dialog";
+import Alert from "../components/Alert";
 import SearchSection from "./SearchSection";
 import ShowFavorites from "../components/ShowFavorites";
 import ShowUserSettings from "../components/ShowUserSettings";
@@ -20,7 +20,7 @@ export default function UpperSection({ setData, setIsLoading }) {
       id="upper"
       className="flex flex-wrap items-center pt-5 justify-evenly md:justify-between md:mx-20 md:flex-nowrap"
     >
-      <Dialog />
+      <Alert />
       <Header />
       <div className="flex flex-row md:hidden">
         <div className={isLoggedIn ? "" : "hidden"}>
