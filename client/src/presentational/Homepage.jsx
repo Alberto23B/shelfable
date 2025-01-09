@@ -12,8 +12,6 @@ export default function Homepage() {
     <div className="flex flex-col items-center justify-center mx-5 lg:flex-row">
       <img
         src={library}
-        width="950vw"
-        height="950vh"
         className="aspect-square"
         alt="an illustration of a library"
       ></img>
@@ -21,7 +19,9 @@ export default function Homepage() {
         <h2 className="text-4xl text-white">
           Book search engine built upon Google Books API
         </h2>
-        <Quote />
+        <div className="z-0 flex justify-center">
+          <Quote />
+        </div>
         <div className={isLoggedIn ? "hidden" : "flex w-full"}>
           <ShowLogin />
           <ShowRegistration />

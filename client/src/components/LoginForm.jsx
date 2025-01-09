@@ -1,4 +1,4 @@
-import { faBook } from "@fortawesome/free-solid-svg-icons";
+import { faBook, faKey, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useState } from "react";
 import {
@@ -63,8 +63,8 @@ export default function LoginForm() {
     <div
       className={showElements.showLogin ? "absolute w-full top-1/4" : "hidden"}
     >
-      <div className="flex items-center justify-center bg-no-repeat bg-cover w-ful">
-        <div className="px-16 py-10 bg-gray-800 bg-opacity-50 shadow-lg rounded-xl backdrop-blur max-sm:px-8">
+      <div className="z-40 flex items-center justify-center bg-no-repeat bg-cover w-ful">
+        <div className="z-40 px-16 py-10 bg-gray-800 bg-opacity-50 shadow-lg rounded-xl backdrop-blur max-sm:px-8">
           <div className="text-white">
             <div className="flex flex-col items-center mb-8">
               <FontAwesomeIcon icon={faBook} size="xl" className="mb-4" />
@@ -73,6 +73,10 @@ export default function LoginForm() {
             </div>
             <form onSubmit={handleSubmit}>
               <div className="mb-4 text-lg">
+                <FontAwesomeIcon
+                  icon={faUser}
+                  className="absolute z-50 w-4 h-4 pt-4 pl-4 pointer-events-none"
+                />
                 <input
                   className="px-6 py-2 text-center bg-black border-none rounded-lg shadow-lg outline-none focus:bg-slate-700 text-inherit placeholder-slate-400 backdrop-blur"
                   aria-label="input username"
@@ -85,6 +89,10 @@ export default function LoginForm() {
                 />
               </div>
               <div className="mb-4 text-lg">
+                <FontAwesomeIcon
+                  icon={faKey}
+                  className="absolute z-50 w-4 h-4 pt-4 pl-4 pointer-events-none"
+                />
                 <input
                   className="px-6 py-2 text-center bg-black border-none rounded-lg shadow-lg outline-none focus:bg-slate-700 text-inherit placeholder-slate-400 backdrop-blur"
                   aria-label="input password"

@@ -1,4 +1,9 @@
-import { faBook } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBook,
+  faKey,
+  faMailBulk,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useState } from "react";
 import {
@@ -123,65 +128,84 @@ export default function RegistrationForm() {
         showElements.showRegistration ? "absolute w-full top-1/4" : "hidden"
       }
     >
-      <div className="z-50 flex items-center justify-center bg-no-repeat bg-cover w-ful">
-        <div className="w-2/3 px-16 py-10 bg-gray-800 bg-opacity-50 shadow-lg backdrop-blur rounded-xl max-sm:px-8 ">
-          <div className="w-full text-center text-white">
-            <div className="flex flex-col items-center mb-8">
+      <div className="z-40 flex items-center justify-center bg-no-repeat bg-cover">
+        <div className="z-40 w-full px-16 py-10 bg-gray-800 bg-opacity-50 shadow-lg md:w-2/3 backdrop-blur rounded-xl max-sm:px-8 ">
+          <div className="w-full text-center text-white ">
+            <div className="flex flex-col items-center mb-8 ">
               <FontAwesomeIcon icon={faBook} size="xl" />
               <h1 className="mb-2 text-2xl">shelfable</h1>
               <span className="text-gray-300">Enter Profile Details</span>
             </div>
             <form action="#" onSubmit={handleSubmit}>
-              <div className="mb-4 text-lg">
-                <input
-                  className="px-6 py-2 text-center bg-black border-none rounded-lg shadow-lg outline-none focus:bg-slate-700 text-inherit placeholder-slate-400 backdrop-blur-md"
-                  aria-label="input username"
-                  type="text"
-                  name="username"
-                  placeholder="username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  onFocus={() => setFocus("username")}
-                  required
-                />
-              </div>
-              <div className="mb-4 text-lg">
-                <input
-                  className="px-6 py-2 text-center bg-black border-none rounded-lg shadow-lg outline-none focus:bg-slate-700 text-inherit placeholder-slate-400 backdrop-blur-md"
-                  aria-label="input email"
-                  type="text"
-                  name="email"
-                  placeholder="id@email.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  onFocus={() => setFocus("email")}
-                  required
-                />
-              </div>
-              <div className="mb-4 text-lg">
-                <input
-                  className="px-6 py-2 text-center bg-black border-none rounded-lg shadow-lg outline-none focus:bg-slate-700 text-inherit placeholder-slate-400 backdrop-blur-md"
-                  aria-label="input password"
-                  type="password"
-                  name="password"
-                  placeholder="*********"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  onFocus={() => setFocus("password")}
-                  required
-                />
-              </div>
-              <div className="mb-4 text-lg">
-                <input
-                  className="px-6 py-2 text-center bg-black border-none rounded-lg shadow-lg outline-none focus:bg-slate-700 text-inherit placeholder-slate-400 backdrop-blur-md"
-                  aria-label="input password"
-                  type="password"
-                  name="password"
-                  placeholder="*********"
-                  value={passwordCheck}
-                  onChange={(e) => setPasswordCheck(e.target.value)}
-                  required
-                />
+              <div className="grid-cols-2 gap-2 md:grid ">
+                <div className="mb-4 text-sm md:text-lg">
+                  <FontAwesomeIcon
+                    icon={faUser}
+                    className="absolute z-50 w-4 h-4 pt-4 pl-4 pointer-events-none"
+                  />
+                  <input
+                    className="py-2 text-center bg-black border-none rounded-lg shadow-lg outline-none lg:px-6 focus:bg-slate-700 text-inherit placeholder-slate-400 backdrop-blur-md"
+                    aria-label="input username"
+                    type="text"
+                    name="username"
+                    placeholder="username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    onFocus={() => setFocus("username")}
+                    required
+                  />
+                </div>
+                <div className="mb-4 text-sm md:text-lg">
+                  <FontAwesomeIcon
+                    icon={faKey}
+                    className="absolute z-50 w-4 h-4 pt-4 pl-4 pointer-events-none"
+                  />
+                  <input
+                    className="py-2 text-center bg-black border-none rounded-lg shadow-lg outline-none lg:px-6 focus:bg-slate-700 text-inherit placeholder-slate-400 backdrop-blur-md"
+                    aria-label="input password"
+                    type="password"
+                    name="password"
+                    placeholder="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    onFocus={() => setFocus("password")}
+                    required
+                  />
+                </div>
+                <div className="mb-4 text-sm md:text-lg">
+                  <FontAwesomeIcon
+                    icon={faMailBulk}
+                    className="absolute z-50 w-4 h-4 pt-4 pl-4 pointer-events-none"
+                  />
+                  <input
+                    className="py-2 text-center bg-black border-none rounded-lg shadow-lg outline-none lg:px-6 focus:bg-slate-700 text-inherit placeholder-slate-400 backdrop-blur-md"
+                    aria-label="input email"
+                    type="text"
+                    name="email"
+                    placeholder="id@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    onFocus={() => setFocus("email")}
+                    required
+                  />
+                </div>
+                <div className="mb-4 text-sm md:text-lg">
+                  <FontAwesomeIcon
+                    icon={faKey}
+                    className="absolute z-50 w-4 h-4 pt-4 pl-4 pointer-events-none"
+                  />
+                  <input
+                    className="py-2 text-center bg-black border-none rounded-lg shadow-lg outline-none lg:px-6 focus:bg-slate-700 text-inherit placeholder-slate-400 backdrop-blur-md"
+                    aria-label="repeat password"
+                    type="password"
+                    name="password"
+                    placeholder="repeat password"
+                    value={passwordCheck}
+                    onChange={(e) => setPasswordCheck(e.target.value)}
+                    onFocus={() => setFocus("password")}
+                    required
+                  />
+                </div>
               </div>
               <div id="infos">
                 <p>{infoText[focus]}</p>
