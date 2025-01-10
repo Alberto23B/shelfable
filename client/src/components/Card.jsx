@@ -30,8 +30,8 @@ export default function Card({ data, i, favorites, setFavorites }) {
   };
 
   const containerAspectClass = {
-    icons: "flex flex-col py-2 justify-between w-full",
-    list: "flex w-full",
+    icons: "flex flex-col py-2 justify-between w-5/6",
+    list: "flex py-2 w-full",
   };
 
   const buttonsAspectClass = {
@@ -42,7 +42,7 @@ export default function Card({ data, i, favorites, setFavorites }) {
   const imageAspectClass = {
     icons:
       "h-64 py-2 px-2 sm:h-32 my-auto mr-2 rounded-l-lg sm:w-24 sm:aspect-square",
-    list: "object-cover h-32 my-auto mr-2 rounded-l-lg sm:max-w-24 aspect-square",
+    list: "py-2 px-2 h-32 my-auto mr-2 rounded-l-lg sm:max-w-24 aspect-square",
   };
 
   const moreAspectClass = {
