@@ -8,9 +8,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (req, res) => res.send("Express on Vercel"));
-
 app.use("/api", api);
+
+app.get("/", (req, res) => res.send("Express on Vercel"));
 
 //Error creation middleware
 app.use((req, res, next) => {
