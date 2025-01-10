@@ -9,6 +9,8 @@ import { DialogDispatchContext } from "../context/DialogContext";
 import { AuthContext } from "../context/AuthContext";
 
 export default function LoginForm() {
+  const url = import.meta.env.VITE_API_URL || "/api";
+
   const showElements = useContext(ShowElementsContext);
   const dispatchShowElements = useContext(ShowElementsDispatchContext);
   const dispatchDialog = useContext(DialogDispatchContext);
@@ -24,7 +26,7 @@ export default function LoginForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("/api/login", {
+      const response = await fetch(`${url}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -17,6 +17,8 @@ export default function AddOrDeleteFavorite({
   setFavorites,
   isFavorite,
 }) {
+  const url = import.meta.env.VITE_API_URL || "/api";
+
   const display = useContext(DisplayContext);
   const dispatch = useContext(DialogDispatchContext);
 
@@ -27,7 +29,7 @@ export default function AddOrDeleteFavorite({
   };
 
   const handleAddFavorites = async (data) => {
-    const response = await fetch("/api", {
+    const response = await fetch(url, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {

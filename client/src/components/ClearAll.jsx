@@ -7,6 +7,8 @@ ClearAll.propTypes = {
 };
 
 export default function ClearAll({ setFavorites }) {
+  const url = import.meta.env.VITE_API_URL || "/api";
+
   const alertRef = useRef(null);
   const dispatch = useContext(DialogDispatchContext);
 
@@ -20,7 +22,7 @@ export default function ClearAll({ setFavorites }) {
   };
 
   const handleClearAll = async () => {
-    await fetch("/api/all", {
+    await fetch(`${url}/all`, {
       method: "DELETE",
     });
     setFavorites([]);

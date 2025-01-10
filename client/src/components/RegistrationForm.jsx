@@ -18,6 +18,8 @@ import {
 } from "../helpers/validation";
 
 export default function RegistrationForm() {
+  const url = import.meta.env.VITE_API_URL || "/api";
+
   const showElements = useContext(ShowElementsContext);
   const dispatchShowElements = useContext(ShowElementsDispatchContext);
   const dispatchDialog = useContext(DialogDispatchContext);
@@ -86,7 +88,7 @@ export default function RegistrationForm() {
     }
 
     try {
-      const response = await fetch("/api/register", {
+      const response = await fetch(`${url}/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
