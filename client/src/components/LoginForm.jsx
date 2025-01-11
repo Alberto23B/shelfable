@@ -51,9 +51,9 @@ export default function LoginForm() {
       dispatchDialog({ type: "user/login" });
       dispatchShowElements({ type: "hideLogin" });
 
-      // if (data.redirectUrl) {
-      //   window.location.href = data.redirectUrl;
-      // }
+      if (data.redirectUrl) {
+        window.location.href = data.redirectUrl;
+      }
 
       return data;
     } catch (e) {
