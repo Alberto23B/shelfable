@@ -2,3 +2,8 @@ node_modules
 server/config.env
 server/*.env
 client/.env
+
+client/.vercel/project.json
+client/.vercel/README.txt
+server/.vercel/project.json
+server/.vercel/README.txt
