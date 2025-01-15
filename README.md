@@ -1,7 +1,5 @@
 # Shelfable
 
-IMPORTANT: Due to issues during deployment the last working dev environment version is at commit tagget v1
-
 ## Table of Contents
 
 - General Info
