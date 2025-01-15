@@ -48,8 +48,11 @@ export default function LoginForm() {
       }
 
       const data = await response.json();
-      dispatchDialog({ type: "user/login" });
-      dispatchShowElements({ type: "hideLogin" });
+
+      if (data.success) {
+        dispatchDialog({ type: "user/login" });
+        dispatchShowElements({ type: "hideLogin" });
+      }
 
       if (data.redirectUrl) {
         window.location.href = data.redirectUrl;
