@@ -53,7 +53,7 @@ export default function ClearAll({ setFavorites }) {
         </div>
       </dialog>
       <button
-        className="px-4 m-2 text-white rounded-md w-36 h-fit bg-verdigris dark:bg-iron"
+        className="px-4 m-2 text-white rounded-md w-36 h-fit bg-verdigris hover:bg-slate-700 dark:bg-iron"
         onClick={toggleAlert}
       >
         Clear All
