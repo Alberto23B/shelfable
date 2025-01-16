@@ -24,7 +24,9 @@ export default function UserSettings() {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch(`${url}api/logout`);
+      const response = await fetch(`${url}api/logout`, {
+        credentials: "include",
+      });
 
       if (!response.ok) {
         alert("failed to logout");

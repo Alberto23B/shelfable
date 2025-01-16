@@ -35,6 +35,7 @@ export default function AddOrDeleteFavorite({
       headers: {
         "Content-type": "application/json",
       },
+      credentials: "include",
     });
 
     if (!response.ok) {
@@ -53,6 +54,7 @@ export default function AddOrDeleteFavorite({
       headers: {
         "Content-type": "application/json",
       },
+      credentials: "include",
     });
 
     if (!response.ok) {

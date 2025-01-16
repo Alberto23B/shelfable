@@ -35,6 +35,7 @@ export default function LoginForm() {
           username: username,
           password: password,
         }),
+        credentials: "include",
       });
 
       if (response.status === 400) {
@@ -54,9 +55,9 @@ export default function LoginForm() {
         dispatchShowElements({ type: "hideLogin" });
       }
 
-      // if (data.redirectUrl) {
-      //   window.location.href = data.redirectUrl;
-      // }
+      if (data.redirectUrl) {
+        window.location.href = data.redirectUrl;
+      }
 
       return data;
     } catch (e) {
