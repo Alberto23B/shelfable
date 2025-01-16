@@ -13,24 +13,6 @@ app.use(
   })
 );
 app.use(express.json());
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-      secure: false,
-    },
-  })
-);
-
-app.use((req, res, next) => {
-  console.log(req.path);
-  console.log(req.session);
-  console.log("Session ID:", req.sessionID);
-  console.log("-------------------");
-  next();
-});
 
 app.get("/", (req, res) => res.send("Server landing page"));
 

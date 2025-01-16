@@ -22,19 +22,27 @@ connection(async (client) => {
 
   api.use(checkDbConnection);
 
-  // api.use(
-  //   session({
-  //     secret: process.env.SESSION_SECRET,
-  //     resave: false,
-  //     saveUninitialized: false,
-  //     cookie: {
-  //       secure: false,
-  //     },
-  //   })
-  // );
+  api.use(
+    session({
+      secret: process.env.SESSION_SECRET,
+      resave: true,
+      saveUninitialized: true,
+      cookie: {
+        secure: false,
+      },
+    })
+  );
 
   api.use(passport.initialize());
   api.use(passport.session());
+
+  api.use((req, res, next) => {
+    console.log(req.path);
+    console.log(req.session);
+    console.log("Session ID:", req.sessionID);
+    console.log("-------------------");
+    next();
+  });
 
   passport.use(
     new LocalStrategy(async (username, password, done) => {
