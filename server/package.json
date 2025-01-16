@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "node --env-file=.env api/index",
-    "start": "node api/index.js"
+    "server": "node --env-file=.env index",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
