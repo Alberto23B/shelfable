@@ -16,7 +16,7 @@ export default function Homepage() {
         alt="an illustration of a library"
       ></img>
       <div className="flex flex-col items-center w-2/3 h-3/4">
-        <h2 className="text-4xl text-white">
+        <h2 className="text-4xl text-center text-white md:text-start">
           Book search engine built upon Google Books API
         </h2>
         <div className="z-0 flex justify-center">
@@ -27,7 +27,9 @@ export default function Homepage() {
           <ShowRegistration />
         </div>
         <div className={isLoggedIn ? "flex flex-col items-center" : "hidden"}>
-          <h2 className="text-4xl text-white">Welcome back, {username}</h2>
+          <h2 className="text-4xl text-center text-white">
+            Welcome back, {username}
+          </h2>
         </div>
         <div></div>
       </div>

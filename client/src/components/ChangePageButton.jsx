@@ -59,12 +59,19 @@ export default function ChangePageButton({ data }) {
   return (
     <>
       {data.length > 20 && (
-        <div className="flex justify-around w-full">
-          <button onClick={handleDecrementPage} disabled={page === 1}>
+        <div className="flex justify-center w-full">
+          <button
+            onClick={handleDecrementPage}
+            disabled={page === 1}
+            className="px-5 text-white rounded-lg shadow-lg bg-robin dark:bg-cool"
+          >
             <FontAwesomeIcon icon={faArrowLeft}></FontAwesomeIcon>
           </button>
-          <p>{page}</p>
+          <div className="px-10 text-white rounded-lg shadow-lg bg-verdigris dark:bg-cool">
+            <p>{page}</p>
+          </div>
           <button
+            className="px-5 text-white rounded-lg shadow-lg bg-robin dark:bg-cool"
             onClick={handleIncrementPage}
             disabled={data.length < page * 20 || page === data.length / 20}
           >
