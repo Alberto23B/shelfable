@@ -2,7 +2,7 @@ export const checkAuthStatus = async () => {
   const url = import.meta.env.VITE_API_URL || "";
 
   try {
-    const response = await fetch(`${url}/api/auth`, {
+    const response = await fetch(`${url}api/auth`, {
       credentials: "include",
     });
 

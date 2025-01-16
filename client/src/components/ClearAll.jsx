@@ -22,7 +22,7 @@ export default function ClearAll({ setFavorites }) {
   };
 
   const handleClearAll = async () => {
-    await fetch(`${url}/api/all`, {
+    await fetch(`${url}api/all`, {
       method: "DELETE",
     });
     setFavorites([]);

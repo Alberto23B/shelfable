@@ -29,7 +29,7 @@ export default function AddOrDeleteFavorite({
   };
 
   const handleAddFavorites = async (data) => {
-    const response = await fetch(`${url}/api`, {
+    const response = await fetch(`${url}api`, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -47,7 +47,7 @@ export default function AddOrDeleteFavorite({
   };
 
   const handleDeleteFavorites = async (data) => {
-    const response = await fetch(`${url}/api`, {
+    const response = await fetch(`${url}api`, {
       method: "DELETE",
       body: JSON.stringify(data),
       headers: {
