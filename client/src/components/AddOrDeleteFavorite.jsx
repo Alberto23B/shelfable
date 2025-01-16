@@ -17,7 +17,7 @@ export default function AddOrDeleteFavorite({
   setFavorites,
   isFavorite,
 }) {
-  const url = import.meta.env.VITE_API_URL || "/api";
+  const url = import.meta.env.VITE_API_URL || "";
 
   const display = useContext(DisplayContext);
   const dispatch = useContext(DialogDispatchContext);
@@ -29,7 +29,7 @@ export default function AddOrDeleteFavorite({
   };
 
   const handleAddFavorites = async (data) => {
-    const response = await fetch(url, {
+    const response = await fetch(`${url}/api`, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -47,7 +47,7 @@ export default function AddOrDeleteFavorite({
   };
 
   const handleDeleteFavorites = async (data) => {
-    const response = await fetch("/api", {
+    const response = await fetch(`${url}/api`, {
       method: "DELETE",
       body: JSON.stringify(data),
       headers: {

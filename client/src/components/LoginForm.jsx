@@ -9,7 +9,7 @@ import { DialogDispatchContext } from "../context/DialogContext";
 import { AuthContext } from "../context/AuthContext";
 
 export default function LoginForm() {
-  const url = import.meta.env.VITE_API_URL || "/api";
+  const url = import.meta.env.VITE_API_URL || "";
 
   const showElements = useContext(ShowElementsContext);
   const dispatchShowElements = useContext(ShowElementsDispatchContext);
@@ -26,7 +26,7 @@ export default function LoginForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${url}/login`, {
+      const response = await fetch(`${url}/api/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -54,9 +54,9 @@ export default function LoginForm() {
         dispatchShowElements({ type: "hideLogin" });
       }
 
-      if (data.redirectUrl) {
-        window.location.href = data.redirectUrl;
-      }
+      // if (data.redirectUrl) {
+      //   window.location.href = data.redirectUrl;
+      // }
 
       return data;
     } catch (e) {

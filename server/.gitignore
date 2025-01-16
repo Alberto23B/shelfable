@@ -1,1 +1,3 @@
 .vercel
+npm-debug.log
+.DS_Store

@@ -7,3 +7,6 @@ client/.vercel/project.json
 client/.vercel/README.txt
 server/.vercel/project.json
 server/.vercel/README.txt
+
+npm-debug.log
+.DS_Store

@@ -25,9 +25,11 @@ connection(async (client) => {
   api.use(
     session({
       secret: process.env.SESSION_SECRET,
-      resave: true,
-      saveUninitialized: true,
-      cookie: { secure: false },
+      resave: false,
+      saveUninitialized: false,
+      cookie: {
+        secure: false,
+      },
     })
   );
 

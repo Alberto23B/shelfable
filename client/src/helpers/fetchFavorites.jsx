@@ -1,8 +1,8 @@
 export const fetchFavorites = async () => {
-  const url = import.meta.env.VITE_API_URL || "/api";
+  const url = import.meta.env.VITE_API_URL || "";
 
   try {
-    const response = await fetch(url, {
+    const response = await fetch(`${url}/api`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

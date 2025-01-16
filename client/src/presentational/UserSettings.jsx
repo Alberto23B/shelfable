@@ -10,7 +10,7 @@ import { AuthContext } from "../context/AuthContext";
 import ToggleTheme from "../components/ToggleTheme";
 
 export default function UserSettings() {
-  const url = import.meta.env.VITE_API_URL || "/api";
+  const url = import.meta.env.VITE_API_URL || "";
 
   const showElements = useContext(ShowElementsContext);
   const dispatchShowElements = useContext(ShowElementsDispatchContext);
@@ -24,7 +24,7 @@ export default function UserSettings() {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch(`${url}/logout`);
+      const response = await fetch(`${url}/api/logout`);
 
       if (!response.ok) {
         alert("failed to logout");
