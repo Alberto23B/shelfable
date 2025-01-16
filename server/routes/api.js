@@ -22,16 +22,16 @@ connection(async (client) => {
 
   api.use(checkDbConnection);
 
-  api.use(
-    session({
-      secret: process.env.SESSION_SECRET,
-      resave: false,
-      saveUninitialized: false,
-      cookie: {
-        secure: false,
-      },
-    })
-  );
+  // api.use(
+  //   session({
+  //     secret: process.env.SESSION_SECRET,
+  //     resave: false,
+  //     saveUninitialized: false,
+  //     cookie: {
+  //       secure: false,
+  //     },
+  //   })
+  // );
 
   api.use(passport.initialize());
   api.use(passport.session());
