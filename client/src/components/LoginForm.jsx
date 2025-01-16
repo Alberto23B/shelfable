@@ -7,6 +7,7 @@ import {
 } from "../context/ShowElementsContext";
 import { DialogDispatchContext } from "../context/DialogContext";
 import { AuthContext } from "../context/AuthContext";
+import TogglePassword from "./TogglePassword";
 
 export default function LoginForm() {
   const url = import.meta.env.VITE_API_URL || "";
@@ -14,9 +15,12 @@ export default function LoginForm() {
   const showElements = useContext(ShowElementsContext);
   const dispatchShowElements = useContext(ShowElementsDispatchContext);
   const dispatchDialog = useContext(DialogDispatchContext);
+
   const { loading } = useContext(AuthContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const [isVisible, setIsVisible] = useState(false);
 
   const handleClose = (e) => {
     e.preventDefault();
@@ -46,6 +50,7 @@ export default function LoginForm() {
 
       if (response.status === 401) {
         alert("Incorrect username or password");
+        return;
       }
 
       const data = await response.json();
@@ -102,12 +107,16 @@ export default function LoginForm() {
                 <input
                   className="px-6 py-2 text-center bg-black border-none rounded-lg shadow-lg outline-none focus:bg-slate-700 text-inherit placeholder-slate-400 backdrop-blur"
                   aria-label="input password"
-                  type="password"
+                  type={isVisible ? "text" : "password"}
                   name="password"
                   placeholder="*********"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
+                />
+                <TogglePassword
+                  setIsVisible={setIsVisible}
+                  isVisible={isVisible}
                 />
               </div>
               <div className="flex justify-center mt-8 text-lg text-black">

@@ -16,6 +16,7 @@ import {
   validatePassword,
   validateEmail,
 } from "../helpers/validation";
+import TogglePassword from "./TogglePassword";
 
 export default function RegistrationForm() {
   const url = import.meta.env.VITE_API_URL || "/api";
@@ -28,6 +29,8 @@ export default function RegistrationForm() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [passwordCheck, setPasswordCheck] = useState("");
+
+  const [isVisible, setIsVisible] = useState(false);
 
   const [loading, setLoading] = useState(false);
 
@@ -59,30 +62,21 @@ export default function RegistrationForm() {
 
     if (!validateUsername(username)) {
       alert(`Invalid Username
-        Must be: 
-        - At least six character long
-        - No spaces
-        - Only letters, digits and .-_
+        ${infoText.username}
         `);
       return;
     }
 
     if (!validatePassword(password, passwordCheck)) {
       alert(`Invalid Password
-        Must be: 
-        - At least six character long
-        - At least one UpperCase letter
-        - At least one LowerCase letter
-        - At least a digit
-        - At least a special character #?!@$%^&*-
+        ${infoText.password}
         `);
       return;
     }
 
     if (!validateEmail(email)) {
       alert(`Invalid Email
-        Only valid format: 
-        name@domain.x / name@domain.x.y
+        ${infoText.email}
         `);
       return;
     }
@@ -102,6 +96,7 @@ export default function RegistrationForm() {
 
       if (response.status === 400) {
         alert("Email already registered");
+        return;
       }
 
       if (response.status === 201) {
@@ -159,23 +154,6 @@ export default function RegistrationForm() {
                 </div>
                 <div className="mb-4 text-sm md:text-lg">
                   <FontAwesomeIcon
-                    icon={faKey}
-                    className="absolute z-50 w-4 h-4 pt-4 pl-4 pointer-events-none"
-                  />
-                  <input
-                    className="py-2 text-center bg-black border-none rounded-lg shadow-lg outline-none lg:px-6 focus:bg-slate-700 text-inherit placeholder-slate-400 backdrop-blur-md"
-                    aria-label="input password"
-                    type="password"
-                    name="password"
-                    placeholder="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    onFocus={() => setFocus("password")}
-                    required
-                  />
-                </div>
-                <div className="mb-4 text-sm md:text-lg">
-                  <FontAwesomeIcon
                     icon={faMailBulk}
                     className="absolute z-50 w-4 h-4 pt-4 pl-4 pointer-events-none"
                   />
@@ -198,8 +176,25 @@ export default function RegistrationForm() {
                   />
                   <input
                     className="py-2 text-center bg-black border-none rounded-lg shadow-lg outline-none lg:px-6 focus:bg-slate-700 text-inherit placeholder-slate-400 backdrop-blur-md"
+                    aria-label="input password"
+                    type={isVisible ? "text" : "password"}
+                    name="password"
+                    placeholder="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    onFocus={() => setFocus("password")}
+                    required
+                  />
+                </div>
+                <div className="mb-4 text-sm md:text-lg">
+                  <FontAwesomeIcon
+                    icon={faKey}
+                    className="absolute z-50 w-4 h-4 pt-4 pl-4 pointer-events-none"
+                  />
+                  <input
+                    className="py-2 text-center bg-black border-none rounded-lg shadow-lg outline-none lg:px-6 focus:bg-slate-700 text-inherit placeholder-slate-400 backdrop-blur-md"
                     aria-label="repeat password"
-                    type="password"
+                    type={isVisible ? "text" : "password"}
                     name="password"
                     placeholder="repeat password"
                     value={passwordCheck}
@@ -208,6 +203,10 @@ export default function RegistrationForm() {
                     required
                   />
                 </div>
+                <TogglePassword
+                  setIsVisible={setIsVisible}
+                  isVisible={isVisible}
+                />
               </div>
               <div id="infos">
                 <p>{infoText[focus]}</p>
