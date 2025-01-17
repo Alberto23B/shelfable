@@ -17,7 +17,7 @@ function themeReducer(theme, action) {
   }
 }
 
-const initialTheme = localStorage.getItem("theme");
+const initialTheme = localStorage.getItem("theme") || "light";
 
 ThemeContextProvider.propTypes = {
   children: PropTypes.object,
