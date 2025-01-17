@@ -74,7 +74,7 @@ export default function UserSettings() {
               <button
                 className={
                   isLoggedIn
-                    ? "w-fit py-2 px-2 ml-2 text-white  bg-verdigris bg-opacity-50 shadow-xl rounded-lg backdrop-blur-md hover:bg-slate-700"
+                    ? "w-fit py-2 px-2 mr-2 text-white  bg-verdigris bg-opacity-50 shadow-xl rounded-lg backdrop-blur-md hover:bg-slate-700"
                     : "hidden"
                 }
                 onClick={handleLogout}
@@ -82,7 +82,7 @@ export default function UserSettings() {
                 Logout
               </button>
               <button
-                className="px-2 py-2 ml-2 text-white bg-opacity-50 rounded-lg shadow-xl w-fit bg-verdigris hover:bg-red-700 backdrop-blur-md"
+                className="px-2 py-2 text-white bg-opacity-50 rounded-lg shadow-xl w-fit bg-verdigris hover:bg-red-700 backdrop-blur-md"
                 onClick={handleClose}
               >
                 Close
