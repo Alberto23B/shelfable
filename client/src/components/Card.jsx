@@ -30,7 +30,7 @@ export default function Card({ data, i, favorites, setFavorites }) {
   };
 
   const containerAspectClass = {
-    icons: "flex flex-col py-2 justify-between w-5/6",
+    icons: "flex flex-col py-2 mx-auto justify-between w-5/6",
     list: "flex py-2 w-full",
   };
 
