@@ -15,8 +15,11 @@ export default function Homepage() {
         className="aspect-square"
         alt="an illustration of a library"
       ></img>
-      <div className="flex flex-col items-center w-2/3 h-3/4">
-        <h2 className="text-4xl text-center text-white md:text-start">
+      <div className="flex flex-col items-center w-4/5 h-3/4">
+        <h2 className="hidden text-4xl text-center text-white md:text-start md:block">
+          A library in your pocket, built upon Google Books API
+        </h2>
+        <h2 className="text-4xl text-center text-white md:text-start md:hidden">
           A library in your pocket
         </h2>
         <div className="z-0 flex justify-center">
