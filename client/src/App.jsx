@@ -10,7 +10,7 @@ import "./App.css";
 import Main from "./presentational/Main";
 import LoginForm from "./components/LoginForm";
 import RegistrationForm from "./components/RegistrationForm";
-import UserSettings from "./presentational/UserSettings";
+import UserSettings from "./components/UserSettings";
 import { AuthContextProvider } from "./context/AuthContext";
 
 function App() {

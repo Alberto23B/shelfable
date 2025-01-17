@@ -7,7 +7,7 @@ import {
 } from "../context/ShowElementsContext";
 import { DialogDispatchContext } from "../context/DialogContext";
 import { AuthContext } from "../context/AuthContext";
-import ToggleTheme from "../components/ToggleTheme";
+import ToggleTheme from "./ToggleTheme";
 
 export default function UserSettings() {
   const url = import.meta.env.VITE_API_URL || "";
@@ -29,7 +29,10 @@ export default function UserSettings() {
       });
 
       if (!response.ok) {
-        alert("failed to logout");
+        alert("Failed to logout, or the session may be expired");
+        if (data.redirectUrl) {
+          window.location.href = data.redirectUrl;
+        }
         return;
       }
 
