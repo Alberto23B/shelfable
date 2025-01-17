@@ -17,7 +17,7 @@ export default function Homepage() {
       ></img>
       <div className="flex flex-col items-center w-2/3 h-3/4">
         <h2 className="text-4xl text-center text-white md:text-start">
-          Book search engine built upon Google Books API
+          A library in your pocket
         </h2>
         <div className="z-0 flex justify-center">
           <Quote />
