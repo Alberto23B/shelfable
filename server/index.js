@@ -18,6 +18,15 @@ app.get("/", (req, res) => res.render("Server landing page"));
 
 app.use("/api", api);
 
+if (process.env.NODE_ENV === "production") {
+  console.log("PRODUCTION MODE ACTIVE");
+  //app.use('/', express.static("/client/build"));
+  app.use(express.static("./client/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+  });
+}
+
 //Error creation middleware
 app.use((req, res, next) => {
   const error = new Error("Not Found");
