@@ -113,7 +113,11 @@ connection(async (client) => {
           console.error("error during logout", err);
           return res
             .status(401)
-            .json({ success: false, message: "Logout failed" });
+            .json({
+              success: false,
+              message: "Logout failed",
+              redirectUrl: "/",
+            });
         }
         return res.status(200).json({
           success: true,
