@@ -35,7 +35,7 @@ connection(async (client) => {
       cookie: {
         secure: process.env.NODE_ENV === "production",
         httpOnly: true,
-        sameSite: "none",
+        sameSite: "lax",
         maxAge: 3600000 * 24 * 14,
       },
     })
@@ -131,7 +131,7 @@ connection(async (client) => {
     "/register",
     async (req, res, next) => {
       try {
-        const hash = bcrypt.hash(req.body.password, 12);
+        const hash = await bcrypt.hash(req.body.password, 12);
         const user = await db.findOne({
           email: req.body.email,
         });

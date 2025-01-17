@@ -1,5 +1,4 @@
 import express from "express";
-import session from "express-session";
 import cors from "cors";
 import api from "./routes/api.js";
 
@@ -8,7 +7,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://shelfable.vercel.app/",
     credentials: true,
   })
 );
