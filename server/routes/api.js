@@ -2,6 +2,7 @@ import express from "express";
 import connection from "../db/connection.js";
 import passport from "passport";
 import session from "express-session";
+import MongoStore from "connect-mongo";
 import LocalStrategy from "passport-local";
 import { ObjectId } from "mongodb";
 import bcrypt from "bcrypt";
@@ -25,12 +26,17 @@ connection(async (client) => {
   api.use(
     session({
       secret: process.env.SESSION_SECRET,
+      store: MongoStore.create({
+        mongoUrl: process.env.ATLAS_URI,
+        collectionName: "cookies",
+      }),
       resave: false,
       saveUninitialized: true,
       cookie: {
         secure: process.env.NODE_ENV === "production",
         httpOnly: true,
         sameSite: "lax",
+        maxAge: 3600000 * 24 * 14,
       },
     })
   );
