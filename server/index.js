@@ -3,7 +3,7 @@ import session from "express-session";
 import cors from "cors";
 import api from "./routes/api.js";
 
-const PORT = process.env.PORT || 5050;
+const PORT = process.env.PORT;
 const app = express();
 
 app.use(
@@ -44,8 +44,6 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(PORT, () => {
+app.listen(PORT || 5050, () => {
   console.log(`Server is listening on port ${PORT}`);
 });
-
-export default app;
