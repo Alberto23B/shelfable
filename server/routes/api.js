@@ -35,7 +35,7 @@ connection(async (client) => {
       cookie: {
         secure: process.env.NODE_ENV === "production",
         httpOnly: true,
-        sameSite: "lax",
+        sameSite: "none",
         maxAge: 3600000 * 24 * 14,
       },
     })
