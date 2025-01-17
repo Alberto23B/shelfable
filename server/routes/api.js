@@ -37,7 +37,7 @@ connection(async (client) => {
         secure: process.env.NODE_ENV === "production",
         httpOnly: true,
         sameSite: "none",
-        maxAge: 3600000 * 24 * 14,
+        maxAge: 60000 * 15,
       },
     })
   );
