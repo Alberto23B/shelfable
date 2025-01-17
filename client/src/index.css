@@ -1,14 +1,21 @@
-@import url("https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Prosto+One&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Prosto+One&display=swap"); */
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
+    helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
+  font-display: swap;
+}
+
 html {
   background: linear-gradient(0.25turn, #485f78, #678bac, transparent),
     no-repeat center;
   background-size: cover;
+  font-family: ;
 }
 
 @layer base {
