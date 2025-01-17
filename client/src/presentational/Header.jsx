@@ -1,11 +1,11 @@
+import shelfable from "../img/shelfable.svg";
+
 export default function Header() {
   return (
-    <header className="w-1/3 mr-8 md:w-fit md:mx-4 md:mr-0 shrink">
+    <header className="mr-8 w-max md:w-fit md:mx-4 md:mr-0">
       <div className="w-full">
         <a href="/">
-          <h1 className="mb-0 font-sans text-4xl font-semibold md:text-6xl">
-            shelfable
-          </h1>
+          <img src={shelfable} alt="site header" className="px-10 lg:px-2" />
         </a>
       </div>
     </header>
