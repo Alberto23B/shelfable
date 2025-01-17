@@ -12,6 +12,7 @@ app.use(
   })
 );
 app.use(express.json());
+app.enable("trust proxy");
 
 app.get("/", (req, res) => res.json({ message: "Server landing page" }));
 
