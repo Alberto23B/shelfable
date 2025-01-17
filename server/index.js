@@ -7,7 +7,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://shelfable.vercel.app/",
+    origin: "https://shelfable.vercel.app",
     credentials: true,
   })
 );
