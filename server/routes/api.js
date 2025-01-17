@@ -25,24 +25,18 @@ connection(async (client) => {
   api.use(
     session({
       secret: process.env.SESSION_SECRET,
-      resave: true,
+      resave: false,
       saveUninitialized: true,
       cookie: {
-        secure: false,
+        secure: process.env.NODE_ENV === "production",
+        httpOnly: true,
+        sameSite: "lax",
       },
     })
   );
 
   api.use(passport.initialize());
   api.use(passport.session());
-
-  api.use((req, res, next) => {
-    console.log(req.path);
-    console.log(req.session);
-    console.log("Session ID:", req.sessionID);
-    console.log("-------------------");
-    next();
-  });
 
   passport.use(
     new LocalStrategy(async (username, password, done) => {
@@ -85,7 +79,6 @@ connection(async (client) => {
       return res.status(400).send({ message: "Already logged in" });
     }
     passport.authenticate("local", (err, user, info) => {
-      console.log("Authentication callback triggered");
       if (err) return next(err);
       if (!user) {
         console.error("No user found");
@@ -94,11 +87,9 @@ connection(async (client) => {
           .json({ success: false, message: "Login failed" });
       }
       req.logIn(user, (err) => {
-        console.log("Logging in user");
         if (err) {
           return next(err);
         }
-        console.log("Login successful");
         return res.status(200).json({
           success: true,
           message: "Login successful",
@@ -134,13 +125,12 @@ connection(async (client) => {
     "/register",
     async (req, res, next) => {
       try {
-        const hash = bcrypt.hashSync(req.body.password, 10);
+        const hash = bcrypt.hash(req.body.password, 12);
         const user = await db.findOne({
           email: req.body.email,
         });
 
         if (user) {
-          console.log("User found");
           return res.status(400).json({
             success: false,
             message: "This email is already registered",
@@ -183,16 +173,14 @@ connection(async (client) => {
   });
 
   passport.serializeUser((user, done) => {
-    console.log("serializing User");
     done(null, user._id);
   });
 
   passport.deserializeUser(async (id, done) => {
     // FORSE ORA VA BENE (05/01/2025)
-    console.log("Deserializing user");
     const user = await db.findOne({ _id: new ObjectId(id) });
     if (!user) {
-      console.log("User not found (deserialize)");
+      console.error("User not found (deserialize)");
       return;
     }
     done(null, user);
@@ -239,7 +227,6 @@ connection(async (client) => {
   });
 
   api.delete("/", async (req, res) => {
-    console.log("Delete call received");
     let identifyer = req.body.info;
     let user = req.user;
 
