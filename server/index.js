@@ -14,7 +14,7 @@ app.use(
 );
 app.use(express.json());
 
-app.get("/", (req, res) => res.render("Server landing page"));
+app.get("/", (req, res) => res.json({ message: "Server landing page" }));
 
 app.use("/api", api);
 
