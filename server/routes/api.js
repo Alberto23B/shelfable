@@ -31,7 +31,7 @@ connection(async (client) => {
         collectionName: "cookies",
       }),
       resave: false,
-      saveUninitialized: false,
+      saveUninitialized: true,
       proxy: true,
       cookie: {
         secure: process.env.NODE_ENV === "production",
