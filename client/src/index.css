@@ -66,6 +66,15 @@ html {
   .dot:nth-child(3) {
     animation-delay: 200ms;
   }
+
+  .inv-border {
+    -webkit-mask-image: radial-gradient(
+      circle at -10% 50%,
+      transparent 0,
+      transparent 16px,
+      black 0px
+    );
+  }
 }
 
 @layer utilities {
@@ -86,7 +95,7 @@ html {
   }
   .toggle-checkbox:checked {
     @apply: right-0 border-green-400;
-    right: 0;
+    right: -8px;
     border-color: #b0cac5;
   }
   .toggle-checkbox:checked + .toggle-label {
