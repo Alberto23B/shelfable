@@ -18,7 +18,7 @@ export default function UpperSection({ setData, setIsLoading }) {
   return (
     <div
       id="upper"
-      className="flex flex-wrap items-center pt-5 justify-evenly md:justify-between md:mx-20 md:flex-nowrap"
+      className="flex flex-wrap items-center pt-5 justify-evenly md:justify-between lg:mx-20 md:flex-nowrap"
     >
       <Alert />
       <Header />

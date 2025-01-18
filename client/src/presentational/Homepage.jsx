@@ -9,7 +9,7 @@ export default function Homepage() {
   const { isLoggedIn, username } = useContext(AuthContext);
 
   return (
-    <div className="flex flex-col items-center justify-center mx-5 lg:flex-row">
+    <div className="flex flex-col items-center justify-center mx-5 lg:flex-row touch-auto">
       <img
         src={library}
         className="aspect-square"
