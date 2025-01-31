@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import { checkAuthStatus } from "../helpers/checkAuthStatus";
 import PropTypes from "prop-types";
+import Loading from "../presentational/Loading";
 
 export const AuthContext = createContext();
 
@@ -9,7 +10,7 @@ AuthContextProvider.propTypes = {
 };
 
 export function AuthContextProvider({ children }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [username, setUsername] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -29,6 +30,10 @@ export function AuthContextProvider({ children }) {
     };
     fetchAuthStatus();
   }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <AuthContext.Provider value={{ isLoggedIn, username, loading }}>
