@@ -7,6 +7,7 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 ChangePageButton.propTypes = {
   data: PropTypes.array,
+  reference: PropTypes.object,
 };
 
 export default function ChangePageButton({ data }) {
@@ -34,11 +35,13 @@ export default function ChangePageButton({ data }) {
         type: "increment",
         elements: data.slice((page + 1) * 10, (page + 1) * 20),
       });
+      window.scrollTo(0, 0);
     } else {
       dispatch({
         type: "increment",
         elements: data.slice(page * 20, (page + 1) * 20),
       });
+      window.scrollTo(0, 0);
     }
   };
 
@@ -48,11 +51,13 @@ export default function ChangePageButton({ data }) {
         type: "decrement",
         elements: data.slice(0, 20),
       });
+      window.scrollTo(0, 0);
     } else {
       dispatch({
         type: "decrement",
         elements: data.slice((page - 1) * 10, (page - 1) * 20),
       });
+      window.scrollTo(0, 0);
     }
   };
 

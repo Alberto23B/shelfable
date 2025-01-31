@@ -8,11 +8,10 @@
   font-display: swap;
 }
 
-html {
-  background: linear-gradient(0.25turn, #485f78, #678bac, transparent),
-    no-repeat center;
-  background-size: cover;
-  font-family: ;
+html,
+body {
+  overflow: visible;
+  height: auto;
 }
 
 @layer base {
@@ -86,12 +85,12 @@ html {
   }
   ::-webkit-scrollbar-track {
     border-radius: 12px;
-    background-color: #e7e7e712;
+    background-color: #122939;
   }
 
   ::-webkit-scrollbar-thumb {
     border-radius: 6px;
-    background-color: #32366d;
+    background-color: #122932;
   }
   .toggle-checkbox:checked {
     @apply: right-0 border-green-400;

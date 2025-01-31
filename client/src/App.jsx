@@ -42,7 +42,7 @@ function App() {
                 <PageContextProvider>
                   <div
                     className={
-                      "bg-gradient-to-br from-[#91d2da] to-[#3cb2bc] dark:bg-gradient-to-br dark:from-black dark:to-black dark:text-stone-300 h-screen overflow-auto gutter"
+                      "bg-gradient-to-br from-[#91d2da] to-[#3cb2bc] dark:bg-gradient-to-br dark:from-black dark:to-black dark:text-stone-300 min-h-screen max-h-full gutter"
                     }
                   >
                     <UpperSection
