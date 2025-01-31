@@ -19,7 +19,7 @@ import {
 import TogglePassword from "./TogglePassword";
 
 export default function RegistrationForm() {
-  const url = import.meta.env.VITE_API_URL || "/api";
+  const url = import.meta.env.VITE_API_URL || "http://localhost:5050/";
 
   const showElements = useContext(ShowElementsContext);
   const dispatchShowElements = useContext(ShowElementsDispatchContext);

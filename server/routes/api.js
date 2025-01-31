@@ -31,12 +31,12 @@ connection(async (client) => {
         collectionName: "cookies",
       }),
       resave: false,
-      saveUninitialized: false,
+      saveUninitialized: process.env.NODE_ENV === "production" ? false : true,
       proxy: true,
       cookie: {
         secure: process.env.NODE_ENV === "production",
         httpOnly: true,
-        sameSite: "none",
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
         maxAge: 60000 * 15,
       },
     })
@@ -111,13 +111,11 @@ connection(async (client) => {
       req.logOut((err) => {
         if (err) {
           console.error("error during logout", err);
-          return res
-            .status(401)
-            .json({
-              success: false,
-              message: "Logout failed",
-              redirectUrl: "/",
-            });
+          return res.status(401).json({
+            success: false,
+            message: "Logout failed",
+            redirectUrl: "/",
+          });
         }
         return res.status(200).json({
           success: true,

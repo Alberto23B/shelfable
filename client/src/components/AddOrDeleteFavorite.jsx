@@ -17,7 +17,7 @@ export default function AddOrDeleteFavorite({
   setFavorites,
   isFavorite,
 }) {
-  const url = import.meta.env.VITE_API_URL || "";
+  const url = import.meta.env.VITE_API_URL || "http://localhost:5050/";
 
   const display = useContext(DisplayContext);
   const dispatch = useContext(DialogDispatchContext);

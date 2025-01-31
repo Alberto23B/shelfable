@@ -10,7 +10,7 @@ import { AuthContext } from "../context/AuthContext";
 import ToggleTheme from "./ToggleTheme";
 
 export default function UserSettings() {
-  const url = import.meta.env.VITE_API_URL || "";
+  const url = import.meta.env.VITE_API_URL || "http://localhost:5050/";
 
   const showElements = useContext(ShowElementsContext);
   const dispatchShowElements = useContext(ShowElementsDispatchContext);

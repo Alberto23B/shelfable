@@ -4,10 +4,14 @@ import api from "./routes/api.js";
 
 const PORT = process.env.PORT;
 const app = express();
+const origin =
+  process.env.NODE_ENV === "production"
+    ? "https://shelfable.vercel.app"
+    : "http://localhost:5173";
 
 app.use(
   cors({
-    origin: "https://shelfable.vercel.app",
+    origin: origin,
     credentials: true,
   })
 );
