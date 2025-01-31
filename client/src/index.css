@@ -12,6 +12,7 @@ html,
 body {
   overflow: visible;
   height: auto;
+  background-color: #91d2da;
 }
 
 @layer base {
