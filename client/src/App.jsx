@@ -13,6 +13,7 @@ import LoginForm from "./components/LoginForm";
 import RegistrationForm from "./components/RegistrationForm";
 import UserSettings from "./components/UserSettings";
 import { AuthContextProvider } from "./context/AuthContext";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   const [data, setData] = useState([]);
@@ -58,6 +59,7 @@ function App() {
                       favorites={favorites}
                       setFavorites={setFavorites}
                     />
+                    <Analytics />
                   </div>
                 </PageContextProvider>
               </DisplayContextProvider>
